@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Proyecto EvoEventos">
+    <title>EvoEventos</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <span><a href="/">EvoEventos</a></span>
+            
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="eventos.html">Servicios</a>
+                <a href="nosotros.html">Sobre Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <div>
+                <a href="inicioSesion">Ingreso Personal</a>
+                <a href="#Cotizacion">Cotiza ahora</a>
+            </div>
+
+        </div>
+
+        <div style="background-color: #711380">
+            <h1>Todo Lo Que Tu Evento Necesita, En Un Solo Lugar</h1>
+            <p>Cotiza en minutos equipos, comidas y juegos inflables para tu evento</p>
+            <a href="#Cotizacion">Cotiza ahora</a>
+            <a href="#WhatsApp">WhatsApp</a>
+        </div>
+
+    </header>
+    <main>
+
+        <section id="Cotizacion">
+            <article>
+                <h2>Cotiza tu evento</h2>
+                <p>Completa el formulario y recibe una cotización personalizada para tu evento. Nuestro equipo de
+                    expertos te ayudará a crear la experiencia perfecta.</p>
+                <ul>
+                    <li>
+                        <h3>Cotización inmediata</h3>
+                        <p>Recibe tu presupuesto en menos de 24 horas</p>
+                    </li>
+                    <li>
+                        <h3>Servicio express</h3>
+                        <p>Montaje y desmontaje incluido en el precio</p>
+                    </li>
+                    <li>
+                        <h3>Atención personalizada</h3>
+                        <p>Un asesor dedicado para tu evento</p>
+                    </li>
+                    <li>
+                        <h3>Garantía de calidad</h3>
+                        <p>Equipos revisados y personal capacitado</p>
+                    </li>
+                </ul>
+
+                <section class="indicadores">
+                   
+                    <article>
+                        <p class="valor">500+</p>
+                        <p class="descripcion">Eventos realizados</p>
+                    </article>
+
+                    <article>
+                        <p class="valor">24h</p>
+                        <p class="descripcion">Tiempo de respuesta</p>
+                    </article>
+
+                    <article>
+                        <p class="valor">95%</p>
+                        <p class="descripcion">Clientes satisfechos</p>
+                    </article>
+
+                </section>
+            </article>
+            
+            <form action="/" method="post">
+                <h2>Solicita Tu Cotización</h2>
+                <p>Información básica para personalizar tu propuesta</p>
+                <fieldset>
+                    <legend>Información Personal</legend>
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombreCompleto" placeholder="Tu nombre completo" required>
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" placeholder="tu@email.com" required>
+                    <label for="numeroContacto">Número de contacto</label>
+                    <input type="tel" id="numeroContacto" name="numeroContacto" placeholder="3011234567"
+                        pattern="[0-9]{10}" required>
+                </fieldset>
+                <fieldset>
+                    <legend>Detalles del Evento</legend>
+                    <label for="fechaEvento">Fecha del Evento</label>
+                    <input type="date" id="fechaEvento" name="fechaEvento" required>
+                    <label for="numeroInvitados">Asistentes</label>
+                    <input type="number" id="numeroInvitados" name="numeroInvitados" placeholder="100" required>
+                    <label for="tipoEvento">Tipo de Evento</label>
+                    <select id="tipoEvento" name="tipoEvento" required>
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="familiar">Familiar</option>
+                        <option value="empresarial">Empresarial</option>
+                        <option value="otro">Otro</option>
+                    </select>
+
+                    <fieldset>
+                        <legend>Servicios Requeridos</legend>
+                        <label for="serviciosSolicitados">Seleccione los servicios que desea en su evento</label>
+                        <span>
+                            <input type="checkbox" id="maquinasAlimentos"></input>
+                            <label for="maquinasAlimentos">Máquinas de alimentos</label>
+                            <input type="checkbox" id="inflables"></input>
+                            <label for="inflables">Inflables</label>
+                            <input type="checkbox" id="atraccionesMecanicas"></input>
+                            <label for="atraccionesMecanicas">Atracciones mecánicas</label>
+                        </span>
+                    </fieldset>
+                </fieldset>
+                <button type="submit">Obtener Cotización Gratuita</button>
+            </form>
+    </main>
+</body>
+
+</html>
