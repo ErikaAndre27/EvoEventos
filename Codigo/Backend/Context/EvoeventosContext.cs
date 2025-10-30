@@ -1,4 +1,5 @@
 ﻿using BackEvoEventos.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackEvoEventos.Context
@@ -21,7 +22,12 @@ namespace BackEvoEventos.Context
         {
             modelBuilder.Entity<DocumentType>(entity =>
             {
-
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
+                entity.Property(e => e.Abbreviation).IsRequired().HasMaxLength(5).HasColumnName("Abbreviation");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.ToTable("DocumentType");
             });
         }
     }
