@@ -9,7 +9,12 @@ namespace BackEvoEventos.Models
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string Abbreviation { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
+        public ICollection<User> Users { get; set; }
+        public ICollection<Customer> Customers { get; set; }
     }
 }
