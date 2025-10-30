@@ -29,6 +29,28 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
                 entity.ToTable("DocumentType");
             });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Names).IsRequired().HasMaxLength(60).HasColumnName("Name");
+                entity.Property(e => e.Surnames).IsRequired().HasMaxLength(50).HasColumnName("Surnames");
+                entity.Property(e => e.Email).IsRequired().HasMaxLength(50).HasColumnName("Email");
+                entity.Property(e => e.IdDocumentType).IsRequired().HasColumnName("IdDocumentType");
+                entity.Property(e => e.DocumentNumber).IsRequired().HasMaxLength(12).HasColumnName("DocumentNumber");
+                entity.Property(e => e.Phone).IsRequired().HasMaxLength(14).HasColumnName("Phone");
+                entity.Property(e => e.Address).HasMaxLength(100).HasColumnName("Address");
+                entity.Property(e => e.IdRole).IsRequired().HasColumnName("IdRole");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.HasOne(e => e.DocumentType)
+                      .WithMany(t => t.User)          
+                      .HasForeignKey(e => e.IdDocumentType)
+                entity.HasOne(e => e.Role)
+                      .WithMany(t => t.User)
+                      .HasForeignKey(e => e.IdRole)
+                entity.ToTable("User");
+            });
+
         }
-    }
 }

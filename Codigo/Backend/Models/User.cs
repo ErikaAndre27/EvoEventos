@@ -18,7 +18,9 @@ namespace BackEvoEventos.Models
         public Guid IdRole { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        
         public DocumentType DocumentType { get; set; }
         public Role Role {  get; set; }
+        public ICollection<Credential> Credential { get; set; }
     }
 }
