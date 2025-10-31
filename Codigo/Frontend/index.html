@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Proyecto EvoEventos">
     <title>EvoEventos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+      <!-- ENCABEZADO PRINCIPAL -->
     <header>
         <div>
+            <!-- Logotipo o nombre del sitio con enlace a la página principal -->
             <span><a href="/">EvoEventos</a></span>
             
+             <!-- Menú de navegación principal -->
             <nav class="menu">
                 <a href="index.html">Inicio</a>
                 <a href="eventos.html">Servicios</a>
@@ -26,6 +30,7 @@
             </div>
 
         </div>
+           <!-- Sección promocional con mensaje principal -->
 
         <div style="background-color: #711380">
             <h1>Todo Lo Que Tu Evento Necesita, En Un Solo Lugar</h1>
@@ -35,6 +40,7 @@
         </div>
 
     </header>
+     <!-- CONTENIDO PRINCIPAL -->
     <main>
 
         <section id="Cotizacion">
@@ -80,11 +86,15 @@
 
                 </section>
             </article>
-            
+
+              <!-- FORMULARIO DE COTIZACIÓN -->
+
             <form action="/" method="post">
                 <h2>Solicita Tu Cotización</h2>
                 <p>Información básica para personalizar tu propuesta</p>
                 <fieldset>
+                     <!-- Campo de información personal -->
+
                     <legend>Información Personal</legend>
                     <label for="nombre">Nombre completo</label>
                     <input type="text" id="nombre" name="nombreCompleto" placeholder="Tu nombre completo" required>
@@ -121,8 +131,143 @@
                         </span>
                     </fieldset>
                 </fieldset>
+                  <!-- Botón de envío del formulario -->
                 <button type="submit">Obtener Cotización Gratuita</button>
             </form>
+        </section>
+        
+          <!-- Servicios Destacados -->
+         <!-- Servicios Destacados -->
+        <section class="servicios-destacados">
+            <h2>Servicios Destacados</h2>
+            <p>Ofrecemos una amplia gama de servicios para hacer de tu evento una experiencia inolvidable</p>
+            
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <div class="servicio-icon">🏰</div>
+                    <h3>Juegos Inflables</h3>
+                    <p>Castillos, toboganes y estructuras inflables para la diversión de todos</p>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-icon">🍿</div>
+                    <h3>Máquinas de comestibles</h3>
+                    <p>Máquinas de palomitas, algodón de azúcar y dulces para endulzar tu evento</p>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-icon">🚚</div>
+                    <h3>Catering</h3>
+                    <p>Servicio completo de comidas y bebidas adaptado a tu presupuesto</p>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-icon">🎂</div>
+                    <h3>Transporte</h3>
+                    <p>Logística completa para el montaje y desmontaje de tu evento</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestros Productos -->
+        <section class="nuestros-productos">
+            <h2>Nuestros Productos</h2>
+            <p>Descubre nuestra amplia gama de productos y servicios<br>para hacer de tu evento algo extraordinario</p>
+            
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <span class="producto-badge">Juegos</span>
+                    <img src="https://mxc.com.mx/wp-content/uploads/2025/04/6a16ad32-1c8a-4fe0-a24f-3182fe3a2f8d_source-aspect-ratio_1600w_0.jpg" alt="Castillos Inflables" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3>Castillos Inflables</h3>
+                        <p>Castillos inflables seguros y divertidos para todas las edades</p>
+                        <button class="btn-producto">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <span class="producto-badge">Confitería</span>
+                    <img src="https://gourmetdemexico.com.mx/wp-content/uploads/2024/11/algodones-de-azucar-1-1024x678.jpg" alt="Máquinas de Algodón" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3>Máquinas de Algodón</h3>
+                        <p>Máquinas profesionales de algodón de azúcar y palomitas</p>
+                        <button class="btn-producto">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <span class="producto-badge">Alimentación</span>
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.2Uc4C0p35Svp71HuBfk3DwHaFL?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Servicio de Catering" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3>Servicio de Catering</h3>
+                        <p>Buffets completos y menús personalizados para tu evento</p>
+                        <button class="btn-producto">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <span class="producto-badge">Audio/Video</span>
+                    <img src="https://35mm.es/wp-content/uploads/2021/06/musica-dubstep.jpg" alt="Equipo de Sonido" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3>Equipo de Sonido</h3>
+                        <p>Sistemas de sonido profesional y equipo de DJ</p>
+                        <button class="btn-producto">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <span class="producto-badge">Ambientación</span>
+                    <img src="https://carpasexpandi.com/wp-content/uploads/2019/06/tipos-carpas-eventos-zaragoza.jpg" alt="Carpas y Decoración" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3>Carpas y Decoración</h3>
+                        <p>Carpas elegantes y decoración temática personalizada</p>
+                        <button class="btn-producto">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <span class="producto-badge">Muebles</span>
+                    <img src="https://th.bing.com/th/id/R.b0a7ab0810127b4aaf8d4c97ce181fe1?rik=M71TjUf%2bgIHUdg&pid=ImgRaw&r=0" alt="Mobiliario" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3>Mobiliario</h3>
+                        <p>Mesas, sillas y mobiliario elegante para cualquier ocasión</p>
+                        <button class="btn-producto">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ver-inventario">
+                <button class="btn-inventario">Ver Todo el Inventario</button>
+            </div>
+        </section>
+    </main>
+      <!-- Pie de Pagína -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EvoEventos</h3>
+                <p>Somos expertos en crear experiencias inolvidables. Tu evento, nuestra pasión.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Enlaces</h3>
+                <a href="#">Inicio</a>
+                <a href="#">Servicios</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Contacto</a>
+            </div>
+
+            <div class="footer-section footer-contacto">
+                <h3>Contacto</h3>
+                <p>📞 +57 301 123 4567</p>
+                <p>✉️ contacto@evoeventos.com</p>
+                <p>📍 Bogotá, Colombia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 EvoEventos. Todos los derechos reservados.</p>
+        </div>
     </main>
 </body>
 
