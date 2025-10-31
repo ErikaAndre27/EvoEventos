@@ -7,7 +7,7 @@ namespace BackEvoEventos.Context
     public class EvoeventosContext : DbContext
     {
         public EvoeventosContext(DbContextOptions<EvoeventosContext> options) : base(options)
-        { 
+        {
         }
 
         public DbSet<DocumentType> DocumentTypes { get; set; }
@@ -44,13 +44,43 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
                 entity.HasOne(e => e.DocumentType)
-                      .WithMany(t => t.User)          
-                      .HasForeignKey(e => e.IdDocumentType)
+                      .WithMany(t => t.Users)
+                      .HasForeignKey(e => e.IdDocumentType);
                 entity.HasOne(e => e.Role)
-                      .WithMany(t => t.User)
-                      .HasForeignKey(e => e.IdRole)
+                      .WithMany(t => t.Users)
+                      .HasForeignKey(e => e.IdRole);
                 entity.ToTable("User");
             });
 
+            modelBuilder.Entity<CustomerType>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
+                entity.Property(e => e.Abbreviation).IsRequired().HasMaxLength(5).HasColumnName("Abbreviation");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.ToTable("CustomerType");
+            });
+
+            modelBuilder.Entity<LoggingType>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.ToTable("LoggingType");
+            });
+
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.ToTable("Role");
+            });
+
+
+
         }
-}
+}   }
