@@ -58,7 +58,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.Abbreviation).IsRequired().HasMaxLength(5).HasColumnName("Abbreviation");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
                 entity.ToTable("CustomerType");
             });
 

@@ -10,7 +10,7 @@ namespace BackEvoEventos.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-        public ICollection<User> Users { get; set; }
+        public ICollection<User>? Users { get; set; } = new List<User>(); // QUITAR EL SIGNO ? Y NEW LIST<USER>() SI DA PROBLEMAS
     }
 
 }
