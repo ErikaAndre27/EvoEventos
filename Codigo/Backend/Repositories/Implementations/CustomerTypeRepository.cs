@@ -23,7 +23,7 @@ namespace BackEvoEventos.Repositories.Implementations
             return await _context.CustomerTypes.ToListAsync();
         }
 
-        public async Task<bool> CreateCustomerType(Guid id, CustomerType customerType)
+        public async Task<bool> CreateCustomerType(CustomerType customerType)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace BackEvoEventos.Repositories.Implementations
                     return false;
                 }
                 existingCustomerType.Name = updatedCustomerType.Name;
-                existingCustomerType.UpdatedAt = DateTime.UtcNow;
+                existingCustomerType.UpdateAt = DateTime.UtcNow;
 
                 _context.CustomerTypes.Update(existingCustomerType);
                 await _context.SaveChangesAsync();

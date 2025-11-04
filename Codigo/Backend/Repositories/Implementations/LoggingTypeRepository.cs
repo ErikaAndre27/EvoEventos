@@ -21,7 +21,7 @@ namespace BackEvoEventos.Repositories.Implementations
             return await _context.LoggingTypes.ToListAsync();
         }
 
-        public async Task<bool> CreateLoggingType(Guid Id, LoggingType loggingType)
+        public async Task<bool> CreateLoggingType(LoggingType loggingType)
         {
             try
             {
@@ -37,12 +37,12 @@ namespace BackEvoEventos.Repositories.Implementations
             }
         }
 
-        public async Task<bool> DeleteLoggingType(Guid id, LoggingType loggingType)
+        public async Task<bool> DeleteLoggingType(Guid id)
         {
             try
             {
-                var role = await _context.LoggingTypes.FindAsync(id);
-                if (role == null)
+                var loggingType = await _context.LoggingTypes.FindAsync(id);
+                if (loggingType == null)
                 {
                     return false;
                 }
