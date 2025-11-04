@@ -1,11 +1,17 @@
+using BackEvoEventos;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddExternal(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+Console.WriteLine("Connection string actual:");
+Console.WriteLine(builder.Configuration.GetConnectionString("DefaultConnection"));
+
 
 var app = builder.Build();
 
