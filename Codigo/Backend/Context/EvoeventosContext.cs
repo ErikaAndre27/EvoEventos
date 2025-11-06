@@ -26,7 +26,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.Abbreviation).IsRequired().HasMaxLength(5).HasColumnName("Abbreviation");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
                 entity.ToTable("DocumentType");
             });
 
@@ -42,7 +42,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Address).HasMaxLength(100).HasColumnName("Address");
                 entity.Property(e => e.IdRole).IsRequired().HasColumnName("IdRole");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
                 entity.HasOne(e => e.DocumentType)
                       .WithMany(t => t.Users)
                       .HasForeignKey(e => e.IdDocumentType);
@@ -67,7 +67,7 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
                 entity.ToTable("LoggingType");
             });
 
@@ -76,7 +76,7 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdatedAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
                 entity.ToTable("Role");
             });
 

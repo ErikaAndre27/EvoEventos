@@ -47,7 +47,7 @@ namespace BackEvoEventos.Controllers
         {
             try
             {
-                var CustomerType = await _customerTypeRepository.GetCustomerType(Id); //Llama al método GetRoles del repositorio
+                var CustomerType = await _customerTypeRepository.GetCustomerType(id); //Llama al método GetRoles del repositorio
                 if (CustomerType == null) //Verifica si la lista de roles está vacía o es nula
                 {
                     return NotFound("No se encontró el Customer Type."); //Devuelve un estado 404 Not Found con un mensaje
@@ -89,7 +89,7 @@ namespace BackEvoEventos.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> UpdateLoggingType(Guid Id, [FromBody] CustomerType UpdatedCustomerType)
+        public async Task<IActionResult> UpdateLoggingType(Guid id, [FromBody] CustomerType UpdatedCustomerType)
         {
             try
             {

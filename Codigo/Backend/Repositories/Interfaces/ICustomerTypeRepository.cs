@@ -6,10 +6,10 @@ namespace BackEvoEventos.Repositories.Interfaces
     {
 
         Task<List<CustomerType>> GetCustomerTypes();
-        Task<CustomerType> GetCustomerType(Guid id);
+        Task<CustomerType> GetCustomerType(Guid Id);
         Task<bool> CreateCustomerType(CustomerType customerType);
-        Task<bool> UpdateCustomerType(Guid id, CustomerType updatedCustomerType);
-        Task<bool> DeleteCustomerType(Guid id);
+        Task<bool> UpdateCustomerType(Guid Id, CustomerType updatedCustomerType);
+        Task<bool> DeleteCustomerType(Guid Id);
 
     }
 

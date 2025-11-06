@@ -38,11 +38,11 @@ namespace BackEvoEventos.Repositories.Implementations
             }
         }
 
-        public async Task<bool> DeleteCustomerType(Guid id)
+        public async Task<bool> DeleteCustomerType(Guid Id)
         {
             try
             {
-                var customerType = await _context.CustomerTypes.FindAsync(id);
+                var customerType = await _context.CustomerTypes.FindAsync(Id);
                 if (customerType == null)
                 {
                     return false;
@@ -59,11 +59,11 @@ namespace BackEvoEventos.Repositories.Implementations
 
         }
 
-        public async Task<bool> UpdateCustomerType(Guid id, CustomerType updatedCustomerType)
+        public async Task<bool> UpdateCustomerType(Guid Id, CustomerType updatedCustomerType)
         {
             try
             {
-                var existingCustomerType = await _context.CustomerTypes.FindAsync(id);
+                var existingCustomerType = await _context.CustomerTypes.FindAsync(Id);
                 if (existingCustomerType == null)
                 {
                     return false;
