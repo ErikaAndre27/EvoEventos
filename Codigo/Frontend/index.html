@@ -11,17 +11,17 @@
 
 <body>
       <!-- ENCABEZADO PRINCIPAL -->
-    <header>
+    <header id="header-section">
         <div>
             <!-- Logotipo o nombre del sitio con enlace a la página principal -->
-            <span><a href="/">EvoEventos</a></span>
+            <span><a href="">EvoEventos</a></span>
             
              <!-- Menú de navegación principal -->
             <nav class="menu">
                 <a href="index.html">Inicio</a>
-                <a href="eventos.html">Servicios</a>
-                <a href="nosotros.html">Sobre Nosotros</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="#servicios-destacados">Servicios</a>
+                <a href="#sobre-evoeventos">Sobre Nosotros</a>
+                <a href="#contacto">Contacto</a>
             </nav>
 
             <div>
@@ -36,7 +36,7 @@
             <h1>Todo Lo Que Tu Evento Necesita, En Un Solo Lugar</h1>
             <p>Cotiza en minutos equipos, comidas y juegos inflables para tu evento</p>
             <a href="#Cotizacion">Cotiza ahora</a>
-            <a href="#WhatsApp">WhatsApp</a>
+            <a href="https://wa.me/+573001234567" target="_blank">Iniciar Chat</a>
         </div>
 
     </header>
@@ -165,8 +165,7 @@
         </section>
         
           <!-- Servicios Destacados -->
-         <!-- Servicios Destacados -->
-        <section class="servicios-destacados">
+        <section id="servicios-destacados"class="servicios-destacados">
             <h2>Servicios Destacados</h2>
             <p>Ofrecemos una amplia gama de servicios para hacer de tu evento una experiencia inolvidable</p>
             
@@ -184,13 +183,13 @@
                 </div>
 
                 <div class="servicio-card">
-                    <div class="servicio-icon">🚚</div>
+                    <div class="servicio-icon">🎂</div>
                     <h3>Catering</h3>
                     <p>Servicio completo de comidas y bebidas adaptado a tu presupuesto</p>
                 </div>
 
                 <div class="servicio-card">
-                    <div class="servicio-icon">🎂</div>
+                    <div class="servicio-icon">🚚</div>
                     <h3>Transporte</h3>
                     <p>Logística completa para el montaje y desmontaje de tu evento</p>
                 </div>
@@ -273,19 +272,21 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>EvoEventos</h3>
+            <section id ="sobre-evoeventos">
+                <h3>Sobre EvoEventos</h3>
                 <p>Somos expertos en crear experiencias inolvidables. Tu evento, nuestra pasión.</p>
             </div>
 
             <div class="footer-section">
                 <h3>Enlaces</h3>
                 <a href="#">Inicio</a>
-                <a href="#">Servicios</a>
-                <a href="#">Nosotros</a>
-                <a href="#">Contacto</a>
+                <a href="#servicios-destacados">Servicios</a>
+                <a href="#sobre-evoeventos">Nosotros</a>
+                <a href="#contacto">Contacto</a>
             </div>
 
             <div class="footer-section footer-contacto">
+                <section id="contacto">
                 <h3>Contacto</h3>
                 <p>📞 +57 301 123 4567</p>
                 <p>✉️ contacto@evoeventos.com</p>
@@ -297,6 +298,7 @@
             <p>© 2025 EvoEventos. Todos los derechos reservados.</p>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
