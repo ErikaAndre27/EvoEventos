@@ -2,7 +2,7 @@
 
 namespace BackEvoEventos.Models
 {
-    public class Customer
+    public class Customer: Auditory
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -15,8 +15,6 @@ namespace BackEvoEventos.Models
         public string Address { get; set; }
         public bool IsActive { get; set; }
         public string Notes { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public DocumentType DocumentType { get; set; }
         public CustomerType CustomerType { get; set; }
     }

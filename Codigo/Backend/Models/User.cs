@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Metadata;
 namespace BackEvoEventos.Models
 {
-    public class User
+    public class User: Auditory
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -15,10 +15,8 @@ namespace BackEvoEventos.Models
         public string DocumentNumber { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public Guid IdRole { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
-        
+        public Guid IdRole { get; set; }    
+
         public DocumentType DocumentType { get; set; }
         public Role Role {  get; set; }
         public ICollection<Credential> Credential { get; set; }

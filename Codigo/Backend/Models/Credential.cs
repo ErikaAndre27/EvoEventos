@@ -2,7 +2,7 @@
 
 namespace BackEvoEventos.Models
 {
-    public class Credential
+    public class Credential: Auditory
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -11,8 +11,6 @@ namespace BackEvoEventos.Models
         public string identifier { get; set; }
         public string Password { get; set; }
         public DateTime LastLogin { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public User User { get; set; }
         public LoggingType LoggingType{ get; set; }
     }
