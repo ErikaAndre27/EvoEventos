@@ -10,7 +10,6 @@ namespace BackEvoEventos.Models
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string Abbreviation { get; set; }
-        [Column("CreatedAT")]
 
         public ICollection<Customer>? Customers { get; set; } = new List<Customer>();
 
