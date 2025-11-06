@@ -12,12 +12,12 @@ namespace BackEvoEventos.Controllers
     {
         private readonly ICustomerTypeRepository _customerTypeRepository; //Inyección de dependencia
 
-        public CustomerTypeController(ICustomerTypeRepository customerTypeRepository)
+        public CustomerTypeController(ICustomerTypeRepository CustomerTypeRepository)
         {
-            _customerTypeRepository = customerTypeRepository;
+            _customerTypeRepository = CustomerTypeRepository;
         }
 
-        [HttpGet("Get Customer Types")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
+        [HttpGet("GetCustomerTypes")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
         [ProducesResponseType(StatusCodes.Status200OK)] //Indica que este método puede devolver un estado 200 OK
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Indica que este método puede devolver un estado 404 Not Found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)] //Indica que este método puede devolver un estado 500 Internal Server Error
@@ -25,13 +25,13 @@ namespace BackEvoEventos.Controllers
         {
             try
             {
-                var customerTypes = await _customerTypeRepository.GetCustomerTypes(); //Llama al método GetRoles del repositorio
-                if (customerTypes == null || !customerTypes.Any()) //Verifica si la lista de roles está vacía o es nula
+                var CustomerTypes = await _customerTypeRepository.GetCustomerTypes(); //Llama al método GetRoles del repositorio
+                if (CustomerTypes == null || !CustomerTypes.Any()) //Verifica si la lista de roles está vacía o es nula
                 {
                     return NotFound("No se encontraron Customer Types."); //Devuelve un estado 404 Not Found con un mensaje
                 }
 
-                return Ok(customerTypes);
+                return Ok(CustomerTypes);
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpGet("Get Customer Type")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
+        [HttpGet("GetCustomerType")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -47,13 +47,13 @@ namespace BackEvoEventos.Controllers
         {
             try
             {
-                var customerType = await _customerTypeRepository.GetCustomerType(id); //Llama al método GetRoles del repositorio
-                if (customerType == null) //Verifica si la lista de roles está vacía o es nula
+                var CustomerType = await _customerTypeRepository.GetCustomerType(id); //Llama al método GetRoles del repositorio
+                if (CustomerType == null) //Verifica si la lista de roles está vacía o es nula
                 {
                     return NotFound("No se encontró el Customer Type."); //Devuelve un estado 404 Not Found con un mensaje
                 }
 
-                return Ok(customerType);
+                return Ok(CustomerType);
             }
             catch (Exception ex)
             {
@@ -61,17 +61,17 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpPost("Insert Customer Type")]
+        [HttpPost("InsertCustomerType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> CreateLoggingType([FromBody] CustomerType customerType) // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
+        public async Task<IActionResult> CreateLoggingType([FromBody] CustomerType CustomerType) // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
         {
             try
             {
-                var resultado = await _customerTypeRepository.CreateCustomerType(customerType);
-                if (!resultado)
+                var Result = await _customerTypeRepository.CreateCustomerType(CustomerType);
+                if (!Result)
                 {
                     return NotFound("No se pudo insertar el Customer Type.");
                 }
@@ -84,17 +84,17 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpPut("Update Customer Type")]
+        [HttpPut("UpdateCustomerType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> UpdateLoggingType(Guid id, [FromBody] CustomerType updatedCustomerType)
+        public async Task<IActionResult> UpdateLoggingType(Guid id, [FromBody] CustomerType UpdatedCustomerType)
         {
             try
             {
-                var resultado = await _customerTypeRepository.UpdateCustomerType(id, updatedCustomerType);
-                if (!resultado)
+                var Result = await _customerTypeRepository.UpdateCustomerType(id, UpdatedCustomerType);
+                if (!Result)
                 {
                     return NotFound("No se pudo actualizar el Customer Type.");
                 }
@@ -106,18 +106,18 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpDelete("Delete Customer Type")]
+        [HttpDelete("DeleteCustomerType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> DeleteCustomerType(Guid id)  // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
+        public async Task<IActionResult> DeleteCustomerType(Guid Id)  // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
         {
             try
             {
-                var resultado = await _customerTypeRepository.DeleteCustomerType(id);
-                var loggingType = await _customerTypeRepository.DeleteCustomerType(id);
-                if (!resultado) // Verifica si la lista de roles está vacía o es nula
+                var Result = await _customerTypeRepository.DeleteCustomerType(Id);
+                var LoggingType = await _customerTypeRepository.DeleteCustomerType(Id);
+                if (!Result) // Verifica si la lista de roles está vacía o es nula
                 {
                     return BadRequest("No se pudo Eliminar el Customer Type.");  //BadRequest hace referencia a un estado 400
                 }
