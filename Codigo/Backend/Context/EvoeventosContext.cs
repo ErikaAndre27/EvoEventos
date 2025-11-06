@@ -80,6 +80,45 @@ namespace BackEvoEventos.Context
                 entity.ToTable("Role");
             });
 
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.DocumentNumber).IsRequired().HasColumnName("DocumentNumber");
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
+                entity.Property(e => e.Email).IsRequired().HasMaxLength(50).HasColumnName("Email");
+                entity.Property(e => e.Phone).IsRequired().HasMaxLength(14).HasColumnName("Phone");
+                entity.Property(e => e.Address).HasMaxLength(100).HasColumnName("Address");
+                entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
+                entity.Property(e => e.Notes).HasMaxLength(100).HasColumnName("Notes");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
+                entity.HasOne(e => e.DocumentType)
+                      .WithMany(t => t.Customers)
+                      .HasForeignKey(e => e.IdDocumentType);
+                entity.HasOne(e => e.CustomerType)
+                    .WithMany(t => t.Customers)
+                    .HasForeignKey(e => e.IdCustomerType);
+                entity.ToTable("Customer");
+            });
+
+            modelBuilder.Entity<Credential>(entity =>
+            {
+                entity.HasKey(e => e.Id); //entity.Property(e => e.Password)//.HasColumnName("IdCredential")//.HasDefaultValueSql("NEWID()"); también lo sugiere DeppSeek :v
+                entity.Property(e =>e.Password).IsRequired().HasColumnName("Password"); //segun la ia sugiere utilizar PasswordHash o PasswordSalt
+                entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
+                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAT");
+                entity.HasOne(e => e.User)
+                .WithMany(t => t.Credential)
+                .HasForeignKey(e => e.IdUser);
+                entity.HasOne(e => e.LoggingType)
+                .WithMany(t=> t.Credentials)
+                .HasForeignKey(e => e.IdLoggingType);
+                entity.ToTable("Credential");
+
+            });
+
+
 
 
         }
