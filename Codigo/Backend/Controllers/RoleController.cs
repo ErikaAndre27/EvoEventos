@@ -12,12 +12,12 @@ namespace BackEvoEventos.Controllers
     {
         private readonly IRoleRepository _roleRepository; //Inyección de dependencia
 
-        public RoleController(IRoleRepository roleRepository)
+        public RoleController(IRoleRepository RoleRepository)
         {
-            _roleRepository = roleRepository;
+            _roleRepository = RoleRepository;
         }
 
-        [HttpGet("Get Roles")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
+        [HttpGet("GetRoles")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
         [ProducesResponseType(StatusCodes.Status200OK)] //Indica que este método puede devolver un estado 200 OK
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Indica que este método puede devolver un estado 404 Not Found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)] //Indica que este método puede devolver un estado 500 Internal Server Error
@@ -25,13 +25,13 @@ namespace BackEvoEventos.Controllers
         {
             try
             {
-                var roles = await _roleRepository.GetRoles(); //Llama al método GetRoles del repositorio
-                if (roles == null || !roles.Any()) //Verifica si la lista de roles está vacía o es nula
+                var Roles = await _roleRepository.GetRoles(); //Llama al método GetRoles del repositorio
+                if (Roles == null || !Roles.Any()) //Verifica si la lista de roles está vacía o es nula
                 {
                     return NotFound("No se encontraron Roles."); //Devuelve un estado 404 Not Found con un mensaje
                 }
 
-                return Ok(roles);
+                return Ok(Roles);
             }
             catch (Exception ex)
             {
@@ -39,21 +39,21 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpGet("Get Role")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
+        [HttpGet("GetRole")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetRole(Guid id) // IActionResult es un tipo de retorno genérico para una acción de controlador
+        public async Task<IActionResult> GetRole(Guid Id) // IActionResult es un tipo de retorno genérico para una acción de controlador
         {
             try
             {
-                var roles = await _roleRepository.GetRole(id); //Llama al método GetRoles del repositorio
-                if (roles == null) //Verifica si la lista de roles está vacía o es nula
+                var Roles = await _roleRepository.GetRole(Id); //Llama al método GetRoles del repositorio
+                if (Roles == null) //Verifica si la lista de roles está vacía o es nula
                 {
                     return NotFound("No se encontró el Rol."); //Devuelve un estado 404 Not Found con un mensaje
                 }
 
-                return Ok(roles);
+                return Ok(Roles);
             }
             catch (Exception ex)
             {
@@ -61,17 +61,17 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpPost("Insert Role")]
+        [HttpPost("InsertRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> CreateRole([FromBody] Role role) // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
+        public async Task<IActionResult> CreateRole([FromBody] Role Role) // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
         {
             try
             {
-                var resultado = await _roleRepository.CreateRole(role);
-                if (!resultado)
+                var Result = await _roleRepository.CreateRole(Role);
+                if (!Result)
                 {
                     return NotFound("No se pudo insertar el Rol.");
                 }
@@ -84,17 +84,17 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpPut("Update Role")]
+        [HttpPut("UpdateRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> UpdateRole(Guid id, [FromBody] Role updatedRole)
+        public async Task<IActionResult> UpdateRole(Guid Id, [FromBody] Role UpdatedRole)
         {
             try
             {
-                var resultado = await _roleRepository.UpdateRole(id, updatedRole);
-                if (!resultado)
+                var Result = await _roleRepository.UpdateRole(Id, UpdatedRole);
+                if (!Result)
                 {
                     return NotFound("No se pudo actualizar el Rol.");
                 }
@@ -106,18 +106,18 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpDelete("Delete Role")]
+        [HttpDelete("DeleteRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> DeleteRole(Guid id)  // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
+        public async Task<IActionResult> DeleteRole(Guid Id)  // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
         {
             try
             {
-                var resultado = await _roleRepository.DeleteRole(id);
-                var roles = await _roleRepository.DeleteRole(id);
-                if (!resultado) // Verifica si la lista de roles está vacía o es nula
+                var Result = await _roleRepository.DeleteRole(Id);
+                var Role = await _roleRepository.DeleteRole(Id);
+                if (!Result) // Verifica si la lista de roles está vacía o es nula
                 {
                     return BadRequest("No se pudo Eliminar el Rol.");  //BadRequest hace referencia a un estado 400
                 }
