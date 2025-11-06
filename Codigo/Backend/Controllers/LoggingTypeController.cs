@@ -12,12 +12,12 @@ namespace BackEvoEventos.Controllers
     {
         private readonly ILoggingTypeRepository _loggingTypeRepository; //Inyección de dependencia
 
-        public LoggingTypeController(ILoggingTypeRepository loggingTypeRepository)
+        public LoggingTypeController(ILoggingTypeRepository LoggingTypeRepository)
         {
-            _loggingTypeRepository = loggingTypeRepository;
+            _loggingTypeRepository = LoggingTypeRepository;
         }
 
-        [HttpGet("Get Loggin Types")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
+        [HttpGet("GetLogginTypes")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
         [ProducesResponseType(StatusCodes.Status200OK)] //Indica que este método puede devolver un estado 200 OK
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Indica que este método puede devolver un estado 404 Not Found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)] //Indica que este método puede devolver un estado 500 Internal Server Error
@@ -25,13 +25,13 @@ namespace BackEvoEventos.Controllers
         {
             try
             {
-                var logginTypes = await _loggingTypeRepository.GetLoggingTypes(); //Llama al método GetRoles del repositorio
-                if (logginTypes == null || !logginTypes.Any()) //Verifica si la lista de roles está vacía o es nula
+                var LogginTypes = await _loggingTypeRepository.GetLoggingTypes(); //Llama al método GetRoles del repositorio
+                if (LogginTypes == null || !LogginTypes.Any()) //Verifica si la lista de roles está vacía o es nula
                 {
                     return NotFound("No se encontraron Loggin Types."); //Devuelve un estado 404 Not Found con un mensaje
                 }
 
-                return Ok(logginTypes);
+                return Ok(LogginTypes);
             }
             catch (Exception ex)
             {
@@ -39,21 +39,21 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpGet("Get Loggin Type")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
+        [HttpGet("GetLogginType")] //Indica que este método responde a solicitudes HTTP GET(Lectura)
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetLoggingType(Guid id) // IActionResult es un tipo de retorno genérico para una acción de controlador
+        public async Task<IActionResult> GetLoggingType(Guid Id) // IActionResult es un tipo de retorno genérico para una acción de controlador
         {
             try
             {
-                var loggingType = await _loggingTypeRepository.GetLoggingType(id); //Llama al método GetRoles del repositorio
-                if (loggingType == null) //Verifica si la lista de roles está vacía o es nula
+                var LoggingType = await _loggingTypeRepository.GetLoggingType(Id); //Llama al método GetRoles del repositorio
+                if (LoggingType == null) //Verifica si la lista de roles está vacía o es nula
                 {
                     return NotFound("No se encontró el Loggin Type."); //Devuelve un estado 404 Not Found con un mensaje
                 }
 
-                return Ok(loggingType);
+                return Ok(LoggingType);
             }
             catch (Exception ex)
             {
@@ -61,17 +61,17 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpPost("Insert Loggin Type")]
+        [HttpPost("InsertLogginType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> CreateLoggingType([FromBody] LoggingType loggingType) // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
+        public async Task<IActionResult> CreateLoggingType([FromBody] LoggingType LoggingType) // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
         {
             try
             {
-                var resultado = await _loggingTypeRepository.CreateLoggingType(loggingType);
-                if (!resultado)
+                var Result = await _loggingTypeRepository.CreateLoggingType(LoggingType);
+                if (!Result)
                 {
                     return NotFound("No se pudo insertar el Loggin Type.");
                 }
@@ -84,17 +84,17 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpPut("Update Loggin Type")]
+        [HttpPut("UpdateLogginType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> UpdateLoggingType(Guid id, [FromBody] LoggingType updatedLoggingType)
+        public async Task<IActionResult> UpdateLoggingType(Guid Id, [FromBody] LoggingType UpdatedLoggingType)
         {
             try
             {
-                var resultado = await _loggingTypeRepository.UpdateLoggingType(id, updatedLoggingType);
-                if (!resultado)
+                var Result = await _loggingTypeRepository.UpdateLoggingType(Id, UpdatedLoggingType);
+                if (!Result)
                 {
                     return NotFound("No se pudo actualizar el Loggin Type.");
                 }
@@ -106,18 +106,18 @@ namespace BackEvoEventos.Controllers
             }
         }
 
-        [HttpDelete("Delete Loggin Type")]
+        [HttpDelete("DeleteLogginType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> DeleteLoggingType(Guid id)  // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
+        public async Task<IActionResult> DeleteLoggingType(Guid Id)  // FromBody indica que el parámetro se obtiene del cuerpo de la solicitud HTTP
         {
             try
             {
-                var resultado = await _loggingTypeRepository.DeleteLoggingType(id);
-                var loggingType = await _loggingTypeRepository.DeleteLoggingType(id);
-                if (!resultado) // Verifica si la lista de roles está vacía o es nula
+                var Result = await _loggingTypeRepository.DeleteLoggingType(Id);
+                var LoggingType = await _loggingTypeRepository.DeleteLoggingType(Id);
+                if (!Result) // Verifica si la lista de roles está vacía o es nula
                 {
                     return BadRequest("No se pudo Eliminar el Loggin Type.");  //BadRequest hace referencia a un estado 400
                 }
