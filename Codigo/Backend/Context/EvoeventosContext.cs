@@ -83,7 +83,9 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.Property(e => e.IdDocumentType).IsRequired().HasColumnName("IdDocumentType");
                 entity.Property(e => e.DocumentNumber).IsRequired().HasColumnName("DocumentNumber");
+                entity.Property(e => e.IdCustomerType).IsRequired().HasColumnName("IdCustomerType");
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.Email).IsRequired().HasMaxLength(50).HasColumnName("Email");
                 entity.Property(e => e.Phone).IsRequired().HasMaxLength(14).HasColumnName("Phone");
@@ -103,8 +105,11 @@ namespace BackEvoEventos.Context
 
             modelBuilder.Entity<Credential>(entity =>
             {
-                entity.HasKey(e => e.Id); //entity.Property(e => e.Password)//.HasColumnName("IdCredential")//.HasDefaultValueSql("NEWID()"); también lo sugiere DeppSeek :v
-                entity.Property(e =>e.Password).IsRequired().HasColumnName("Password"); //segun la ia sugiere utilizar PasswordHash o PasswordSalt
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
+                entity.Property(e => e.IdLoggingType).IsRequired().HasColumnName("IdLoggingType");
+                entity.Property(e => e.identifier).IsRequired().HasMaxLength(50).HasColumnName("Identifier");
+                entity.Property(e => e.Password).IsRequired().HasColumnName("Password");
                 entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
                 entity.Property(e => e.UpdateAt).HasColumnName("UpdateAT");
@@ -112,14 +117,10 @@ namespace BackEvoEventos.Context
                 .WithMany(t => t.Credential)
                 .HasForeignKey(e => e.IdUser);
                 entity.HasOne(e => e.LoggingType)
-                .WithMany(t=> t.Credentials)
+                .WithMany(t => t.Credentials)
                 .HasForeignKey(e => e.IdLoggingType);
                 entity.ToTable("Credential");
-
             });
-
-
-
-
         }
-}   }
+    }
+}
