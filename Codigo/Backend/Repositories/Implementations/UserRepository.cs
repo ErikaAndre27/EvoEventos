@@ -1,30 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
-using BackEvoEventos.Context;
+﻿using BackEvoEventos.Context;
 using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEvoEventos.Repositories.Implementations
 {
-    public class RoleRepository : IRoleRepository
+    public class UserRepository: IUserRepository
     {
         private readonly EvoeventosContext _context;
-        public RoleRepository(EvoeventosContext context)
+        public UserRepository(EvoeventosContext context)
         {
             _context = context;
         }
-        public async Task<Role> GetRole(Guid id)
+        public async Task<User> GetUserById(Guid Id)
         {
-            return await _context.Roles.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Users.FirstOrDefaultAsync(x => x.Id == Id);
         }
-        public async Task<List<Role>> GetRoles()
+        public async Task<List<User>> GetAllUsers()
         {
-            return await _context.Roles.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
-        public async Task<bool> CreateRole(Role role)
+        public async Task<bool> CreateUser(User User)
         {
             try
             {
-                _context.Roles.Add(role);
+                _context.Users.Add(User);
                 await _context.SaveChangesAsync();
                 return true;
 
@@ -35,16 +35,16 @@ namespace BackEvoEventos.Repositories.Implementations
                 throw new Exception(ex.Message.ToString());
             }
         }
-        public async Task<bool> DeleteRole(Guid id)
+        public async Task<bool> DeleteUser(Guid Id)
         {
             try
             {
-                var role = await _context.Roles.FindAsync(id);
-                if (role == null)
+                var User = await _context.Users.FindAsync(Id);
+                if (User == null)
                 {
                     return false;
                 }
-                _context.Roles.Remove(role);
+                _context.Users.Remove(User);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -55,20 +55,20 @@ namespace BackEvoEventos.Repositories.Implementations
             }
 
         }
-        public async Task<bool> UpdateRole(Guid id, Role updatedRole)
+        public async Task<bool> UpdateUser(Guid Id, User UpdateUser)
         {
             try
             {
-                var existingRole = await _context.Roles.FindAsync(id);
-                if (existingRole == null)
+                var ExistingUser = await _context.Users.FindAsync(Id);
+                if (ExistingUser == null)
                 {
                     return false;
                 }
 
-                existingRole.Name = updatedRole.Name;
-                existingRole.UpdateAt = DateTime.UtcNow;
+                ExistingUser.Names = ExistingUser.Names;
+                ExistingUser.UpdateAt = DateTime.UtcNow;
 
-                _context.Roles.Update(existingRole);
+                _context.Users.Update(ExistingUser);
                 await _context.SaveChangesAsync();
                 return true;
             }

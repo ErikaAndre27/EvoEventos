@@ -1,30 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
-using BackEvoEventos.Context;
+﻿using BackEvoEventos.Context;
 using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEvoEventos.Repositories.Implementations
 {
-    public class RoleRepository : IRoleRepository
+    public class DocumentTypeRepository: IDocumentType
     {
         private readonly EvoeventosContext _context;
-        public RoleRepository(EvoeventosContext context)
+        public DocumentTypeRepository(EvoeventosContext context)
         {
             _context = context;
         }
-        public async Task<Role> GetRole(Guid id)
+        public async Task<DocumentType> GetDocumentTypeById(Guid Id)
         {
-            return await _context.Roles.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.DocumentTypes.FirstOrDefaultAsync(x => x.Id == Id);
         }
-        public async Task<List<Role>> GetRoles()
+        public async Task<List<DocumentType>> GetAllDocumenTypes()
         {
-            return await _context.Roles.ToListAsync();
+            return await _context.DocumentTypes.ToListAsync();
         }
-        public async Task<bool> CreateRole(Role role)
+        public async Task<bool> CreateDocumentType(DocumentType DocumentType)
         {
             try
             {
-                _context.Roles.Add(role);
+                _context.DocumentTypes.Add(DocumentType);
                 await _context.SaveChangesAsync();
                 return true;
 
@@ -35,16 +35,16 @@ namespace BackEvoEventos.Repositories.Implementations
                 throw new Exception(ex.Message.ToString());
             }
         }
-        public async Task<bool> DeleteRole(Guid id)
+        public async Task<bool> DeleteDocumentType(Guid Id)
         {
             try
             {
-                var role = await _context.Roles.FindAsync(id);
-                if (role == null)
+                var DocumentType = await _context.DocumentTypes.FindAsync(Id);
+                if (DocumentType == null)
                 {
                     return false;
                 }
-                _context.Roles.Remove(role);
+                _context.DocumentTypes.Remove(DocumentType);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -55,20 +55,20 @@ namespace BackEvoEventos.Repositories.Implementations
             }
 
         }
-        public async Task<bool> UpdateRole(Guid id, Role updatedRole)
+        public async Task<bool> UpdateDocumenType(Guid Id, DocumentType UpdateDocumentType)
         {
             try
             {
-                var existingRole = await _context.Roles.FindAsync(id);
-                if (existingRole == null)
+                var ExistingDocumentType = await _context.DocumentTypes.FindAsync(Id);
+                if (ExistingDocumentType == null)
                 {
                     return false;
                 }
 
-                existingRole.Name = updatedRole.Name;
-                existingRole.UpdateAt = DateTime.UtcNow;
+                ExistingDocumentType.Name = ExistingDocumentType.Name;
+                ExistingDocumentType.UpdateAt = DateTime.UtcNow;
 
-                _context.Roles.Update(existingRole);
+                _context.DocumentTypes.Update(ExistingDocumentType);
                 await _context.SaveChangesAsync();
                 return true;
             }
