@@ -16,7 +16,7 @@ namespace BackEvoEventos.Repositories.Implementations
         {
             return await _context.DocumentTypes.FirstOrDefaultAsync(x => x.Id == Id);
         }
-        public async Task<List<DocumentType>> GetAllDocumenTypes()
+        public async Task<List<DocumentType>> GetAllDocumentTypes()
         {
             return await _context.DocumentTypes.ToListAsync();
         }
@@ -55,7 +55,7 @@ namespace BackEvoEventos.Repositories.Implementations
             }
 
         }
-        public async Task<bool> UpdateDocumenType(Guid Id, DocumentType UpdateDocumentType)
+        public async Task<bool> UpdateDocumentType(Guid Id, DocumentType UpdateDocumentType)
         {
             try
             {

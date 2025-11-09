@@ -10,7 +10,7 @@ namespace BackEvoEventos.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _UserRepository
+        private readonly IUserRepository _UserRepository;
 
         public UserController(IUserRepository UserRepository)
         {

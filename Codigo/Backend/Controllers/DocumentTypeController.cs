@@ -10,7 +10,7 @@ namespace BackEvoEventos.Controllers
     [ApiController]
     public class DocumentTypeController : ControllerBase
     {
-        private readonly IDocumentType _DocumentTypeRepository
+        private readonly IDocumentType _DocumentTypeRepository;
 
         public DocumentTypeController(IDocumentType DocumentTypeRepository)
         {
@@ -25,7 +25,7 @@ namespace BackEvoEventos.Controllers
         {
             try
             {
-                var DocumentTypes = await _DocumentTypeRepository.GetAllDocumentType();
+                var DocumentTypes = await _DocumentTypeRepository.GetAllDocumentTypes();
                 if (DocumentTypes == null || !DocumentTypes.Any())
                 {
                     return NotFound("No se encontraron tipos de documentos.");
