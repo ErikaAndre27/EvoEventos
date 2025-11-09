@@ -10,9 +10,9 @@ namespace BackEvoEventos.Controllers
     [ApiController]
     public class DocumentTypeController : ControllerBase
     {
-        private readonly IDocumentType _DocumentTypeRepository;
+        private readonly IDocumentTypeRepository _DocumentTypeRepository;
 
-        public DocumentTypeController(IDocumentType DocumentTypeRepository)
+        public DocumentTypeController(IDocumentTypeRepository DocumentTypeRepository)
         {
             _DocumentTypeRepository = DocumentTypeRepository;
         }

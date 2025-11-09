@@ -80,7 +80,7 @@ namespace BackEvoEventos.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al obtener los Roles: " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al obtener los roles: " + ex.Message);
             }
         }
 
@@ -96,13 +96,13 @@ namespace BackEvoEventos.Controllers
                 var Result = await _roleRepository.UpdateRole(Id, UpdatedRole);
                 if (!Result)
                 {
-                    return NotFound("No se pudo actualizar el Rol.");
+                    return NotFound("No se pudo actualizar el rol.");
                 }
                 return Ok("Rol actualizado correctamemnte");
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al obtener los Roles: " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al obtener los roles: " + ex.Message);
             }
         }
 
@@ -116,13 +116,12 @@ namespace BackEvoEventos.Controllers
             try
             {
                 var Result = await _roleRepository.DeleteRole(Id);
-                var Role = await _roleRepository.DeleteRole(Id);
                 if (!Result) // Verifica si la lista de roles está vacía o es nula
                 {
-                    return BadRequest("No se pudo Eliminar el Rol.");  //BadRequest hace referencia a un estado 400
+                    return BadRequest("No se pudo eliminar el rol.");  //BadRequest hace referencia a un estado 400
                 }
 
-                return Ok("Rol Eliminado Correctamente");
+                return Ok("Rol eliminado Correctamente");
             }
             catch (Exception ex)
             {

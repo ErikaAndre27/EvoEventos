@@ -1,7 +1,5 @@
 ﻿using BackEvoEventos.Models;
-using BackEvoEventos.Repositories.Implementations;
 using BackEvoEventos.Repositories.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEvoEventos.Controllers

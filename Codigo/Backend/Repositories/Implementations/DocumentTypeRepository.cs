@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BackEvoEventos.Repositories.Implementations
 {
-    public class DocumentTypeRepository: IDocumentType
+    public class DocumentTypeRepository: IDocumentTypeRepository
     {
         private readonly EvoeventosContext _context;
         public DocumentTypeRepository(EvoeventosContext context)
@@ -66,7 +66,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
 
                 ExistingDocumentType.Name = ExistingDocumentType.Name;
-                ExistingDocumentType.UpdateAt = DateTime.UtcNow;
+                ExistingDocumentType.UpdateAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
 
                 _context.DocumentTypes.Update(ExistingDocumentType);
                 await _context.SaveChangesAsync();

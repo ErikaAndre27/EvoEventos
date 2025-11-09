@@ -69,7 +69,7 @@ namespace BackEvoEventos.Repositories.Implementations
                     return false;
                 }
                 existingCustomerType.Name = updatedCustomerType.Name;
-                existingCustomerType.UpdateAt = DateTime.UtcNow;
+                existingCustomerType.UpdateAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
 
                 _context.CustomerTypes.Update(existingCustomerType);
                 await _context.SaveChangesAsync();
