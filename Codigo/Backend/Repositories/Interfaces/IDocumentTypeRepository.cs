@@ -2,7 +2,7 @@
 
 namespace BackEvoEventos.Repositories.Interfaces
 {
-    public interface IDocumentType
+    public interface IDocumentTypeRepository
     {
         Task<List<DocumentType>> GetAllDocumentTypes();
         Task<DocumentType> GetDocumentTypeById(Guid Id);

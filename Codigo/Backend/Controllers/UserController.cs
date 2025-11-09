@@ -1,7 +1,5 @@
 ﻿using BackEvoEventos.Models;
-using BackEvoEventos.Repositories.Implementations;
 using BackEvoEventos.Repositories.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEvoEventos.Controllers
@@ -10,7 +8,7 @@ namespace BackEvoEventos.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _UserRepository
+        private readonly IUserRepository _UserRepository;
 
         public UserController(IUserRepository UserRepository)
         {

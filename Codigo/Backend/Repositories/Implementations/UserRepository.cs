@@ -66,7 +66,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
 
                 ExistingUser.Names = ExistingUser.Names;
-                ExistingUser.UpdateAt = DateTime.UtcNow;
+                ExistingUser.UpdateAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
 
                 _context.Users.Update(ExistingUser);
                 await _context.SaveChangesAsync();
