@@ -16,6 +16,16 @@ namespace BackEvoEventos.Repositories.Implementations
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Id == Id);
         }
+
+        public async Task<User> GetUserByEmail(string Email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.Email == Email);
+        }
+
+        public async Task<User> GetUserByDocumentNumber(string DocumentNumber)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.DocumentNumber == DocumentNumber);
+        }
         public async Task<List<User>> GetAllUsers()
         {
             return await _context.Users.ToListAsync();
@@ -66,7 +76,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
 
                 ExistingUser.Names = ExistingUser.Names;
-                ExistingUser.UpdateAt = DateTime.UtcNow;
+                ExistingUser.UpdatedAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
 
                 _context.Users.Update(ExistingUser);
                 await _context.SaveChangesAsync();

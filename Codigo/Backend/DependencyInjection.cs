@@ -20,6 +20,8 @@ namespace BackEvoEventos
             services.AddScoped<ILoggingTypeRepository, LoggingTypeRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICredentialRepository, CredentialRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
 
             return services;
         }

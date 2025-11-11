@@ -69,7 +69,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
 
                 existingLoggingType.Name = updatedLoggingType.Name;
-                existingLoggingType.UpdateAt = DateTime.UtcNow;
+                existingLoggingType.UpdatedAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
 
                 _context.LoggingTypes.Update(existingLoggingType);
                 await _context.SaveChangesAsync();

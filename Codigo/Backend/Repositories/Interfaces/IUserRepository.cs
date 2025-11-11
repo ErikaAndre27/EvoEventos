@@ -6,6 +6,8 @@ namespace BackEvoEventos.Repositories.Interfaces
     {
         Task<List<User>> GetAllUsers();
         Task<User> GetUserById(Guid Id);
+        Task<User> GetUserByEmail(string Email);
+        Task<User> GetUserByDocumentNumber(string DocumentNumber);
         Task<bool> CreateUser(User User);
         Task<bool> UpdateUser(Guid Id, User UpdateUser);
         Task<bool> DeleteUser(Guid Id);
