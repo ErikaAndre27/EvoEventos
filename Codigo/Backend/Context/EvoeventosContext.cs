@@ -108,7 +108,7 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
                 entity.Property(e => e.IdLoggingType).IsRequired().HasColumnName("IdLoggingType");
-                entity.Property(e => e.identifier).IsRequired().HasMaxLength(50).HasColumnName("Identifier");
+                entity.Property(e => e.Identifier).IsRequired().HasMaxLength(50).HasColumnName("Identifier");
                 entity.Property(e => e.Password).IsRequired().HasColumnName("Password");
                 entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
