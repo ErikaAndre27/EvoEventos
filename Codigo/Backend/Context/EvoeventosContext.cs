@@ -26,7 +26,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.Abbreviation).IsRequired().HasMaxLength(5).HasColumnName("Abbreviation");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("DocumentType");
             });
 
@@ -42,7 +42,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Address).HasMaxLength(100).HasColumnName("Address");
                 entity.Property(e => e.IdRole).IsRequired().HasColumnName("IdRole");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.DocumentType)
                       .WithMany(t => t.Users)
                       .HasForeignKey(e => e.IdDocumentType);
@@ -58,7 +58,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.Abbreviation).IsRequired().HasMaxLength(5).HasColumnName("Abbreviation");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("CustomerType");
             });
 
@@ -67,7 +67,7 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("LoggingType");
             });
 
@@ -76,7 +76,7 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("Role");
             });
 
@@ -93,7 +93,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
                 entity.Property(e => e.Notes).HasMaxLength(100).HasColumnName("Notes");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
-                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.DocumentType)
                       .WithMany(t => t.Customers)
                       .HasForeignKey(e => e.IdDocumentType);
@@ -112,7 +112,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Password).IsRequired().HasColumnName("Password");
                 entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
-                entity.Property(e => e.UpdateAt).HasColumnName("UpdateAT");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.User)
                 .WithMany(t => t.Credential)
                 .HasForeignKey(e => e.IdUser);

@@ -68,13 +68,27 @@ namespace BackEvoEventos.Controllers
         {
             try
             {
-                var Result = await _UserRepository.CreateUser(User);
-                if (!Result)
+                var UserEmailExisting = await _UserRepository.GetUserByEmail(User.Email);
+                var UserDocumentExisting = await _UserRepository.GetUserByDocumentNumber(User.DocumentNumber);
+                if (UserEmailExisting == null && UserDocumentExisting == null)
                 {
-                    return BadRequest("No se pudo crear el usuario.");
-                }
+                    var Result = await _UserRepository.CreateUser(User);
+                    if (!Result)
+                    {
+                        return BadRequest("No se pudo crear el usuario.");
+                    }
 
-                return Ok("Usuario creado correctamemnte");
+                    return Ok("Usuario creado correctamemnte");
+                }
+                else if (UserDocumentExisting != null)
+                {
+                    return BadRequest("El número de documento ya se encuentra registrado");
+                }
+                else if (UserEmailExisting != null)
+                {
+                    return BadRequest("El correo ya se encuentra registrado");
+                }
+                return BadRequest("No se pudo procesar la solicitud.");
             }
             catch (Exception ex)
             {

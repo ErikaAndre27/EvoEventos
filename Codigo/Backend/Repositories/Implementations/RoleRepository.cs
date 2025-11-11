@@ -66,7 +66,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
 
                 existingRole.Name = updatedRole.Name;
-                existingRole.UpdateAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
+                existingRole.UpdatedAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
 
                 _context.Roles.Update(existingRole);
                 await _context.SaveChangesAsync();

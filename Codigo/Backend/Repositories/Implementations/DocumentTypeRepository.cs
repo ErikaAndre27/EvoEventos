@@ -66,7 +66,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
 
                 ExistingDocumentType.Name = ExistingDocumentType.Name;
-                ExistingDocumentType.UpdateAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
+                ExistingDocumentType.UpdatedAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
 
                 _context.DocumentTypes.Update(ExistingDocumentType);
                 await _context.SaveChangesAsync();
