@@ -5,6 +5,7 @@ namespace BackEvoEventos.Repositories.Interfaces
     public interface ICredentialRepository
     {
         Task<Credential> CreateCredential(Credential Credential);
+        Task<Credential> GetCredentialByIdentifier(string Identifier);
         Task<Credential> GetCredentialByIdentifierAndType(string Identifier,Guid IdLoggingType); 
         Task<Credential> GetCredentialByUserId(Guid IdUser);
         Task<bool> UpdateLastLogin(Guid CredentialId);

@@ -14,6 +14,11 @@ namespace BackEvoEventos.Repositories.Implementations
         {
             _context = context;
         }
+        
+        public async Task<Credential> GetCredentialByIdentifier(string Identifier) 
+        {
+            return await _context.Credentials.FirstOrDefaultAsync(x => x.Identifier == Identifier);
+        }
 
         public async Task<Credential> CreateCredential(Credential Credential)
         {
