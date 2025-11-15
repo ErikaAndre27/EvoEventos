@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection.Metadata;
-namespace BackEvoEventos.Models
+﻿    using Microsoft.AspNetCore.Identity;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Reflection.Metadata;
+
+    namespace BackEvoEventos.Models
 {
-    public class User: Auditory
+    public class User : Auditory
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -15,10 +16,16 @@ namespace BackEvoEventos.Models
         public string DocumentNumber { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public Guid IdRole { get; set; }    
+        public Guid IdRole { get; set; }
 
         public DocumentType DocumentType { get; set; }
-        public Role Role {  get; set; }
+        public Role Role { get; set; }
         public ICollection<Credential> Credential { get; set; }
+
+        // Navegación inversa: logs realizados por el usuario
+        public ICollection<Log>? Logs { get; set; } = new List<Log>();
+
+        // Navegación inversa: Requests realizados por el usuario
+        public ICollection<Request>? Requests { get; set; } = new List<Request>();
     }
 }

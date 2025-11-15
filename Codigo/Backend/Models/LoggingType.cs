@@ -6,7 +6,7 @@ namespace BackEvoEventos.Models
     public class LoggingType: Auditory
     {
         [Key]
-        [Column("IdLogginType")] // Se hace para que el Programa busque el nombre de la tabla y auq epor Id, no encuentra
+        [Column] 
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public ICollection<Credential>? Credentials { get; set; } = new List<Credential>();
