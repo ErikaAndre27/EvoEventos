@@ -27,6 +27,11 @@ namespace BackEvoEventos.Repositories.Implementations
             return Credential;
         }
 
+        public async Task<Credential> GetCredentialByIdentifier(string Identifier)
+        {
+            return await _context.Credentials.FirstOrDefaultAsync(x => x.Identifier == Identifier);
+        }
+
         public async Task<Credential> GetCredentialByIdentifierAndType(string Identifier, Guid IdLogginType)
         {
            var Credential = await _context.Credentials
