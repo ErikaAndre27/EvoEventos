@@ -9,10 +9,10 @@ namespace BackEvoEventos.Models
         public Guid IdReservation { get; set; }
         public Guid IdService { get; set; }
         public int Quantity { get; set; }
-        public decimal UnitPrice { get; set; }
-        public decimal Total { get; set; }
+        public decimal TotalPrice { get; set; }
+        public string Notes { get; set; } = string.Empty;
 
-        public Reservation Reservation { get; set; }
-        public Service Service { get; set; }
+        public Reservation? Reservation { get; set; }
+        public Service? Service { get; set; }
     }
 }

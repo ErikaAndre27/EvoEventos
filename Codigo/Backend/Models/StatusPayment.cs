@@ -9,6 +9,6 @@ namespace BackEvoEventos.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public ICollection<Payment>? Payments { get; set; } = new List<Payment>();
+        public ICollection<Reservation>? Reservations { get; set; } = new List<Reservation>();
     }
 }

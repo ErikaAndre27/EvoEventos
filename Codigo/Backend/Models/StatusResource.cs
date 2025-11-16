@@ -9,7 +9,6 @@ namespace BackEvoEventos.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        // Colección opcional para relacionar con Resource si lo deseas posteriormente
-        public ICollection<object>? Resources { get; set; } = new List<object>();
+        public ICollection<Resource>? Resources { get; set; } = new List<Resource>();
     }
 }

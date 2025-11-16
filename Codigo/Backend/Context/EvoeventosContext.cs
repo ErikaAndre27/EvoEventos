@@ -19,7 +19,7 @@ namespace BackEvoEventos.Context
         public DbSet<LoggingType> LoggingTypes { get; set; }
         public DbSet<Role> Roles { get; set; }
 
-        // Entidades añadidas (servicios, recursos, cotizaciones, reservas, pagos, requests, reports, logs, estados, detalles...)
+        // Entidades añadidas
         public DbSet<Service> Services { get; set; }
         public DbSet<Resource> Resources { get; set; }
         public DbSet<ServiceResource> ServiceResources { get; set; }
@@ -133,7 +133,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Phone).IsRequired().HasMaxLength(14).HasColumnName("Phone");
                 entity.Property(e => e.Address).HasMaxLength(100).HasColumnName("Address");
                 entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
-                entity.Property(e => e.Notes).HasMaxLength(100).HasColumnName("Notes");
+                entity.Property(e => e.Notes).HasMaxLength(200).HasColumnName("Notes");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.DocumentType)
@@ -153,12 +153,12 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
                 entity.Property(e => e.IdLoggingType).IsRequired().HasColumnName("IdLoggingType");
                 entity.Property(e => e.Identifier).IsRequired().HasMaxLength(50).HasColumnName("Identifier");
-                entity.Property(e => e.Password).IsRequired().HasColumnName("Password");
+                entity.Property(e => e.Password).IsRequired().HasMaxLength(100).HasColumnName("Password");
                 entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
-                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.User)
-                      .WithMany(t => t.Credential)
+                      .WithMany(t => t.Credentials)
                       .HasForeignKey(e => e.IdUser)
                       .OnDelete(DeleteBehavior.Cascade);
                 entity.HasOne(e => e.LoggingType)
@@ -168,14 +168,11 @@ namespace BackEvoEventos.Context
                 entity.ToTable("Credential");
             });
 
-            // -------------------------
-            // Nuevas entidades y configuración Fluent API
-            // -------------------------
             modelBuilder.Entity<CategoryService>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(20);
+                entity.Property(e => e.Description).HasMaxLength(50);
                 entity.Property(e => e.CreatedAt).IsRequired();
                 entity.ToTable("CategoryService");
             });
@@ -184,7 +181,7 @@ namespace BackEvoEventos.Context
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Description).HasMaxLength(50);
                 entity.Property(e => e.CreatedAt).IsRequired();
                 entity.ToTable("CategoryResource");
             });
@@ -192,8 +189,8 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<PricingUnit>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(20);
+                entity.Property(e => e.Description).HasMaxLength(30);
                 entity.Property(e => e.CreatedAt).IsRequired();
                 entity.ToTable("PricingUnit");
             });
@@ -201,33 +198,43 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<Service>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Description).HasMaxLength(400);
-                entity.Property(e => e.Price).HasColumnType("decimal(18,2)");
-                entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
-                entity.Property(e => e.IdCategoryService).HasColumnName("IdCategoryService");
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(20).HasColumnName("Name");
+                entity.Property(e => e.Description).HasMaxLength(50).HasColumnName("Description");
+                entity.Property(e => e.UnitPrice).HasColumnType("decimal(10,2)").HasColumnName("UnitPrice");
+                entity.Property(e => e.Available).IsRequired().HasDefaultValue(true).HasColumnName("Available");
+                entity.Property(e => e.External).HasColumnName("External");
+                entity.Property(e => e.IdCategory).HasColumnName("IdCategory");
                 entity.Property(e => e.IdPricingUnit).HasColumnName("IdPricingUnit");
+                entity.Property(e => e.DurationHoursDefault).HasColumnName("DurationHoursDefault");
                 entity.HasOne(e => e.CategoryService)
                       .WithMany(c => c.Services)
-                      .HasForeignKey(e => e.IdCategoryService)
-                      .OnDelete(DeleteBehavior.SetNull);
+                      .HasForeignKey(e => e.IdCategory)
+                      .OnDelete(DeleteBehavior.Restrict);
                 entity.HasOne(e => e.PricingUnit)
                       .WithMany(p => p.Services)
                       .HasForeignKey(e => e.IdPricingUnit)
-                      .OnDelete(DeleteBehavior.SetNull);
+                      .OnDelete(DeleteBehavior.Restrict);
                 entity.ToTable("Service");
             });
 
             modelBuilder.Entity<Resource>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Description).HasMaxLength(400);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
+                entity.Property(e => e.Description).HasMaxLength(50).HasColumnName("Description");
+                entity.Property(e => e.SerialCode).HasMaxLength(20).HasColumnName("SerialCode");
+                entity.Property(e => e.IdStatusResource).HasColumnName("IdStatusResource");
+                entity.Property(e => e.PurchaseDate).HasColumnName("PurchaseDate");
+                entity.Property(e => e.Value).HasColumnType("decimal(18,2)").HasColumnName("Value");
+                entity.Property(e => e.LastMaintenanceDate).HasColumnName("LastMaintenanceDate");
+                entity.Property(e => e.NextMaintenanceDate).HasColumnName("NextMaintenanceDate");
+                entity.Property(e => e.ExternalProvider).HasMaxLength(20).HasColumnName("ExternalProvider");
+                entity.Property(e => e.IsExternal).HasColumnName("IsExternal");
                 entity.Property(e => e.IdCategoryResource).HasColumnName("IdCategoryResource");
                 entity.HasOne(e => e.CategoryResource)
                       .WithMany(c => c.Resources)
                       .HasForeignKey(e => e.IdCategoryResource)
-                      .OnDelete(DeleteBehavior.SetNull);
+                      .OnDelete(DeleteBehavior.Restrict);
                 entity.ToTable("Resource");
             });
 
@@ -236,7 +243,10 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.IdService).IsRequired().HasColumnName("IdService");
                 entity.Property(e => e.IdResource).IsRequired().HasColumnName("IdResource");
-                entity.Property(e => e.Quantity).IsRequired();
+                entity.Property(e => e.QuantityRequired).IsRequired().HasColumnName("QuantityRequired");
+                entity.Property(e => e.IsMandatory).HasColumnName("IsMandatory");
+                entity.Property(e => e.UsageNotes).HasMaxLength(20).HasColumnName("UsageNotes");
+                entity.Property(e => e.ExternalProvider).HasColumnName("ExternalProvider");
                 entity.HasOne(e => e.Service)
                       .WithMany(s => s.ServiceResources)
                       .HasForeignKey(e => e.IdService)
@@ -251,27 +261,29 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<StatusQuotation>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(20);
+                entity.Property(e => e.Description).HasMaxLength(50);
                 entity.ToTable("StatusQuotation");
             });
 
             modelBuilder.Entity<Quotation>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.Property(e => e.Consecutive).HasColumnName("Consecutive");
+                entity.Property(e => e.IdRequest).HasColumnName("IdRequest");
+                entity.Property(e => e.IdEventType).HasColumnName("IdEventType");
                 entity.Property(e => e.IdCustomer).IsRequired().HasColumnName("IdCustomer");
+                entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
                 entity.Property(e => e.IdStatusQuotation).HasColumnName("IdStatusQuotation");
-                entity.Property(e => e.EventDate).IsRequired();
-                entity.Property(e => e.Guests).IsRequired();
-                entity.Property(e => e.Total).HasColumnType("decimal(18,2)");
-                entity.HasOne(e => e.Customer)
-                      .WithMany()
-                      .HasForeignKey(e => e.IdCustomer)
-                      .OnDelete(DeleteBehavior.Restrict);
-                entity.HasOne(e => e.StatusQuotation)
-                      .WithMany(s => s.Quotations)
-                      .HasForeignKey(e => e.IdStatusQuotation)
-                      .OnDelete(DeleteBehavior.SetNull);
+                entity.Property(e => e.IsQuotationAccepted).HasColumnName("IsQuotationAccepted");
+                entity.Property(e => e.EventDate).IsRequired().HasColumnName("EventDate");
+                entity.Property(e => e.EventDurationHours).HasColumnType("decimal(10,2)").HasColumnName("EventDurationHours");
+                entity.Property(e => e.EventLocation).HasMaxLength(50).HasColumnName("EventLocation");
+                entity.Property(e => e.EventCity).HasMaxLength(50).HasColumnName("EventCity");
+                entity.Property(e => e.ExpirationDate).HasColumnName("ExpirationDate");
+                entity.Property(e => e.TotalAmount).HasColumnType("decimal(10,2)").HasColumnName("TotalAmount");
+                entity.Property(e => e.Discount).HasColumnType("decimal(10,2)").HasColumnName("Discount");
+                entity.Property(e => e.Notes).HasMaxLength(100).HasColumnName("Notes");
                 entity.ToTable("Quotation");
             });
 
@@ -280,9 +292,10 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.IdQuotation).IsRequired().HasColumnName("IdQuotation");
                 entity.Property(e => e.IdService).IsRequired().HasColumnName("IdService");
-                entity.Property(e => e.Quantity).IsRequired();
-                entity.Property(e => e.UnitPrice).HasColumnType("decimal(18,2)");
-                entity.Property(e => e.Total).HasColumnType("decimal(18,2)");
+                entity.Property(e => e.Quantity).IsRequired().HasColumnName("Quantity");
+                entity.Property(e => e.SubTotal).HasColumnType("decimal(10,2)").HasColumnName("SubTotal");
+                entity.Property(e => e.DurationHours).HasColumnName("DurationHours");
+                entity.Property(e => e.Notes).HasMaxLength(100).HasColumnName("Notes");
                 entity.HasOne(e => e.Quotation)
                       .WithMany(q => q.Details)
                       .HasForeignKey(e => e.IdQuotation)
@@ -298,7 +311,7 @@ namespace BackEvoEventos.Context
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Description).HasMaxLength(50);
                 entity.ToTable("StatusReservation");
             });
 
@@ -308,33 +321,29 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.IdQuotation).HasColumnName("IdQuotation");
                 entity.Property(e => e.IdCustomer).IsRequired().HasColumnName("IdCustomer");
                 entity.Property(e => e.IdStatusReservation).HasColumnName("IdStatusReservation");
-                entity.Property(e => e.ReservationCode).HasMaxLength(30);
-                entity.Property(e => e.StartDate).IsRequired();
-                entity.Property(e => e.EndDate).IsRequired();
-                entity.Property(e => e.Total).HasColumnType("decimal(18,2)");
-                entity.HasOne(e => e.Quotation)
-                      .WithMany()
-                      .HasForeignKey(e => e.IdQuotation)
-                      .OnDelete(DeleteBehavior.SetNull);
-                entity.HasOne(e => e.Customer)
-                      .WithMany()
-                      .HasForeignKey(e => e.IdCustomer)
-                      .OnDelete(DeleteBehavior.Restrict);
-                entity.HasOne(e => e.StatusReservation)
-                      .WithMany(s => s.Reservations)
-                      .HasForeignKey(e => e.IdStatusReservation)
-                      .OnDelete(DeleteBehavior.SetNull);
+                entity.Property(e => e.ReservationCode).HasColumnName("ReservationCode");
+                entity.Property(e => e.EventName).HasMaxLength(20).HasColumnName("EventName");
+                entity.Property(e => e.EventType).HasMaxLength(30).HasColumnName("EventType");
+                entity.Property(e => e.StartTime).IsRequired().HasColumnName("StartTime");
+                entity.Property(e => e.EndTime).IsRequired().HasColumnName("EndTime");
+                entity.Property(e => e.Location).HasMaxLength(30).HasColumnName("Location");
+                entity.Property(e => e.City).HasMaxLength(50).HasColumnName("City");
+                entity.Property(e => e.GuestsCount).HasColumnName("GuestsCount");
+                entity.Property(e => e.Notes).HasMaxLength(200).HasColumnName("Notes");
+                entity.Property(e => e.TotalAmount).HasColumnType("decimal(10,2)").HasColumnName("TotalAmount");
+                entity.Property(e => e.TotalPaid).HasColumnType("decimal(18,2)").HasColumnName("TotalPaid");
+                entity.Property(e => e.IdStatusPayment).HasColumnName("IdStatusPayment");
                 entity.ToTable("Reservation");
             });
 
             modelBuilder.Entity<ReservationService>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.IdReservation).IsRequired().HasColumnName("IdReservation");
                 entity.Property(e => e.IdService).IsRequired().HasColumnName("IdService");
-                entity.Property(e => e.Quantity).IsRequired();
-                entity.Property(e => e.UnitPrice).HasColumnType("decimal(18,2)");
-                entity.Property(e => e.Total).HasColumnType("decimal(18,2)");
+                entity.Property(e => e.IdReservation).IsRequired().HasColumnName("IdReservation");
+                entity.Property(e => e.Quantity).IsRequired().HasColumnName("Quantity");
+                entity.Property(e => e.TotalPrice).HasColumnType("decimal(10,2)").HasColumnName("TotalPrice");
+                entity.Property(e => e.Notes).HasMaxLength(200).HasColumnName("Notes");
                 entity.HasOne(e => e.Reservation)
                       .WithMany(r => r.ReservationServices)
                       .HasForeignKey(e => e.IdReservation)
@@ -350,7 +359,7 @@ namespace BackEvoEventos.Context
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Description).HasMaxLength(100);
                 entity.ToTable("PaymentMethod");
             });
 
@@ -358,18 +367,23 @@ namespace BackEvoEventos.Context
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Description).HasMaxLength(50);
                 entity.ToTable("StatusPayment");
             });
 
             modelBuilder.Entity<Payment>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.IdReservation).IsRequired().HasColumnName("IdReservation");
+                entity.Property(e => e.PaymentDate).IsRequired().HasColumnName("PaymentDate");
+                entity.Property(e => e.Amount).HasColumnType("decimal(18,2)").HasColumnName("Amount");
                 entity.Property(e => e.IdPaymentMethod).IsRequired().HasColumnName("IdPaymentMethod");
-                entity.Property(e => e.IdStatusPayment).HasColumnName("IdStatusPayment");
-                entity.Property(e => e.Amount).HasColumnType("decimal(18,2)");
-                entity.Property(e => e.PaymentDate).IsRequired();
+                entity.Property(e => e.PaymentReference).HasMaxLength(50).HasColumnName("PaymentReference");
+                entity.Property(e => e.IdTransactionStatus).HasColumnName("IdTransactionStatus");
+                entity.Property(e => e.RegisteredBy).HasColumnName("RegisteredBy");
+                entity.Property(e => e.IdReservation).IsRequired().HasColumnName("IdReservation");
+                entity.Property(e => e.Notes).HasMaxLength(100).HasColumnName("Notes");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.Reservation)
                       .WithMany(r => r.Payments)
                       .HasForeignKey(e => e.IdReservation)
@@ -378,9 +392,9 @@ namespace BackEvoEventos.Context
                       .WithMany(p => p.Payments)
                       .HasForeignKey(e => e.IdPaymentMethod)
                       .OnDelete(DeleteBehavior.Restrict);
-                entity.HasOne(e => e.StatusPayment)
+                entity.HasOne(e => e.StatusTransaction)
                       .WithMany(s => s.Payments)
-                      .HasForeignKey(e => e.IdStatusPayment)
+                      .HasForeignKey(e => e.IdStatusTransaction)
                       .OnDelete(DeleteBehavior.SetNull);
                 entity.ToTable("Payment");
             });
@@ -389,8 +403,9 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<StatusRequest>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(30);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("StatusRequest");
             });
 
@@ -405,24 +420,16 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<Request>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
+                entity.Property(e => e.FullName).HasMaxLength(100).HasColumnName("FullName");
+                entity.Property(e => e.Phone).HasMaxLength(14).HasColumnName("Phone");
+                entity.Property(e => e.Email).HasMaxLength(50).HasColumnName("Email");
+                entity.Property(e => e.EventDate).IsRequired().HasColumnName("EventDate");
+                entity.Property(e => e.EventAttendees).HasColumnName("EventAttendees");
+                entity.Property(e => e.EventLocation).HasMaxLength(50).HasColumnName("EventLocation");
+                entity.Property(e => e.Message).HasMaxLength(100).HasColumnName("Message");
                 entity.Property(e => e.IdStatusRequest).HasColumnName("IdStatusRequest");
+                entity.Property(e => e.HandledBy).HasColumnName("HandledBy");
                 entity.Property(e => e.IdEventType).HasColumnName("IdEventType");
-                entity.Property(e => e.Title).HasMaxLength(150);
-                entity.Property(e => e.Description).HasMaxLength(1000);
-                entity.Property(e => e.RequestedAt).IsRequired();
-                entity.HasOne(e => e.User)
-                      .WithMany(u => u.Requests) // corregido: usa la colección inversa Requests en User
-                      .HasForeignKey(e => e.IdUser)
-                      .OnDelete(DeleteBehavior.Restrict);
-                entity.HasOne(e => e.StatusRequest)
-                      .WithMany(s => s.Requests)
-                      .HasForeignKey(e => e.IdStatusRequest)
-                      .OnDelete(DeleteBehavior.SetNull);
-                entity.HasOne(e => e.EventType)
-                      .WithMany()
-                      .HasForeignKey(e => e.IdEventType)
-                      .OnDelete(DeleteBehavior.SetNull);
                 entity.ToTable("Request");
             });
 
@@ -431,24 +438,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.IdRequest).IsRequired().HasColumnName("IdRequest");
                 entity.Property(e => e.IdService).HasColumnName("IdService");
-                entity.Property(e => e.IdResource).HasColumnName("IdResource");
-                entity.Property(e => e.Quantity).IsRequired().HasDefaultValue(1);
-                entity.Property(e => e.UnitPrice).HasColumnType("decimal(18,2)");
-                entity.Property(e => e.Notes).HasMaxLength(400);
-                entity.Property(e => e.CreatedAt).IsRequired();
-                entity.Property(e => e.UpdatedAt);
-                entity.HasOne(e => e.Request)
-                      .WithMany(r => r.Details) // ahora usa la colección inversa
-                      .HasForeignKey(e => e.IdRequest)
-                      .OnDelete(DeleteBehavior.Cascade);
-                entity.HasOne(e => e.Service)
-                      .WithMany()
-                      .HasForeignKey(e => e.IdService)
-                      .OnDelete(DeleteBehavior.Restrict);
-                entity.HasOne(e => e.Resource)
-                      .WithMany()
-                      .HasForeignKey(e => e.IdResource)
-                      .OnDelete(DeleteBehavior.Restrict);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("RequestDetail");
             });
 
@@ -456,19 +447,20 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<ReportType>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Description).HasMaxLength(400);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.Description).HasMaxLength(200);
                 entity.ToTable("ReportType");
             });
 
             modelBuilder.Entity<Report>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.Property(e => e.Title).HasMaxLength(50).HasColumnName("Title"); 
+                entity.Property(e => e.Description).HasMaxLength(200).HasColumnName("Description");
                 entity.Property(e => e.IdReportType).IsRequired().HasColumnName("IdReportType");
-                entity.Property(e => e.Title).HasMaxLength(200);
-                entity.Property(e => e.Description).HasMaxLength(1000);
-                entity.Property(e => e.GeneratedAt).IsRequired();
-                entity.Property(e => e.ContentUrl).HasMaxLength(400);
+                entity.Property(e => e.IdUser).HasColumnName("IdUser");
+                entity.Property(e => e.RangeStartDate).HasColumnName("RangeStartDate");
+                entity.Property(e => e.RangeEndDate).HasColumnName("RangeEndDate");
                 entity.HasOne(e => e.ReportType)
                       .WithMany(rt => rt.Reports)
                       .HasForeignKey(e => e.IdReportType)
@@ -480,40 +472,28 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<ActionType>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(80);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
+                entity.Property(e => e.Description).HasMaxLength(200).HasColumnName("Description");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("ActionType");
             });
 
             modelBuilder.Entity<TargetObject>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.TableName).HasMaxLength(100);
+                entity.Property(e => e.TableName).IsRequired().HasMaxLength(50).HasColumnName("TableName");
+                entity.Property(e => e.Detail).HasMaxLength(200).HasColumnName("Detail");
                 entity.ToTable("TargetObject");
             });
 
             modelBuilder.Entity<Log>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.IdUser).HasColumnName("IdUser");
-                entity.Property(e => e.IdActionType).HasColumnName("IdActionType");
                 entity.Property(e => e.IdTargetObject).HasColumnName("IdTargetObject");
-                entity.Property(e => e.Description).HasMaxLength(1000);
-                entity.Property(e => e.ReferenceId).HasMaxLength(100);
-                entity.Property(e => e.CreatedAt).IsRequired();
-                entity.HasOne(e => e.User)
-                      .WithMany(u => u.Logs) // ahora usa la colección inversa en User
-                      .HasForeignKey(e => e.IdUser)
-                      .OnDelete(DeleteBehavior.SetNull);
-                entity.HasOne(e => e.ActionType)
-                      .WithMany(a => a.Logs)
-                      .HasForeignKey(e => e.IdActionType)
-                      .OnDelete(DeleteBehavior.SetNull);
-                entity.HasOne(e => e.TargetObject)
-                      .WithMany(t => t.Logs)
-                      .HasForeignKey(e => e.IdTargetObject)
-                      .OnDelete(DeleteBehavior.SetNull);
+                entity.Property(e => e.IdActionType).HasColumnName("IdActionType");
+                entity.Property(e => e.IdUser).HasColumnName("IdUser");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.ToTable("Log");
             });
 
@@ -521,14 +501,10 @@ namespace BackEvoEventos.Context
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.IdLog).IsRequired().HasColumnName("IdLog");
-                entity.Property(e => e.PropertyName).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.OldValue).HasMaxLength(400);
-                entity.Property(e => e.NewValue).HasMaxLength(400);
-                entity.Property(e => e.CreatedAt).IsRequired();
-                entity.HasOne(e => e.Log)
-                      .WithMany(l => l.LogDetails) // ahora usa la colección inversa
-                      .HasForeignKey(e => e.IdLog)
-                      .OnDelete(DeleteBehavior.Cascade);
+                entity.Property(e => e.AffectedField).IsRequired().HasMaxLength(50).HasColumnName("AffectedField");
+                entity.Property(e => e.PreviousValue).HasMaxLength(100).HasColumnName("PreviousValue");
+                entity.Property(e => e.NewValue).HasMaxLength(100).HasColumnName("NewValue");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.ToTable("LogDetail");
             });
 
@@ -537,15 +513,15 @@ namespace BackEvoEventos.Context
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Description).HasMaxLength(50);
                 entity.ToTable("StatusTransaction");
             });
 
             modelBuilder.Entity<StatusResource>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(30);
+                entity.Property(e => e.Description).HasMaxLength(50);
                 entity.ToTable("StatusResource");
             });
         }

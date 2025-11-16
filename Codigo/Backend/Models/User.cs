@@ -20,12 +20,11 @@
 
         public DocumentType DocumentType { get; set; }
         public Role Role { get; set; }
-        public ICollection<Credential> Credential { get; set; }
-
-        // Navegación inversa: logs realizados por el usuario
+        public ICollection<Credential> Credentials { get; set; }
+        public ICollection<Report>? Reports { get; set; } = new List<Report>();
+        public ICollection<Payment>? Payments { get; set; } = new List<Payment>();
+        public ICollection<Quotation>? Quotations { get; set; } = new List<Quotation>();
         public ICollection<Log>? Logs { get; set; } = new List<Log>();
-
-        // Navegación inversa: Requests realizados por el usuario
         public ICollection<Request>? Requests { get; set; } = new List<Request>();
     }
 }

@@ -6,14 +6,19 @@ namespace BackEvoEventos.Models
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
-        public Guid IdReservation { get; set; }
-        public Guid IdPaymentMethod { get; set; }
-        public Guid? IdStatusPayment { get; set; }
-        public decimal Amount { get; set; }
         public DateTime PaymentDate { get; set; }
+        public decimal Amount { get; set; }
+        public Guid IdPaymentMethod { get; set; }
+        public string? PaymentReference { get; set; }
+        public Guid IdTransactionStatus { get; set; }
+        public Guid RegisteredBy { get; set; }
+        public Guid IdReservation { get; set; }
+        public string? Notes { get; set; }
+
 
         public Reservation Reservation { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
-        public StatusPayment StatusPayment { get; set; }
+        public StatusTransaction StatusTransaction { get; set; }
+        public User User { get; set; }
     }
 }

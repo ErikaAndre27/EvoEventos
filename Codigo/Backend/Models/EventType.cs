@@ -10,5 +10,6 @@ namespace BackEvoEventos.Models
         public string Abbreviation { get; set; }
 
         public ICollection<Request>? Requests { get; set; } = new List<Request>();
+        public ICollection<Quotation>? Quotation { get; set; } = new List<Quotation>();
     }
 }

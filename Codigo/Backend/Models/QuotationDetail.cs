@@ -9,8 +9,9 @@ namespace BackEvoEventos.Models
         public Guid IdQuotation { get; set; }
         public Guid IdService { get; set; }
         public int Quantity { get; set; }
-        public decimal UnitPrice { get; set; }
-        public decimal Total { get; set; }
+        public int DurationHours { get; set; }
+        public decimal SubTotal { get; set; }
+        public string Notes { get; set; }
 
         public Quotation Quotation { get; set; }
         public Service Service { get; set; }
