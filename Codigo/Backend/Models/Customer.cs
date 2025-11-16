@@ -17,5 +17,9 @@ namespace BackEvoEventos.Models
         public string Notes { get; set; }
         public DocumentType DocumentType { get; set; }
         public CustomerType CustomerType { get; set; }
+        public ICollection<Quotation>? Quotations { get; set; } = new List<Quotation>();
+        public ICollection<Reservation>? Reservations { get; set; } = new List<Reservation>();
+
+
     }
 }
