@@ -394,7 +394,7 @@ namespace BackEvoEventos.Context
                       .OnDelete(DeleteBehavior.Restrict);
                 entity.HasOne(e => e.StatusTransaction)
                       .WithMany(s => s.Payments)
-                      .HasForeignKey(e => e.IdStatusTransaction)
+                      .HasForeignKey(e => e.IdTransactionStatus)
                       .OnDelete(DeleteBehavior.SetNull);
                 entity.ToTable("Payment");
             });
