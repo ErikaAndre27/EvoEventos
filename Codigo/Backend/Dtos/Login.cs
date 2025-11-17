@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BackEvoEventos.Models
+namespace BackEvoEventos.Dtos
 {
     public class Login
     {

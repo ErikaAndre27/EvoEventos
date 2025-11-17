@@ -1,6 +1,7 @@
 ﻿using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Implementations;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace BackEvoEventos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _customerRepository; //variable de solo lectura para el repositorio de Customers de tipo global(se accede desde cualquier método del código)
@@ -15,6 +17,8 @@ namespace BackEvoEventos.Controllers
         {
             _customerRepository = customerRepository;
         }
+
+        [Authorize(Policy = "RequireAdmin")]
         [HttpGet("GetAllCustomers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -37,6 +41,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+
         [HttpGet("GetCustomerById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -57,6 +62,7 @@ namespace BackEvoEventos.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al obtener el Id del Cliente: " + ex.Message);
             }
         }
+
 
         [HttpGet("GetCustomerByName")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -1,6 +1,7 @@
 ﻿using BackEvoEventos.Context;
 using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -15,9 +16,15 @@ namespace BackEvoEventos.Repositories.Implementations
             _context = context;
         }
         
-        public async Task<Credential> GetCredentialByIdentifier(string Identifier) 
+        public async Task<Credential?> GetCredentialByIdentifier(string Identifier) 
         {
-            return await _context.Credentials.FirstOrDefaultAsync(x => x.Identifier == Identifier);
+            
+            if (Identifier == null) {
+                return null;
+            }
+
+            return await _context.Credentials.FirstOrDefaultAsync(x => x.EmailIdentifier == Identifier || x.DocumentIdentifier == Identifier);
+            
         }
 
         public async Task<Credential> CreateCredential(Credential Credential)
@@ -27,25 +34,10 @@ namespace BackEvoEventos.Repositories.Implementations
             return Credential;
         }
 
-        public async Task<Credential> GetCredentialByIdentifier(string Identifier)
-        {
-            return await _context.Credentials.FirstOrDefaultAsync(x => x.Identifier == Identifier);
-        }
-
-        public async Task<Credential> GetCredentialByIdentifierAndType(string Identifier, Guid IdLogginType)
-        {
-           var Credential = await _context.Credentials
-                .Include(c => c.User)
-                .Include(c => c.LoggingType)
-                .FirstOrDefaultAsync(c => c.Identifier == Identifier && c.IdLoggingType == IdLogginType);
-                 return Credential?? throw new Exception($"Credential not found for identifier {Identifier} and type {IdLogginType}");
-        }
-
         public async Task<Credential> GetCredentialByUserId(Guid idUser)
         {
             var Credential = await _context.Credentials
                 .Include(c => c.User)
-                .Include(c => c.LoggingType)
                 .FirstOrDefaultAsync(c => c.IdUser == idUser);
                 return Credential?? throw new Exception($"Credential not found for user {idUser}"); //si la varibale es Nula se va a ejecutar El Exeption.
         }
@@ -74,9 +66,6 @@ namespace BackEvoEventos.Repositories.Implementations
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> IdentifierExists(string Identifier, Guid IdLoggingType)
-        {
-            return await _context.Credentials.AnyAsync(c => c.Identifier == Identifier && c.IdLoggingType == IdLoggingType);
-        }
+        
     }
 }
