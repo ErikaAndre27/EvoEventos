@@ -1,4 +1,5 @@
-﻿using BackEvoEventos.Models;
+﻿using BackEvoEventos.Dtos;
+using BackEvoEventos.Models;
 
 namespace BackEvoEventos.Repositories.Interfaces
 {
@@ -8,7 +9,7 @@ namespace BackEvoEventos.Repositories.Interfaces
         Task<User> GetUserById(Guid Id);
         Task<User> GetUserByEmail(string Email);
         Task<User> GetUserByDocumentNumber(string DocumentNumber);
-        Task<bool> CreateUser(User User);
+        Task<bool> CreateUser(CreateUserDto UserDto);
         Task<bool> UpdateUser(Guid Id, User UpdateUser);
         Task<bool> DeleteUser(Guid Id);
     }

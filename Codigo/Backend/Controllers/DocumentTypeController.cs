@@ -1,6 +1,7 @@
 ﻿using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Implementations;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace BackEvoEventos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DocumentTypeController : ControllerBase
     {
         private readonly IDocumentTypeRepository _DocumentTypeRepository;
@@ -61,6 +63,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPost("CreateDocumentType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -84,6 +87,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPut("UpdateDocumentType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -106,6 +110,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpDelete("DeleteDocumentType")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

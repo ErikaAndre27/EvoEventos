@@ -1,5 +1,7 @@
 ﻿using BackEvoEventos.Context;
+using BackEvoEventos.Dtos;
 using BackEvoEventos.Models;
+using BackEvoEventos.Repositories.Implementations;
 using BackEvoEventos.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +19,21 @@ namespace BackEvoEventos.Controllers
     {
         private readonly ICredentialRepository _CredentialRepository;
         private readonly IConfiguration _Configuration;
+        private readonly IUserRepository _UserRepository;
+        private readonly IRoleRepository _RolRepository;
 
-        public AuthController(ICredentialRepository CredentialRepository, IConfiguration Configuration)
+
+
+        public AuthController(
+            ICredentialRepository CredentialRepository,
+            IConfiguration Configuration,
+            IUserRepository UserRepository,
+            IRoleRepository RolRepository)
         {
             _CredentialRepository = CredentialRepository;
             _Configuration = Configuration;
+            _UserRepository = UserRepository;
+            _RolRepository = RolRepository;
         }
 
         [HttpPost("Login")]
@@ -31,8 +43,9 @@ namespace BackEvoEventos.Controllers
             {
                 return BadRequest("Requerimiento inválido");
             }
-
+            
             var Credential = await _CredentialRepository.GetCredentialByIdentifier(Login.Identifier);
+
             if (Credential == null)
             {
                 return Unauthorized();
@@ -40,7 +53,14 @@ namespace BackEvoEventos.Controllers
 
             if (Login.Password == Credential.Password)
             {
+                Console.WriteLine("LLEGAAAAA UWU");
+                var User = await _UserRepository.GetUserById(Credential.IdUser);
+                var Rol = await _RolRepository.GetRole(User.IdRole);
+                Console.WriteLine("LLEGAAAAA 2");
+
                 var SecretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration["Jwt:Key"]));
+                Console.WriteLine("LLEGAAAAA 3");
+
                 var SigningCredentials = new SigningCredentials(SecretKey, SecurityAlgorithms.HmacSha256);
 
                 var TokenOptions = new JwtSecurityToken(
@@ -49,7 +69,7 @@ namespace BackEvoEventos.Controllers
                     claims: new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, Login.Identifier),
-                        new Claim(ClaimTypes.Role, "Admin")
+                        new Claim(ClaimTypes.Role, Rol.Name)
                     },
                     expires: DateTime.UtcNow.AddDays(1),
                     signingCredentials: SigningCredentials

@@ -1,4 +1,5 @@
 ﻿using BackEvoEventos.Context;
+using BackEvoEventos.Dtos;
 using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -30,12 +31,40 @@ namespace BackEvoEventos.Repositories.Implementations
         {
             return await _context.Users.ToListAsync();
         }
-        public async Task<bool> CreateUser(User User)
+
+
+
+        public async Task<bool> CreateUser(CreateUserDto UserDto)
         {
             try
             {
-                _context.Users.Add(User);
+
+                var User = new User
+                {
+                    Names = UserDto.Names,
+                    Surnames = UserDto.Surnames,
+                    Email = UserDto.Email,
+                    Phone = UserDto.Phone,
+                    IdDocumentType = UserDto.IdDocumentType,
+                    DocumentNumber = UserDto.DocumentNumber,
+                    IdRole = UserDto.IdRole,
+                    Address = UserDto.Address,
+                };
+                              
+
+                await _context.Users.AddAsync(User);
+
+                var Credential = new Credential
+                {
+                    IdUser = User.Id,
+                    EmailIdentifier = UserDto.Email,
+                    DocumentIdentifier = UserDto.DocumentNumber,
+                    Password = UserDto.Password,
+
+                };
+                await _context.Credentials.AddAsync(Credential);
                 await _context.SaveChangesAsync();
+
                 return true;
 
             }

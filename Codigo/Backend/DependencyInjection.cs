@@ -17,7 +17,6 @@ namespace BackEvoEventos
                 options.UseSqlServer(connectionString)); // Usar UseSqlServer para SQL Server
             services.AddScoped<IRoleRepository, RoleRepository>(); // Inyección de dependencia para RoleRepository
             services.AddScoped<ICustomerTypeRepository,CustomerTypeRepository>();
-            services.AddScoped<ILoggingTypeRepository, LoggingTypeRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICredentialRepository, CredentialRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

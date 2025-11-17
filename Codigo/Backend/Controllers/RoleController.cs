@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BackEvoEventos.Models;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace BackEvoEventos.Controllers
 {
     [Route("api/[controller]")] //http://localhost:5000/api/Role
     [ApiController] //
+    [Authorize]
     public class RoleController : ControllerBase
     {
         private readonly IRoleRepository _roleRepository; //Inyección de dependencia
@@ -61,6 +63,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPost("InsertRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -84,11 +87,14 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPut("UpdateRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
+
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> UpdateRole(Guid Id, [FromBody] Role UpdatedRole)
         {
             try
@@ -106,6 +112,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpDelete("DeleteRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

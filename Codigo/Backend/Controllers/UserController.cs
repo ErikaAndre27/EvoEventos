@@ -1,11 +1,14 @@
-﻿using BackEvoEventos.Models;
+﻿using BackEvoEventos.Dtos;
+using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEvoEventos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _UserRepository;
@@ -15,6 +18,7 @@ namespace BackEvoEventos.Controllers
             _UserRepository = UserRepository;
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpGet("GetUsers")] 
         [ProducesResponseType(StatusCodes.Status200OK)] 
         [ProducesResponseType(StatusCodes.Status404NotFound)] 
@@ -37,6 +41,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpGet("GetUserById")] 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -59,22 +64,24 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPost("CreateUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> CreateUser([FromBody] User User) 
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserDto UserDto) 
         {
             try
             {
-                var UserEmailExisting = await _UserRepository.GetUserByEmail(User.Email);
-                var UserDocumentExisting = await _UserRepository.GetUserByDocumentNumber(User.DocumentNumber);
+                var UserEmailExisting = await _UserRepository.GetUserByEmail(UserDto.Email);
+                var UserDocumentExisting = await _UserRepository.GetUserByDocumentNumber(UserDto.DocumentNumber);
                 if (UserEmailExisting == null && UserDocumentExisting == null)
                 {
-                    var Result = await _UserRepository.CreateUser(User);
+                    var Result = await _UserRepository.CreateUser(UserDto);
                     if (!Result)
                     {
+                        Console.WriteLine(Result);
                         return BadRequest("No se pudo crear el usuario.");
                     }
 
@@ -96,6 +103,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPut("UpdateUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -118,6 +126,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpDelete("DeleteUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
