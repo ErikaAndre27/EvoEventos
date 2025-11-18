@@ -20,5 +20,6 @@ namespace BackEvoEventos.Models
         public PaymentMethod PaymentMethod { get; set; }
         public StatusTransaction StatusTransaction { get; set; }
         public User User { get; set; }
+        public Guid ReservationId { get; internal set; }
     }
 }
