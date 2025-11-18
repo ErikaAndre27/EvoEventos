@@ -10,7 +10,7 @@ namespace BackEvoEventos.Repositories.Interfaces
         Task<User> GetUserByEmail(string Email);
         Task<User> GetUserByDocumentNumber(string DocumentNumber);
         Task<bool> CreateUser(CreateUserDto UserDto);
-        Task<bool> UpdateUser(Guid Id, User UpdateUser);
+        Task<bool> UpdateUser(Guid Id, UpdateUserDto UpdateUser);
         Task<bool> DeleteUser(Guid Id);
     }
 }
