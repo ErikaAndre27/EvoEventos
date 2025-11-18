@@ -81,7 +81,6 @@ namespace BackEvoEventos.Controllers
                     var Result = await _UserRepository.CreateUser(UserDto);
                     if (!Result)
                     {
-                        Console.WriteLine(Result);
                         return BadRequest("No se pudo crear el usuario.");
                     }
 
@@ -109,7 +108,7 @@ namespace BackEvoEventos.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> UpdateUser(Guid Id, [FromBody] User UpdateUser)
+        public async Task<IActionResult> UpdateUser(Guid Id, [FromBody] UpdateUserDto UpdateUser)
         {
             try
             {

@@ -76,7 +76,7 @@ namespace BackEvoEventos.Controllers
                     return BadRequest("No se pudo eliminar la credencial.");
                 }
 
-                return Ok("Tipo de documento eliminado correctamente");
+                return Ok("Credencial eliminada correctamente");
             }
             catch (Exception ex)
             {

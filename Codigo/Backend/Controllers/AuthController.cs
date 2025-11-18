@@ -50,16 +50,13 @@ namespace BackEvoEventos.Controllers
             {
                 return Unauthorized();
             }
-
-            if (Login.Password == Credential.Password)
+            bool IsValid = BCrypt.Net.BCrypt.Verify(Login.Password, Credential.Password);
+            if (IsValid)
             {
-                Console.WriteLine("LLEGAAAAA UWU");
                 var User = await _UserRepository.GetUserById(Credential.IdUser);
                 var Rol = await _RolRepository.GetRole(User.IdRole);
-                Console.WriteLine("LLEGAAAAA 2");
 
                 var SecretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration["Jwt:Key"]));
-                Console.WriteLine("LLEGAAAAA 3");
 
                 var SigningCredentials = new SigningCredentials(SecretKey, SecurityAlgorithms.HmacSha256);
 
