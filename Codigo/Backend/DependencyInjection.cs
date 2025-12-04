@@ -21,6 +21,12 @@ namespace BackEvoEventos
             services.AddScoped<ICredentialRepository, CredentialRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
+            services.AddScoped<IRequestRepository, RequestRepository>();
+            services.AddScoped<IRequestDetailRepository, RequestDetailRespository>();
+            services.AddScoped<IQuotationDetailRepository, QuotationDetailRepository>();
+            services.AddScoped<IEventTypeRepository, EventTypeRepository>();
+            services.AddScoped<IStatusQuotationRepository, StatusQuotationRepository>();
+            services.AddScoped<IStatusRequestRepository, StatusRequestRepository>();
 
             return services;
         }
