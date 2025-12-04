@@ -139,7 +139,6 @@ namespace BackEvoEventos.Context
 
             modelBuilder.Entity<Credential>(entity =>
             {
-<<<<<<< Updated upstream
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
                 entity.Property(e => e.EmailIdentifier).IsRequired().HasMaxLength(50).HasColumnName("EmailIdentifier");
@@ -148,7 +147,6 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.LastLogin).HasColumnName("LastLogin");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
-=======
                 entity.HasKey(e => e.Id); 
                 entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
                 entity.Property(e => e.IdLoggingType).IsRequired().HasColumnName("IdLoggingType");
@@ -157,7 +155,6 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
                 entity.Property(e => e.UpdateAt).HasColumnName("UpdateAT");
->>>>>>> Stashed changes
                 entity.HasOne(e => e.User)
                       .WithMany(t => t.Credentials)
                       .HasForeignKey(e => e.IdUser)
