@@ -11,7 +11,7 @@ namespace BackEvoEventos.Repositories.Implementations
     public class StatusRequestRepository : IStatusRequestRepository
     {
         private readonly EvoeventosContext _context;
-        public StatusRequestRepository(EvoeventosContext context) 
+        public StatusRequestRepository(EvoeventosContext context)
         {
             _context = context;
         }
@@ -33,13 +33,13 @@ namespace BackEvoEventos.Repositories.Implementations
             return statusRequest;
         }
 
-        
-        public async Task<StatusRequest?> GetStatusRequestById(int id)
+
+        public async Task<StatusRequest?> GetStatusRequestById(Guid id)
         {
             return await _context.StatusRequests.FindAsync(id);
         }
 
-        
+
         public async Task<StatusRequest?> GetStatusRequestByName(string name)
         {
             return await _context.StatusRequests
@@ -60,7 +60,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 throw new KeyNotFoundException($"No se encontró el StatusRequest con ID {statusRequest.Id}");
             }
 
-            
+
             if (existingStatus.Name != statusRequest.Name)
             {
                 bool nameExists = await _context.StatusRequests
@@ -73,7 +73,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
             }
 
-           
+
             existingStatus.Name = statusRequest.Name;
             existingStatus.UpdatedAt = DateTime.UtcNow;
 
@@ -84,17 +84,17 @@ namespace BackEvoEventos.Repositories.Implementations
 
         public async Task<bool> DeleteStatusRequest(Guid id)
         {
-            
+
             var statusRequest = await _context.StatusRequests.FindAsync(id);
             if (statusRequest == null)
             {
-                return false; 
+                return false;
             }
 
-            
+
             Guid statusRequestGuid = statusRequest.Id; //  la propiedad GUID que tenga
 
-                                                        
+
             bool isBeingUsed = await _context.Requests // Verificar si algún Request está usando ESTE GUID
                 .AnyAsync(r => r.IdStatusRequest == statusRequestGuid);
 
@@ -103,11 +103,11 @@ namespace BackEvoEventos.Repositories.Implementations
                 return false; // No se puede eliminar porque está en uso
             }
 
-            
+
             statusRequest.UpdatedAt = DateTime.UtcNow; // Soft delete no elimina de la bd solo lo oculta ñro (marcar UpdatedAt)
             await _context.SaveChangesAsync();
 
             return true;
         }
     }
-    }
+}
