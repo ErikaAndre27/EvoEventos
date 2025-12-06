@@ -27,6 +27,7 @@ namespace BackEvoEventos
             services.AddScoped<IEventTypeRepository, EventTypeRepository>();
             services.AddScoped<IStatusQuotationRepository, StatusQuotationRepository>();
             services.AddScoped<IStatusRequestRepository, StatusRequestRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
 
             return services;
         }
