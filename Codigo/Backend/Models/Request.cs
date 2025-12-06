@@ -12,7 +12,7 @@ namespace BackEvoEventos.Models
         public DateOnly EventDate { get; set; }
         public int EventAttendees { get; set; }
         public string EventLocation { get; set; }
-        public Guid HandledBy { get; set; }           // quien solicita
+        public Guid HandledBy { get; set; }          
         public Guid? IdStatusRequest { get; set; }
         public Guid? IdEventType { get; set; }
         public string Message { get; set; }
