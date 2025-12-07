@@ -1,10 +1,13 @@
 ﻿using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace BackEvoEventos.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StatusReservationController : ControllerBase
@@ -60,6 +63,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPost("InsertStatusReservation")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,6 +87,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPut("UpdateStatusReservation")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -105,6 +110,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpDelete("DeleteStatusReservation")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -1,10 +1,12 @@
 ﻿using BackEvoEventos.Models;
 using BackEvoEventos.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEvoEventos.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StatusTransactionController : ControllerBase
@@ -60,6 +62,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPost("InsertStatusTransaction")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,6 +86,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpPut("UpdateStatusTransaction")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -105,6 +109,7 @@ namespace BackEvoEventos.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         [HttpDelete("DeleteStatusTransaction")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
