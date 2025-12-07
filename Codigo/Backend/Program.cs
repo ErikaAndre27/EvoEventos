@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using BackEvoEventos.Repositories;
+using BackEvoEventos.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

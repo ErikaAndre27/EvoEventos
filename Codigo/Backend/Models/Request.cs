@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEvoEventos.Models
 {
@@ -23,6 +24,6 @@ namespace BackEvoEventos.Models
         public EventType EventType { get; set; }
 
         public ICollection<RequestDetail>? Details { get; set; } = new List<RequestDetail>();
-        public object RequestDetail { get; internal set; }
+
     }
 }
