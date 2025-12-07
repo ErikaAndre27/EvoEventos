@@ -147,6 +147,11 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.LastLogin).HasColumnName("LastLogin");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
+                entity.HasKey(e => e.Id); 
+                entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
+                entity.Property(e =>e.Password).IsRequired().HasColumnName("Password"); 
+                entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
                 entity.HasOne(e => e.User)
                       .WithMany(t => t.Credentials)
                       .HasForeignKey(e => e.IdUser)
