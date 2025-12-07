@@ -11,3 +11,4 @@ namespace BackEvoEventos.Repositories.Interfaces
         Task<bool> DeletePaymentMethod(Guid Id);
     }
 }
+
