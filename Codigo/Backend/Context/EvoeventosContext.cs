@@ -103,7 +103,7 @@ namespace BackEvoEventos.Context
                 entity.ToTable("CustomerType");
             });
 
-                        modelBuilder.Entity<Role>(entity =>
+            modelBuilder.Entity<Role>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("Name");
@@ -147,11 +147,6 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.LastLogin).HasColumnName("LastLogin");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
                 entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
-                entity.HasKey(e => e.Id); 
-                entity.Property(e => e.IdUser).IsRequired().HasColumnName("IdUser");
-                entity.Property(e =>e.Password).IsRequired().HasColumnName("Password"); 
-                entity.Property(e => e.LastLogin).IsRequired().HasColumnName("LastLogin");
-                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAT");
                 entity.HasOne(e => e.User)
                       .WithMany(t => t.Credentials)
                       .HasForeignKey(e => e.IdUser)
@@ -439,6 +434,10 @@ namespace BackEvoEventos.Context
                       .WithOne(s => s.RequestDetail)
                       .HasForeignKey<RequestDetail>(e => e.IdService)
                       .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Request)
+                      .WithMany(s => s.RequestDetails)
+                      .HasForeignKey(e => e.IdRequest)
+                      .OnDelete(DeleteBehavior.Restrict);
                 entity.ToTable("RequestDetail");
             });
 
@@ -454,7 +453,7 @@ namespace BackEvoEventos.Context
             modelBuilder.Entity<Report>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Title).HasMaxLength(50).HasColumnName("Title"); 
+                entity.Property(e => e.Title).HasMaxLength(50).HasColumnName("Title");
                 entity.Property(e => e.Description).HasMaxLength(200).HasColumnName("Description");
                 entity.Property(e => e.IdReportType).IsRequired().HasColumnName("IdReportType");
                 entity.Property(e => e.IdUser).HasColumnName("IdUser");
