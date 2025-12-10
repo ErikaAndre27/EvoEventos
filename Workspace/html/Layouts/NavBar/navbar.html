@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../Layouts/NavBar/navbar.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 6l16 0" />
+            <path d="M4 12l16 0" />
+            <path d="M4 18l16 0" />
+        </svg>
+    </button>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoEventos - Panel de Administración</title>
+    <link rel="stylesheet" href="../../Layouts/TopBar/Topbar.css">
+</head>
+<button class="menu-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <!-- NAVEGACIÓN - TODOS LOS LINKS EN UNA LÍNEA -->
+  <nav>
+    <button class="close-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" />
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+
+    <section class="nav-links">
+        <a href="PanelAdministrador.html">Dashboard</a>
+        <a href="PanelAdmin_SolicitudesCotización.html">Solicitudes</a>
+        <a href="#">Cotizaciones</a>
+        <a href="#">Servicios</a>
+        <a href="#">Usuarios</a>
+        <a href="#">Clientes</a>
+        <a href="#">Eventos</a>
+        <a href="#">Recursos</a>
+        <a href="#">Reportes</a>
+    </section>
+  </nav>
+
+    </nav>
+    <script>
+        const indicator = document.querySelector('.indicator');
+        const links = document.querySelectorAll('nav a');
+
+        links.forEach(link => {
+
+            link.addEventListener('click', () => {
+                document.querySelector('.active').classList.remove('active');
+                link.classList.add('active')
+                document.querySelector('nav').classList.remove('menu-open');
+            })
+        });
+
+        closeMenuButton = document.querySelector('.close-menu');
+        menuToggleButton = document.querySelector('.menu-toggle');
+
+        menuToggleButton.addEventListener('click', () => {
+            document.querySelector('nav').classList.add('menu-open');
+        });
+        closeMenuButton.addEventListener('click', () => {
+            document.querySelector('nav').classList.remove('menu-open');
+        });
+    </script>
+</body>
+
+</html>

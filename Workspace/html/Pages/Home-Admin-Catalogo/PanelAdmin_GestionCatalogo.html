@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvoEventos - Gestión de Catálogo</title>
+
+  <link rel="stylesheet" href="../../modals/ModalButtonNew/ModalButtonNew.css">
+  <link rel="stylesheet" href="../../Layouts/TopBar/Topbar.css">
+  <link rel="stylesheet" href="../../Layouts/NavBar/navbar.css">
+  <link rel="stylesheet" href="../Home-Admin-Catalogo/PanelAdmin_GestionCatalogo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="header-left">
+      <div class="logo">
+        <img src="../../Src/Assets/Images/Logo.svg" alt="EvoEventos">
+      </div>
+      <div class="subtitle">Panel de Administración</div>
+    </div>
+
+    <button class="exit-btn">
+      <span class="icon"><img src="../../Src/Assets/Icons/exit.svg" alt="Mensajes"></span> Salir
+    </button>
+  </header>
+
+
+  <button class="menu-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <nav>
+    <button class="close-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+        <path stroke="none" d="M0 0h24v24H0z" />
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+
+    <section class="nav-links">
+      <a href="../../Pages/Home-admin-Dashboard/PanelAdministrador.html">Dashboard</a>
+            <a href="../../Pages/Home-Admin-Solicitudes/PanelAdmin_SolicitudesCotizacion.html">Solicitudes</a>
+            <a href="../../Pages/Home-Admin-Cotizaciones/PanelAdmin_GestionCotizacion.html">Cotizaciones</a>
+            <a href="../../Pages/Home-Admin-Catalogo/PanelAdmin_GestionCatalogo.html">Catálogo</a>
+            <a href="../../Pages/Home-Admin-Asesores/PanelAdmin_GestionAsesores.html">Asesores</a>
+            <a href="../../Pages/Home-Admin-Clientes/PanelAdmin_GestionClientes.html">Clientes</a>
+            <a href="../../Pages/Home-Admin-Eventos/PanelAdmin_GestionEventos.html">Eventos</a>
+      <a href="#">Recursos</a>
+      <a href="#">Reportes</a>
+    </section>
+  </nav>
+  <main class="dashboard">
+    <div class="page-header">
+      <div class="title-section">
+        <h1>Gestión de Catálogo</h1>
+        <p class="subtitle">Administra productos y servicios disponibles</p>
+      </div>
+      <button class="btn-nueva-cotizacion" data-modal-target="modal-cotizacion">
+        <span>+</span> Agregar Servicio
+      </button>
+    </div>
+
+    <!-- Tarjetas -->
+    <section class="cards">
+      <div class="card">
+        <p class="card-title">Total Servicios</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>5</h2>
+            <span class="indicator">+1 este mes</span>
+          </div>
+          <div class="icon-container" style="background-color: #FAF5FF;">
+            <img src="../../Src/Assets/Icons/box.svg" alt="Mensajes" class="svg-iconmessage">
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="card">
+        <p class="card-title">Activos</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>1</h2>
+            <span class="indicator">+8 vs mes anterior</span>
+          </div>
+          <div class="icon-container" style="background-color: rgba(166, 170, 164, 0.38);">
+            <img src="../../Src/Assets/Icons/rocket.svg" alt="Mensajes" class="svg-iconmessage">
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div class="card">
+        <p class="card-title">Sin Stock</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>3</h2>
+            <span class="indicator">12 en mantenimiento</span>
+          </div>
+          <div class="icon-container" style="background-color: rgba(72, 96, 232, 0.38);">
+            <img src="../../Src/Assets/Icons/notsymbol.svg" alt="Mensajes" class="svg-iconmessage">
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div class="card">
+        <p class="card-title">Valor Total</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>1</h2>
+            <span class="indicator">+22% vs mes anterior</span>
+          </div>
+          <div class="icon-container" style="background-color: rgba(165, 228, 164, 0.35)">
+            <img src="../../Src/Assets/Icons/money.svg" alt="Mensajes" class="svg-iconmessage">
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!--BARRA DE BÚSQUEDA Y FILTROS-->
+    <div class="search-filter-bar">
+
+      <!-- Input de búsqueda -->
+      <div class="search-wrapper">
+        <div class="search-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <input type="text" class="search-input" placeholder="Buscar por cliente, número de cotización o email...">
+      </div>
+
+      <!-- Dropdown de estados -->
+      <div class="dropdown-container">
+        <button class="dropdown-button" onclick="toggleDropdown('estadosDropdown')">
+          <span>Todos los estados</span>
+          <span class="dropdown-icon"><img src="../../Src/Assets/Icons/arrow_drop_down.svg"></span>
+        </button>
+
+        <div class="dropdown-menu" id="estadosDropdown">
+          <div class="dropdown-item selected" onclick="selectOption('estadosDropdown', this, 'Todos los estados')">
+            <span class="status-indicator todos"></span>
+            Todos los estados
+          </div>
+          <div class="dropdown-item" onclick="selectOption('estadosDropdown', this, 'Pendientes')">
+            <span class="status-indicator pendientes"></span>
+            Pendientes
+          </div>
+          <div class="dropdown-item" onclick="selectOption('estadosDropdown', this, 'En Proceso')">
+            <span class="status-indicator proceso"></span>
+            En Proceso
+          </div>
+          <div class="dropdown-item" onclick="selectOption('estadosDropdown', this, 'Cotizadas')">
+            <span class="status-indicator cotizadas"></span>
+            Cotizadas
+          </div>
+          <div class="dropdown-item" onclick="selectOption('estadosDropdown', this, 'Rechazadas')">
+            <span class="status-indicator rechazadas"></span>
+            Rechazadas
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tabla de solicitudes -->
+    <div class="requests-container">
+      <h3 class="requests-title">Solicitudes Recibidas</h3>
+      <table class="requests-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Cliente</th>
+            <th>Categoría</th>
+            <th>Precios</th>
+            <th>Stock</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Fila 1 -->
+          <tr>
+            <td>
+              <span class="status-badge status-pending"><img src="../../Src/Assets/Icons/castle.svg"></span>
+            </td>
+            <td>
+              <div class="product-name">Castillo Inflabe Grande</div>
+              <div class="product-description">Castillo inflable de 5x5 metros, ideal para niños</div>
+            </td>
+            <td>
+              <div class="product-type">Juegos Inflables</div>
+            </td>
+            <td>
+              <div class="price-cell">$180.000</div>
+              <div class="base-price-cell">Base: $150.000</div>
+            </td>
+            <td>
+              <span class="stock-cell">2/8</span>
+              <span class="stock-aviable">Disponible</span>
+            </td>
+            <td>
+              <span class="product-is-active">Activo</span>
+
+            </td>
+            <td class="actions-cell">
+              <button class="action-btn"><img src="../../Src/Assets/Icons/docs.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/edit.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/delete.svg"></button>
+            </td>
+          </tr>
+          <!-- Fila 2 -->
+          <tr>
+            <td>
+              <span class="status-badge status-pending"><img src="../../Src/Assets/Icons/icecream.svg"></span>
+            </td>
+            <td>
+              <div class="product-name">Máquina de Algodón de Azúcar</div>
+              <div class="product-description">Máquina profesional de algodón de azúcar</div>
+            </td>
+            <td>
+              <div class="event-cell">Máquinas</div>
+            <td>
+              <div class="total-cell">$180.000</div>
+              <div class="total-cell">Base: $150.000</div>
+            </td>
+            <td>
+              <span class="stock-cell">2/8</span>
+              <span class="stock-aviable">Disponible</span>
+            </td>
+            <td>
+              <span class="deadline-is-active">Activo</span>
+            </td>
+            <td class="actions-cell">
+              <button class="action-btn"><img src="../../Src/Assets/Icons/docs.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/edit.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/delete.svg"></button>
+            </td>
+          </tr>
+          <!-- Fila 3 -->
+          <tr>
+            <td>
+              <span class="status-badge status-pending"><img src="../../Src/Assets/Icons/forkspoon.svg"></span>
+            </td>
+            <td>
+              <div class="product-name">Servicio de Catering Básico</div>
+              <div class="product-description">Servicio de Catering</div>
+            </td>
+            <td>
+              <div class="event-cell">Catering</div>
+            </td>
+            <td>
+              <div class="total-cell">$180.000</div>
+              <div class="total-cell">Base: $150.000</div>
+            </td>
+            <td>
+              <span class="stock-cell">8/10</span>
+              <span class="stock-aviable">Disponible</span>
+            </td>
+            <td>
+              <span class="deadline-is-active">Activo</span>
+
+            </td>
+            <td class="actions-cell">
+              <button class="action-btn"><img src="../../Src/Assets/Icons/docs.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/edit.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/delete.svg"></button>
+            </td>
+          </tr>
+          <!-- Fila 4 -->
+          <tr>
+            <td>
+              <span class="status-badge status-pending"><img src="../../Src/Assets/Icons/swim.svg"></span>
+            </td>
+            <td>
+              <div class="product-name">Tobogán Acuático</div>
+              <div class="product-description">Tobogán inflable con sistema de agua</div>
+            </td>
+            <td>
+              <div class="product-type">Juegos Inflables</div>
+            </td>
+            <td>
+              <div class="total-cell">$180.000</div>
+              <div class="total-cell">Base: $150.000</div>
+            </td>
+            <td>
+              <span class="stock-cell">2/8</span>
+              <span class="stock-aviable">Disponible</span>
+            </td>
+            <td>
+              <span class="deadline-is-active">Activo</span>
+
+            </td>
+            <td class="actions-cell">
+              <button class="action-btn"><img src="../../Src/Assets/Icons/docs.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/edit.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/delete.svg"></button>
+            </td>
+          </tr>
+          <!-- Fila 5 -->
+          <tr>
+            <td>
+              <span class="status-badge status-pending"><img src="../../Src/Assets/Icons/microwave.svg"></span>
+            </td>
+            <td>
+              <div class="product-name">Máquina de Crispetas</div>
+              <div class="product-description">Máquina Profesional de Crispetas</div>
+            </td>
+            <td>
+              <div class="event-cell">Máquinas</div>
+            </td>
+            <td>
+              <div class="total-cell">$180.000</div>
+              <div class="total-cell">Base: $150.000</div>
+            </td>
+            <td>
+              <span class="stock-cell">4/5</span>
+              <span class="stock-aviable">Disponible</span>
+            </td>
+            <td>
+              <span class="deadline-is-active">Inactivo</span>
+
+            </td>
+            <td class="actions-cell">
+              <button class="action-btn"><img src="../../Src/Assets/Icons/docs.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/edit.svg"></button>
+              <button class="action-btn"><img src="../../Src/Assets/Icons/delete.svg"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </main>
+  <script src="../../Scripts/script.js"></script>
+  <script src="../../Scripts/navbar-active.js"></script>
+</body>
+
+</html>

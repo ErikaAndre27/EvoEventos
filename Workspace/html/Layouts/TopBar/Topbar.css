@@ -1,0 +1,151 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+    
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f0f0f5;
+    color: #333;
+}
+
+/* ============================================
+   HEADER - BARRA SUPERIOR
+   ============================================ */
+
+header.main-header {
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Contenedor interno con ancho máximo */
+header.main-header > * {
+    max-width: 1440px;
+    width: 100%;
+}
+
+/* Layout interno: logo izquierda, botón derecha */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Aseguramos que header tenga el padding correcto */
+header.main-header {
+    padding: 15px 96px;
+}
+
+/* Reorganizamos el flex para que funcione correctamente */
+header.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 15px 96px;
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo img {
+  width: 202px;
+  height: auto;
+  display: block;
+
+}
+
+/* Subtítulo del header */
+.header-left .subtitle {
+    color: #888;
+    font-size: 15px;
+    margin: 0;
+}
+
+header.main-header .exit-btn {
+    width: 97px;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    transition: background 0.2s ease;
+}
+
+.exit-btn:hover {
+    background: #fafafa;
+}
+
+header.main-header .exit-btn {
+    width: 97px;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    background: white;
+    border: 1px solid #D1D5DB; /* Color de borde más suave */
+    border-radius: 8px; /* Bordes ligeramente más redondeados */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500; /* Texto un poco más grueso */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra mejor el contenido */
+    gap: 8px;
+    color: #6B7280; /* Color de texto gris más moderno */
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; /* Asegura misma fuente */
+}
+
+.exit-btn:hover {
+    background: #F9FAFB; /* Fondo más claro al hover */
+    border-color: #9CA3AF; /* Borde un poco más oscuro al hover */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada al hover */
+}
+
+.exit-btn:active {
+    background: #F3F4F6; /* Fondo cuando se presiona */
+    transform: translateY(0.5px); /* Efecto de presión */
+}
+
+.exit-btn .icon {
+    font-size: 0px;
+    font-weight: 500;
+    margin-top: -1px; /* Ajuste fino para alinear la flecha */
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    header.main-header {
+        padding: 15px 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    header.main-header {
+        padding: 15px 24px;
+    }
+    
+    .logo {
+        font-size: 22px;
+    }
+    
+    .header-left .subtitle {
+        display: none;
+    }
+}
