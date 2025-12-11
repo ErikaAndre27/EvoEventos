@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<link rel="stylesheet" href="ModalButtonNew.css">
+
+<div class="page-header">
+  <div class="title-section">
+    <h1>Nombre de la Ventana</h1>
+    <p class="subtitle">Descripción de la ventana</p>
+  </div>
+  <button class="btn-nueva-cotizacion" data-modal-target="modal-cotizacion">
+    <span>+</span> Nueva Cotización
+  </button>
+</div>
+<script>
+// Función para mostrar el modal
+function showEmptyStateModal() {
+    const modal = document.getElementById('emptyStateModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Bloquear scroll
+    }
+}
+
+// Función para cerrar el modal
+function closeEmptyStateModal() {
+    const modal = document.getElementById('emptyStateModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Restaurar scroll
+    }
+}
+
+// Cerrar al hacer clic fuera del modal
+function closeModalOnOutsideClick(event) {
+    if (event.target.classList.contains('modal-overlay')) {
+        closeEmptyStateModal();
+    }
+}
+
+// Mostrar automáticamente al cargar (para prueba)
+document.addEventListener('DOMContentLoaded', function() {
+});
+</script>

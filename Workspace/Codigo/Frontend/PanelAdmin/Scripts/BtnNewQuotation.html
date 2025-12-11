@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componente: Botón Nueva Cotización</title>
+    <link rel="stylesheet" href="boton-nueva-cotizacion.css">
+    <style>
+        /* Estilos solo para la vista previa del componente */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .demo-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .demo-title {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4B60E8;
+        }
+        
+        .demo-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">Componente: Botón Nueva Cotización</h1>
+        
+        <p>Este es un componente independiente y reutilizable. Copia los archivos y úsalos en cualquier ventana.</p>
+        
+        <!-- DEMOSTRACIÓN DEL COMPONENTE -->
+        <div class="demo-section">
+            <h3>1. Botón Básico:</h3>
+            <!-- AQUÍ ESTÁ EL COMPONENTE -->
+            <div id="contenedor-boton-basico"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>2. Botón como Enlace:</h3>
+            <div id="contenedor-boton-enlace"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>3. Diferentes Tamaños:</h3>
+            <div id="contenedor-botones-tamanos"></div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>4. Instrucciones de Uso:</h3>
+            <pre><code>
+// Para usar en cualquier ventana:
+// 1. Incluye el CSS en el head
+&lt;link rel="stylesheet" href="componentes/boton-nueva-cotizacion/boton-nueva-cotizacion.css"&gt;
+
+// 2. Incluye el JS antes de cerrar &lt;/body&gt;
+&lt;script src="componentes/boton-nueva-cotizacion/boton-nueva-cotizacion.js"&gt;&lt;/script&gt;
+
+// 3. Agrega un contenedor donde quieras el botón
+&lt;div id="mi-boton-cotizacion"&gt;&lt;/div&gt;
+
+// 4. Inicializa el botón
+&lt;script&gt;
+    crearBotonNuevaCotizacion({
+        contenedor: '#mi-boton-cotizacion',
+        texto: 'Nueva Cotización',
+        onClick: function() {
+            // Tu lógica aquí
+            console.log('Creando nueva cotización...');
+        }
+    });
+&lt;/script&gt;
+            </code></pre>
+        </div>
+    </div>
+
+    <script src="boton-nueva-cotizacion.js"></script>
+    
+
+    <script>
+ 
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Botón básico
+            crearBotonNuevaCotizacion({
+                contenedor: '#contenedor-boton-basico',
+                texto: 'Nueva Cotización',
+                tamaño: 'normal',
+                onClick: function() {
+                    alert('Botón básico clickeado - Aquí va la lógica para nueva cotización');
+                }
+            });
+            
+            // 2. Botón como enlace
+            crearBotonNuevaCotizacion({
+                contenedor: '#contenedor-boton-enlace',
+                tipo: 'link',
+                texto: 'Nueva Cotización (Enlace)',
+                href: '/cotizaciones/nueva',
+                tamaño: 'normal',
+                onClick: function(e) {
+                    e.preventDefault();
+                    alert('Redirigiendo a formulario de nueva cotización');
+                  
+                }
+            });
+            
+            // 3. Diferentes tamaños
+            const tamanos = ['sm', 'normal', 'lg'];
+            const contenedorTamanos = document.querySelector('#contenedor-botones-tamanos');
+            
+            tamanos.forEach(tamano => {
+                crearBotonNuevaCotizacion({
+                    contenedor: contenedorTamanos,
+                    texto: `Tamaño ${tamano}`,
+                    tamaño: tamano,
+                    onClick: function() {
+                        console.log(`Botón ${tamano} clickeado`);
+                    }
+                });
+                
+                // Agregar espacio entre botones
+                contenedorTamanos.innerHTML += ' ';
+            });
+        });
+    </script>
+</body>
+</html>
