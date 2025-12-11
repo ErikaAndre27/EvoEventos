@@ -37,6 +37,10 @@ namespace BackEvoEventos
             services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<IPricingUnitRepository, PricingUnitRepository>();
+            services.AddScoped<ICategoryServiceRepository, CategoryServiceRepository>();
+            services.AddScoped<IStatusTransactionRepository, StatusTransactionRepository>();
+            services.AddScoped<IStatusResourceRepository, StatusResourceRepository>();
+            services.AddScoped<IStatusReservationRepository, StatusReservationRepository>();
 
 
             return services;
