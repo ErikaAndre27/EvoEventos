@@ -298,6 +298,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.Description).HasMaxLength(50);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("StatusReservation");
             });
 
@@ -319,6 +321,8 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.TotalAmount).HasColumnType("decimal(10,2)").HasColumnName("TotalAmount");
                 entity.Property(e => e.TotalPaid).HasColumnType("decimal(18,2)").HasColumnName("TotalPaid");
                 entity.Property(e => e.IdStatusPayment).HasColumnName("IdStatusPayment");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.Quotation)
                       .WithOne(s => s.Reservation)
                       .HasForeignKey<Reservation>(e => e.IdQuotation)
@@ -334,6 +338,8 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.Quantity).IsRequired().HasColumnName("Quantity");
                 entity.Property(e => e.TotalPrice).HasColumnType("decimal(10,2)").HasColumnName("TotalPrice");
                 entity.Property(e => e.Notes).HasMaxLength(200).HasColumnName("Notes");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.Reservation)
                       .WithMany(r => r.ReservationServices)
                       .HasForeignKey(e => e.IdReservation)
@@ -350,6 +356,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.Description).HasMaxLength(100);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("PaymentMethod");
             });
 
@@ -358,6 +366,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.Description).HasMaxLength(50);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("StatusPayment");
             });
 
@@ -386,6 +396,10 @@ namespace BackEvoEventos.Context
                       .WithMany(s => s.Payments)
                       .HasForeignKey(e => e.IdTransactionStatus)
                       .OnDelete(DeleteBehavior.SetNull);
+                entity.HasOne(u => u.User)
+                      .WithMany(p => p.Payments)
+                      .HasForeignKey(e => e.RegisteredBy)
+                      .OnDelete(DeleteBehavior.Restrict);
                 entity.ToTable("Payment");
             });
 
@@ -404,6 +418,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.Abbreviation).HasMaxLength(10);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("EventType");
             });
 
@@ -420,7 +436,20 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.IdStatusRequest).HasColumnName("IdStatusRequest");
                 entity.Property(e => e.HandledBy).HasColumnName("HandledBy");
                 entity.Property(e => e.IdEventType).HasColumnName("IdEventType");
+                entity.HasOne(r => r.User)
+                      .WithMany(u => u.Requests)
+                      .HasForeignKey(r => r.HandledBy)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(r => r.StatusRequest)
+                      .WithMany(s => s.Requests)
+                      .HasForeignKey(r => r.IdStatusRequest)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(r => r.EventType)
+                      .WithMany(e => e.Requests)
+                      .HasForeignKey(r => r.IdEventType)
+                      .OnDelete(DeleteBehavior.Restrict);
                 entity.ToTable("Request");
+
             });
 
             modelBuilder.Entity<RequestDetail>(entity =>
@@ -447,6 +476,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.Description).HasMaxLength(200);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("ReportType");
             });
 
@@ -459,9 +490,15 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.IdUser).HasColumnName("IdUser");
                 entity.Property(e => e.RangeStartDate).HasColumnName("RangeStartDate");
                 entity.Property(e => e.RangeEndDate).HasColumnName("RangeEndDate");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.HasOne(e => e.ReportType)
                       .WithMany(rt => rt.Reports)
                       .HasForeignKey(e => e.IdReportType)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.User)
+                      .WithMany(u => u.Reports)
+                      .HasForeignKey(e => e.IdUser)
                       .OnDelete(DeleteBehavior.Restrict);
                 entity.ToTable("Report");
             });
@@ -482,6 +519,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.TableName).IsRequired().HasMaxLength(50).HasColumnName("TableName");
                 entity.Property(e => e.Detail).HasMaxLength(200).HasColumnName("Detail");
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("TargetObject");
             });
 
@@ -490,8 +529,9 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.IdTargetObject).HasColumnName("IdTargetObject");
                 entity.Property(e => e.IdActionType).HasColumnName("IdActionType");
-                entity.Property(e => e.IdUser).HasColumnName("IdUser");
+                entity.Property(e => e.IdUser).HasColumnName("IdUser"); 
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("Log");
             });
 
@@ -503,6 +543,7 @@ namespace BackEvoEventos.Context
                 entity.Property(e => e.PreviousValue).HasMaxLength(100).HasColumnName("PreviousValue");
                 entity.Property(e => e.NewValue).HasMaxLength(100).HasColumnName("NewValue");
                 entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("LogDetail");
             });
 
@@ -520,6 +561,8 @@ namespace BackEvoEventos.Context
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(30);
                 entity.Property(e => e.Description).HasMaxLength(50);
+                entity.Property(e => e.CreatedAt).IsRequired().HasColumnName("CreatedAt");
+                entity.Property(e => e.UpdatedAt).HasColumnName("UpdatedAt");
                 entity.ToTable("StatusResource");
             });
         }

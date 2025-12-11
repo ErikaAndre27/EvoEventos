@@ -139,8 +139,12 @@ namespace BackEvoEventos.Repositories.Implementations
                         return false;
 
                     ExistingUser.Email = updateDto.Email;
+
                     if (credential != null)
+                    {
                         credential.EmailIdentifier = updateDto.Email;
+                        credential.UpdatedAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
+                    }
                 }
 
                 // Cambio de contraseña: validar contraseña actual y actualizar la credencial

@@ -7,7 +7,6 @@ namespace BackEvoEventos.Models
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
-        public string Description { get; set; }
 
         public ICollection<Request>? Requests { get; set; } = new List<Request>();
     }

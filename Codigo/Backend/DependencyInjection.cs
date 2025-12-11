@@ -28,6 +28,20 @@ namespace BackEvoEventos
             services.AddScoped<IStatusQuotationRepository, StatusQuotationRepository>();
             services.AddScoped<IStatusRequestRepository, StatusRequestRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IServiceResourceRepository, ServiceResourceRepository>();
+            services.AddScoped<IReportTypeRepository, ReportTypeRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
+            services.AddScoped<IStatusPaymentRepository, StatusPaymentRepository>();
+            services.AddScoped<IResourceRepository, ResourceRepository>();
+            services.AddScoped<IReservationServiceRepository, ReservationServiceRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IPricingUnitRepository, PricingUnitRepository>();
+            services.AddScoped<ICategoryServiceRepository, CategoryServiceRepository>();
+            services.AddScoped<IStatusTransactionRepository, StatusTransactionRepository>();
+            services.AddScoped<IStatusResourceRepository, StatusResourceRepository>();
+            services.AddScoped<IStatusReservationRepository, StatusReservationRepository>();
+
 
             return services;
         }
