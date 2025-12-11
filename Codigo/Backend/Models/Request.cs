@@ -23,7 +23,6 @@ namespace BackEvoEventos.Models
         public StatusRequest StatusRequest { get; set; }
         public EventType EventType { get; set; }
 
-        public ICollection<RequestDetail>? Details { get; set; } = new List<RequestDetail>();
-
+        public ICollection<RequestDetail>? RequestDetails { get; set; } = new List<RequestDetail>();
     }
 }

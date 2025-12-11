@@ -34,7 +34,7 @@ namespace BackEvoEventos.Repositories.Implementations
                  .Include(r => r.User)
                  .Include(r => r.StatusRequest)
                  .Include(r => r.EventType)
-                 .Include(r => r.Details)
+                 .Include(r => r.RequestDetails)
                      .ThenInclude(d => d.Service)
                  .OrderByDescending(r => r.CreatedAt)
                  .ToListAsync();
@@ -45,7 +45,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 .Include(r => r.User)
                 .Include(r => r.StatusRequest)
                 .Include(r => r.EventType)
-                .Include(r => r.Details)
+                .Include(r => r.RequestDetails)
                     .ThenInclude(d => d.Service)
                 .FirstOrDefaultAsync(r => r.Id == Id);
         }
@@ -127,7 +127,7 @@ namespace BackEvoEventos.Repositories.Implementations
             {
                 // Buscar el request existente con sus detalles
                 var existingRequest = await _context.Requests
-                    .Include(r => r.Details)
+                    .Include(r => r.RequestDetails)
                     .FirstOrDefaultAsync(r => r.Id == id);
 
                 if (existingRequest == null)
@@ -168,9 +168,9 @@ namespace BackEvoEventos.Repositories.Implementations
                 if (updateDto.Services != null)
                 {
                     // Eliminar detalles existentes
-                    if (existingRequest.Details.Any())
+                    if (existingRequest.RequestDetails.Any())
                     {
-                        _context.RequestDetails.RemoveRange(existingRequest.Details);
+                        _context.RequestDetails.RemoveRange(existingRequest.RequestDetails);
                     }
 
                     // Agregar nuevos detalles
