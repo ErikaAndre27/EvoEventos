@@ -37,7 +37,7 @@ namespace BackEvoEventos.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al obtener los usuarios: " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al obtener los tipos de documento: " + ex.Message);
             }
         }
 
@@ -55,7 +55,7 @@ namespace BackEvoEventos.Controllers
                     return NotFound("No se encontró el tipo de documento.");
                 }
 
-                return Ok(User);
+                return Ok(DocumentType);
             }
             catch (Exception ex)
             {

@@ -27,12 +27,6 @@ namespace BackEvoEventos.Repositories.Implementations
             
         }
 
-        public async Task<Credential> CreateCredential(Credential Credential)
-        {
-            await _context.Credentials.AddAsync(Credential);
-            await _context.SaveChangesAsync();
-            return Credential;
-        }
 
         public async Task<Credential> GetCredentialByUserId(Guid idUser)
         {
@@ -45,27 +39,20 @@ namespace BackEvoEventos.Repositories.Implementations
         {
             var Credential = await _context.Credentials.FindAsync(CredentialId);
             if (Credential == null) return false;
-            Credential.LastLogin = DateTime.Now;
+            Credential.LastLogin = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
+            Credential.UpdatedAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> DeleteCredential(Guid Id)
-        {
-            var Credential = await _context.Credentials.FindAsync(Id);
-            if (Credential == null)
-                return false;
-            _context.Credentials.Remove(Credential);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        public async Task<bool> UpdatePassword(Guid credentialId, string newPassword)
-        {
-            var Credential = await _context.Credentials.FindAsync(credentialId);
-            if (Credential == null) return false;
-            Credential.Password = newPassword;
-            await _context.SaveChangesAsync();
-            return true;
-        }
+        //public async Task<bool> DeleteCredential(Guid Id)
+        //{
+        //    var Credential = await _context.Credentials.FindAsync(Id);
+        //    if (Credential == null)
+        //        return false;
+        //    _context.Credentials.Remove(Credential);
+        //    await _context.SaveChangesAsync();
+        //    return true;
+        //}
         
     }
 }

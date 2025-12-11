@@ -5,6 +5,7 @@ using BackEvoEventos.Repositories.Implementations;
 using BackEvoEventos.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Validations;
 using System.IdentityModel.Tokens.Jwt;
@@ -56,6 +57,9 @@ namespace BackEvoEventos.Controllers
                 var User = await _UserRepository.GetUserById(Credential.IdUser);
                 var Rol = await _RolRepository.GetRole(User.IdRole);
 
+                await _CredentialRepository.UpdateLastLogin(Credential.Id);
+
+
                 var SecretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration["Jwt:Key"]));
 
                 var SigningCredentials = new SigningCredentials(SecretKey, SecurityAlgorithms.HmacSha256);
@@ -74,6 +78,8 @@ namespace BackEvoEventos.Controllers
 
                 var TokenString = new JwtSecurityTokenHandler().WriteToken(TokenOptions);
                 return Ok(new { Token = TokenString });
+
+                
             }
             else
             {
