@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoEventos - Panel de Asesor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Radio buttons primero -->
+    <input type="radio" name="page" id="radio-dashboard" checked>
+    <input type="radio" name="page" id="radio-solicitudes">
+    <input type="radio" name="page" id="radio-catalogo">
+    <input type="radio" name="page" id="radio-eventos">
+    <input type="radio" name="page" id="radio-clientes">
+    <input type="radio" name="page" id="radio-cotizaciones">
+    <input type="radio" name="page" id="radio-pagos">
+    <input type="radio" name="page" id="radio-proximos">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-text">EvoEventos</span>
+            <span class="subtitle">Panel de Asesor</span>
+        </div>
+        <button class="btn-exit">Salir</button>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <label for="radio-dashboard" class="nav-link">Dashboard</label>
+            </li>
+            <li class="nav-item">
+                <label for="radio-solicitudes" class="nav-link">Solicitudes</label>
+            </li>
+            <li class="nav-item">
+                <label for="radio-catalogo" class="nav-link">Catálogo</label>
+            </li>
+            <li class="nav-item">
+                <label for="radio-eventos" class="nav-link">Eventos</label>
+            </li>
+            <li class="nav-item">
+                <label for="radio-clientes" class="nav-link">Clientes</label>
+            </li>
+            <li class="nav-item">
+                <label for="radio-cotizaciones" class="nav-link">Cotizaciones</label>
+            </li>
+            <li class="nav-item">
+                <label for="radio-pagos" class="nav-link">Pagos</label>
+            </li>
+            <li class="nav-item">
+                <label for="radio-proximos" class="nav-link">Próximos</label>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Container con todas las páginas -->
+    <div class="container">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page">
+            <div class="greeting">
+                <h1>¡Hola asesor!</h1>
+                <p>Gestiona tus eventos, cotizaciones y pagos de manera eficiente.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">Mis eventos este mes</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-change">Sin cambios</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">Cotizaciones pendientes</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-change">Sin cambios</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">Ingresos generados</div>
+                    <div class="stat-value">$0</div>
+                    <div class="stat-change">Sin cambios</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">Clientes activos</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-change">Sin cambios</div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h2 class="section-title">Acciones Rápidas</h2>
+                <div class="actions-grid">
+                    <label for="radio-eventos" class="action-card">
+                        <div class="action-header">
+                            <div class="action-icon">+</div>
+                            <div class="action-title">Registrar Evento</div>
+                        </div>
+                        <p class="action-description">Crear un nuevo evento para un cliente</p>
+                    </label>
+                    <label for="radio-cotizaciones" class="action-card">
+                        <div class="action-header">
+                            <div class="action-icon">+</div>
+                            <div class="action-title">Nueva Cotización</div>
+                        </div>
+                        <p class="action-description">Generar cotización para cliente</p>
+                    </label>
+                    <label for="radio-pagos" class="action-card">
+                        <div class="action-header">
+                            <div class="action-icon">$</div>
+                            <div class="action-title">Registrar Pago</div>
+                        </div>
+                        <p class="action-description">Registrar pago recibido del cliente</p>
+                    </label>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="section-title" style="margin: 0;">Mis Próximos Eventos</h2>
+                        <label for="radio-proximos" class="btn-secondary">Ver todo</label>
+                    </div>
+                    <div class="empty-state">
+                        <p>No hay eventos próximos</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="section-title" style="margin: 0;">Cotizaciones Pendientes</h2>
+                        <label for="radio-cotizaciones" class="btn-secondary">Gestionar</label>
+                    </div>
+                    <div class="empty-state">
+                        <p>No hay cotizaciones pendientes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solicitudes Page -->
+        <div id="solicitudes" class="page">
+            <div class="greeting">
+                <h1>Solicitudes de Cotización</h1>
+                <p>Consulta las cotizaciones recibidas desde el sitio web</p>
+            </div>
+
+            <div class="filter-tabs">
+                <div class="tab">
+                    <div class="tab-label">Total</div>
+                    <div class="tab-value">0</div>
+                </div>
+                <div class="tab">
+                    <div class="tab-label">Pendientes</div>
+                    <div class="tab-value">0</div>
+                </div>
+                <div class="tab">
+                    <div class="tab-label">En Proceso</div>
+                    <div class="tab-value">0</div>
+                </div>
+                <div class="tab">
+                    <div class="tab-label">Cotizados</div>
+                    <div class="tab-value">0</div>
+                </div>
+            </div>
+
+            <input type="text" class="search-bar" placeholder="Busca por nombre o email...">
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Servicios</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5">
+                                <div class="empty-state">
+                                    <p>No hay solicitudes de cotización</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Catálogo Page -->
+        <div id="catalogo" class="page">
+            <div class="greeting">
+                <h1>Catálogo</h1>
+                <p>Gestiona servicios y productos disponibles</p>
+            </div>
+            <div class="filter-tabs">
+                <div class="tab">
+                    <div class="tab-label">Total Servicios</div>
+                    <div class="tab-value">0</div>
+                </div>
+                <div class="tab">
+                    <div class="tab-label">Disponibles</div>
+                    <div class="tab-value">0</div>
+                </div>
+                <div class="tab">
+                    <div class="tab-label">Sin Stock </div>
+                    <div class="tab-value">0</div>
+                </div>
+                <div class="tab">
+                    <div class="tab-label">Cotizados</div>
+                    <div class="tab-value">0</div>
+                </div>
+            </div>
+
+            <input type="text" class="search-bar" placeholder="Busca por servicios...">
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Categoria</th>
+                            <th>Precios</th>
+                            <th>Disponibilidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5">
+                                <div class="empty-state">
+                                    <p>No hay Servicios</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Eventos Page -->
+  
+        <div id="eventos" class="page">
+            <div class="greeting">
+                <h1>Eventos</h1>
+                <p>Gestión de eventos registrados</p>
+            </div>
+            <div class="empty-state">
+                <h2>Gestión de Eventos</h2>
+                <p>Vista en construcción</p>
+            </div>
+
+        <!-- Clientes Page -->
+        </div>
+        <div id="clientes" class="page">
+            <div class="greeting">
+                <h1>Clientes</h1>
+                <p>Lista y gestión de clientes</p>
+            </div>
+            <div class="empty-state">
+                <h2>Gestión de Clientes</h2>
+                <p>Vista en construcción</p>
+            </div>
+       
+
+        <!-- Pagos Page -->
+        <div id="pagos" class="page">
+            <div class="greeting">
+                <h1>Pagos</h1>
+                <p>Registro y seguimiento de pagos</p>
+            </div>
+            <div class="empty-state">
+                <h2>Control de Pagos</h2>
+                <p>Vista en construcción</p>
+            </div>
+        </div>
+
+        <!-- Próximos Page -->
+        <div id="proximos" class="page">
+            <div class="greeting">
+                <h1>Próximos Eventos</h1>
+                <p>Calendario de eventos programados</p>
+            </div>
+            <div class="empty-state">
+                <h2>Próximos Eventos</h2>
+                <p>Vista en construcción</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
