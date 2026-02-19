@@ -8,7 +8,7 @@
 
 
   <link rel="stylesheet" href="../../modals/ModalButtonNew/ModalButtonNew.css">
-  <link rel="stylesheet" href="../../Layouts/TopBar/Topbar.css">
+  <link rel="stylesheet" href="../../../../Frontend/Views/">
   <link rel="stylesheet" href="../../Layouts/NavBar/navbar.css">
   <link rel="stylesheet" href="../Home-admin-Dashboard/PanelAdministrador.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -113,72 +113,3 @@
         </div>
       </div>
     </section>
-
-
-    <!-- Actividad / Top asesores -->
-    <section class="bottom">
-      <div class="activity">
-        <h3>Actividad Reciente</h3>
-        <button class="view all">Ver Todo</button>
-
-        <ul>
-          <li>
-            <strong>Nuevo evento registrado</strong><br>
-            <span>Boda de María González - $12.000</span><br>
-            <small>Carlos Ruiz • Hace 15 min</small>
-          </li>
-          <li>
-            <strong>Pago recibido</strong><br>
-            <span>Evento corporativo TechCorp - $8.500</span><br>
-            <small>Ana Martínez • Hace 1 hora</small>
-          </li>
-          <li>
-            <strong>Item agregado al inventario</strong><br>
-            <span>Castillo inflable grande - 2 unidades</span><br>
-            <small>Sistema • Hace 2 horas</small>
-          </li>
-          <li>
-            <strong>Nuevo cliente registrado</strong><br>
-            <span>Empresa Celebrations Inc.</span><br>
-            <small>Luis Fernández • Hace 3 horas</small>
-          </li>
-        </ul>
-      </div>
-
-      <div class="top-asesores">
-        <h3>Top asesores del mes</h3>
-        <ul>
-          <li><span>1. Carlos Ruíz</span> <span>$45.200 ⭐4.9</span></li>
-          <li><span>2. Ana Martínez</span> <span>$38.500 ⭐4.8</span></li>
-          <li><span>3. Luis Fernández</span> <span>$29.300 ⭐4.7</span></li>
-          <li><span>4. María Rodríguez</span> <span>$22.100 ⭐4.6</span></li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const links = document.querySelectorAll('nav a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.active').classList.remove('active');
-        link.classList.add('active');
-        document.querySelector('nav').classList.remove('menu-open');
-      });
-    });
-
-    const closeMenuButton = document.querySelector('.close-menu');
-    const menuToggleButton = document.querySelector('.menu-toggle');
-
-    menuToggleButton.addEventListener('click', () => {
-      document.querySelector('nav').classList.add('menu-open');
-    });
-    closeMenuButton.addEventListener('click', () => {
-      document.querySelector('nav').classList.remove('menu-open');
-    });
-  </script>
-  <script src="../../Scripts/navbar-active.js"></script>
-
-</body>
-
-</html>

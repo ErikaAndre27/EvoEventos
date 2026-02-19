@@ -348,6 +348,42 @@ main.dashboard .subtitle {
     background: #9ca3af;
 }
 
+.status-quotation.status-send {
+    font-weight: 600;
+    color: #333;
+    display: inline-block;
+    background: rgba(208, 252, 231, 1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.status-quotation.status-approved {
+    font-weight: 600;
+    color: #333;
+    display: inline-block;
+    background: rgba(72, 96, 232, 0.38);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.status-quotation.status-rejected {
+    font-weight: 600;
+    color: #333;
+    display: inline-block;
+    background: rgba(193, 5, 50, 0.60);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
 
 
 @media (max-width: 768px) {
