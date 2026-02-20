@@ -7,7 +7,12 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddExternal(builder.Configuration);
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    }); // // Evita errores por referencias circulares entre modelos relacionados al serializar a JSON.
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {

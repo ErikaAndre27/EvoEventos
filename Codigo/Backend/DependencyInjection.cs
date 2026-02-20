@@ -16,6 +16,7 @@ namespace BackEvoEventos
             services.AddDbContext<Context.EvoeventosContext>(options =>
                 options.UseSqlServer(connectionString)); // Usar UseSqlServer para SQL Server
             services.AddScoped<IRoleRepository, RoleRepository>(); // Inyección de dependencia para RoleRepository
+            services.AddScoped<ICategoryResourceRepository, CategoryResourceRepository>();
             services.AddScoped<ICustomerTypeRepository,CustomerTypeRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICredentialRepository, CredentialRepository>();
