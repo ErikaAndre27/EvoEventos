@@ -18,7 +18,10 @@
         public string Address { get; set; }
         public Guid IdRole { get; set; }
 
+        [ForeignKey("IdDocumentType")] // Indica explícitamente que la FK es "IdDocumentType", no "DocumentTypeId" como asume EF por convención.
         public DocumentType DocumentType { get; set; }
+
+        [ForeignKey("IdRole")]
         public Role Role { get; set; }
         public ICollection<Credential> Credentials { get; set; }
         public ICollection<Report>? Reports { get; set; } = new List<Report>();

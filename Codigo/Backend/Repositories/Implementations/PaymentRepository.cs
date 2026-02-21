@@ -38,10 +38,10 @@ namespace BackEvoEventos.Repositories.Implementations
         {
             return await _context.Payments.FindAsync(Id);
         }
-        public async Task<List<Payment>> GetPaymentsByReservationId(Guid ReservationId)
+        public async Task<List<Payment>> GetPaymentsByReservationId(Guid IdReservation)
         {
             return await _context.Payments
-                .Where(p => p.ReservationId == ReservationId)
+                .Where(p => p.IdReservation == IdReservation)
                 .ToListAsync();
         }
         public async Task<Payment> UpdatePayment(Payment UpdatedPayment)

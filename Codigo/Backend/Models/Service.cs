@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEvoEventos.Models
 {
@@ -15,8 +16,11 @@ namespace BackEvoEventos.Models
         public bool Available { get; set; }
         public bool External { get; set; }
 
-        public CategoryService CategoryService { get; set; }
-        public PricingUnit PricingUnit { get; set; }
+        [ForeignKey("IdCategory")]
+        public CategoryService? CategoryService { get; set; }
+
+        [ForeignKey("IdPricingUnit")]
+        public PricingUnit? PricingUnit { get; set; }
         public RequestDetail RequestDetail { get; set; }
         public ICollection<ServiceResource>? ServiceResources { get; set; } = new List<ServiceResource>();
         public ICollection<QuotationDetail>? QuotationDetails { get; set; } = new List<QuotationDetail>();

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEvoEventos.Models
 {
@@ -20,6 +21,7 @@ namespace BackEvoEventos.Models
         public PaymentMethod PaymentMethod { get; set; }
         public StatusTransaction StatusTransaction { get; set; }
         public User User { get; set; }
-        public Guid ReservationId { get; internal set; }
+
+        //public Guid ReservationId { get; internal set; }
     }
 }

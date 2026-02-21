@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEvoEventos.Models
 {
@@ -10,7 +11,7 @@ namespace BackEvoEventos.Models
         public Guid? IdCategoryResource { get; set; }
         public string Description { get; set; }
         public string SerialCode { get; set; }
-        public string IdStatusResource { get; set; }
+        public Guid IdStatusResource { get; set; }
         public DateOnly PurchaseDate { get; set; }
         public decimal Value { get; set; }
         public DateOnly LastMaintenanceDate {  get; set; }
@@ -19,7 +20,10 @@ namespace BackEvoEventos.Models
         public string ExternalProvider {  get; set; }
         public decimal ExternalCost { get; set; }
 
+        [ForeignKey("IdCategoryResource")]
         public CategoryResource CategoryResource { get; set; }
+
+        [ForeignKey("IdStatusResource")]
         public StatusResource StatusResource { get; set; }
         public ICollection<ServiceResource>? ServiceResources { get; set; } = new List<ServiceResource>();
 

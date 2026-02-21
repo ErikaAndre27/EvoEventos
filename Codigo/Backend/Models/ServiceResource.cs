@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEvoEventos.Models
 {
@@ -13,7 +14,10 @@ namespace BackEvoEventos.Models
         public string UsageNotes { get; set; }
         public bool ExternalProvider { get; set; }
 
+        [ForeignKey("IdService")]
         public Service Service { get; set; }
+
+        [ForeignKey("IdResource")]
         public Resource Resource { get; set; }
     }
 }

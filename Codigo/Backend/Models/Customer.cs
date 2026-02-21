@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEvoEventos.Models
 {
@@ -15,8 +16,13 @@ namespace BackEvoEventos.Models
         public string Address { get; set; }
         public bool IsActive { get; set; }
         public string Notes { get; set; }
+
+        [ForeignKey("IdDocumentType")]
         public DocumentType DocumentType { get; set; }
+
+        [ForeignKey("IdCustomerType")]
         public CustomerType CustomerType { get; set; }
+
         public ICollection<Quotation>? Quotations { get; set; } = new List<Quotation>();
         public ICollection<Reservation>? Reservations { get; set; } = new List<Reservation>();
 
