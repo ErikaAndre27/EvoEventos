@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/Codigo/Frontend/Src/Assets/Icons/favicon-32x32.png">
     <meta name="description" content="EvoEventos - Gestión de Eventos">
     <title>EvoEventos - Tu evento en un solo lugar</title>
 
@@ -13,13 +15,13 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="MainHome.css">
+    <link rel="stylesheet" href="/Codigo/Frontend/Layouts/Modals/Login.css">
 </head>
 
 <body>
-    <!-- HEADER - Barra superior -->
+
     <header class="main-header">
         <div>
-            <!-- Grupo izquierdo: Logo y navegación en la MISMA LÍNEA -->
             <div class="header-left">
                 <div class="logo">
                     <a href="index.html">
@@ -35,21 +37,24 @@
                 </nav>
             </div>
 
-            <!-- Grupo derecho: Botones en la MISMA LÍNEA -->
+
             <div class="header-right">
-                <a href="inicioSesion.html" class="btn-empleados">
-                    <img src="/Codigo/Frontend/Src/Assets/Icons/login.svg" alt="Usuario" class="btn-icon"> <span>Ingreso
-                        empleados</span>
-                </a>
-                <a href="#cotizar" class="btn-cotizar-header">Cotiza ahora</a>
+                <button class="btn-empleados" onclick="abrirModal()">
+                    <img src="/Codigo/Frontend/Src/Assets/Icons/login.svg" alt="Usuario" class="btn-icon">
+                    <span>Ingreso empleados</span>
+                </button>
             </div>
 
-            <!-- Menú móvil -->
-            <button class="menu-toggle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" />
-                </svg>
-            </button>
+
+            <a href="https://wa.me/+573134602232" class="btn-cotizar-header" target="_blank">Cotiza ahora</a>
+        </div>
+
+        <!-- Menú móvil -->
+        <button class="menu-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" />
+            </svg>
+        </button>
         </div>
     </header>
 
@@ -77,41 +82,60 @@
 
                 <div class="beneficios-grid">
                     <div class="beneficio-item">
-                        <h3>Cotización inmediata</h3>
-                        <p>Recibe tu presupuesto en menos de 24 horas</p>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/check2.svg" alt="Rápido" class="beneficio-icon">
+                        <div class=beneficio-texto>
+                            <h3>Cotización inmediata</h3>
+                            <p>Recibe tu presupuesto en menos de 24 horas</p>
+                        </div>
                     </div>
                     <div class="beneficio-item">
-                        <h3>Servicio express</h3>
-                        <p>Montaje y desmontaje incluido en el precio</p>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/clock2.svg" alt="Ágil" class="beneficio-icon">
+                        <div class="beneficio-texto">
+                            <h3>Servicio express</h3>
+                            <p>Montaje y desmontaje incluido en el precio</p>
+                        </div>
                     </div>
                     <div class="beneficio-item">
-                        <h3>Atención personalizada</h3>
-                        <p>Un asesor dedicado para tu evento</p>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/users3.svg" alt="Personalizado"
+                            class="beneficio-icon">
+                        <div class="beneficio-texto">
+                            <h3>Atención personalizada</h3>
+                            <p>Un asesor dedicado para tu evento</p>
+                        </div>
                     </div>
                     <div class="beneficio-item">
-                        <h3>Garantía de calidad</h3>
-                        <p>Equipos revisados y personal capacitado</p>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/starrs4.svg" alt="Calidad" class="beneficio-icon">
+                        <div class="beneficio-texto">
+                            <h3>Garantía de calidad</h3>
+                            <p>Equipos revisados y personal capacitado</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Indicadores numéricos -->
+                <!-- Indicadores numéricos (numeros mks) -->
                 <div class="indicadores">
                     <div class="indicador-card">
                         <p class="indicador-valor">500+</p>
                         <p class="indicador-desc">Eventos realizados</p>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/CalendarStar.svg" alt="Eventos realizados"
+                            class="indicador-icon">
                     </div>
                     <div class="indicador-card">
                         <p class="indicador-valor">24h</p>
                         <p class="indicador-desc">Tiempo de respuesta</p>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/Clock24h.svg" alt="Tiempo de respuesta"
+                            class="indicador-icon">
                     </div>
                     <div class="indicador-card">
                         <p class="indicador-valor">95%</p>
                         <p class="indicador-desc">Clientes satisfechos</p>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/PersonStar.svg" alt="Eventos realizados"
+                            class="indicador-icon">
                     </div>
                 </div>
             </div>
 
-            <!-- FORMULARIO DE COTIZACIÓN -->
+            <!-- Formu de cotiación -->
             <div class="cotizacion-form-container">
                 <form class="cotizacion-form" action="/" method="post">
                     <div class="form-header">
@@ -134,32 +158,32 @@
                     <div class="form-body">
 
                         <div class="form-group full">
-                            <label>Nombre completo</label>
+                            <label class="form-label">Nombre completo</label>
                             <input type="text" placeholder="Tu nombre completo">
                         </div>
 
                         <div class="form-group">
-                            <label>Correo electrónico</label>
+                            <label class="form-label">Correo electrónico</label>
                             <input type="email" placeholder="tu@email.com">
                         </div>
 
                         <div class="form-group">
-                            <label>Número de contacto</label>
+                            <label class="form-label">Número de contacto</label>
                             <input type="tel" placeholder="3011234567">
                         </div>
 
                         <div class="form-group">
-                            <label>Fecha del evento</label>
+                            <label class="form-label">Fecha del evento</label>
                             <input type="date">
                         </div>
 
                         <div class="form-group">
-                            <label>Asistentes</label>
+                            <label class="form-label">Asistentes</label>
                             <input type="number" placeholder="# personas">
                         </div>
 
                         <div class="form-group full">
-                            <label for="tipoEvento">Tipo de Evento</label>
+                            <label class="form-label">Tipo de Evento</label>
                             <select id="tipoEvento" name="tipoEvento" required>
                                 <option value="" disabled selected>Seleccione una opción</option>
                                 <option value="familiar">Familiar</option>
@@ -169,94 +193,111 @@
                                 <option value="otro">Otro</option>
                             </select>
                         </div>
-                    </div>
+
+                        <div class="form-group full">
+                            <label class="form-label">Servicios requeridos</label>
 
 
+                            <div class="checkbox-list">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="servicios" value="juegos">
+                                    <span>Juegos inflables</span>
+                                </label>
 
-                    <div class="form-group">
-                        <label class="form-label">Servicios requeridos</label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="servicios" value="maquinas">
+                                    <span>Máquina de alimentos</span>
+                                </label>
 
-                        <div class="checkbox-list">
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="servicios" value="juegos">
-                                <span>Juegos inflables</span>
-                            </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="servicios" value="atracciones">
+                                    <span>Atracciones mecánicas</span>
+                                </label>
 
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="servicios" value="maquinas">
-                                <span>Máquina de alimentos</span>
-                            </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="servicios" value="inflables">
+                                    <span>Inflables</span>
+                                </label>
 
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="servicios" value="atracciones">
-                                <span>Atracciones mecánicas</span>
-                            </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="servicios" value="otros">
+                                    <span>Otros servicios</span>
+                                </label>
 
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="servicios" value="inflables">
-                                <span>Inflables</span>
-                            </label>
+                                <button type="submit" class="btn-submit">Obtener Cotización Gratuita</button>
+                            </div>
 
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="servicios" value="otros">
-                                <span>Otros servicios</span>
-                            </label>
                         </div>
+
                     </div>
 
-                    <button type="submit" class="btn-submit">Obtener Cotización Gratuita</button>
+
                 </form>
             </div>
         </section>
 
-        <!-- SERVICIOS DESTACADOS -->
+        <!-- Servicios Destacados -->
         <section id="servicios-destacados" class="servicios-destacados">
-            <div class="section-header">
-                <h2 class="section-title">Servicios Destacados</h2>
-                <p class="section-description">Ofrecemos una amplia gama de servicios para hacer de tu evento una
-                    experiencia inolvidable</p>
-            </div>
-
-            <div class="servicios-grid">
-                <div class="servicio-card">
-                    <div class="servicio-icon">🏰</div>
-                    <h3>Juegos Inflables</h3>
-                    <p>Castillos, toboganes y estructuras inflables para la diversión de todos</p>
+            <div class="servicios-container">
+                <div class="section-header">
+                    <h2 class="section-title--unique">Servicios Destacados</h2>
+                    <p class="section-description--unique">Ofrecemos una amplia gama de servicios para hacer de tu
+                        evento una
+                        experiencia inolvidable</p>
                 </div>
 
-                <div class="servicio-card">
-                    <div class="servicio-icon">🍿</div>
-                    <h3>Máquinas de comestibles</h3>
-                    <p>Máquinas de palomitas, algodón de azúcar y dulces para endulzar tu evento</p>
-                </div>
+                <div class="servicios-grid">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <img src="/Codigo/Frontend/Src/Assets/Icons/circus3d.svg" alt="Juegos Inflables">
+                        </div>
+                        <h3>Juegos Inflables</h3>
+                        <p>Castillos, toboganes y estructuras inflables para la diversión de todos</p>
+                    </div>
 
-                <div class="servicio-card">
-                    <div class="servicio-icon">🎂</div>
-                    <h3>Catering</h3>
-                    <p>Servicio completo de comidas y bebidas adaptado a tu presupuesto</p>
-                </div>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <img src="/Codigo/Frontend/Src/Assets/Icons/popcorn_3d.svg"
+                                alt="Máquinas de Algodón de Azúcar">
+                        </div>
+                        <h3>Máquinas de comestibles</h3>
+                        <p>Máquinas de palomitas, algodón de azúcar y dulces para endulzar tu evento</p>
+                    </div>
 
-                <div class="servicio-card">
-                    <div class="servicio-icon">🚚</div>
-                    <h3>Transporte</h3>
-                    <p>Logística completa para el montaje y desmontaje de tu evento</p>
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <img src="/Codigo/Frontend/Src/Assets/Icons/hamburger_3d.svg" alt="Catering">
+                        </div>
+                        <h3>Catering</h3>
+                        <p>Servicio completo de comidas y bebidas adaptado a tu presupuesto</p>
+                    </div>
+
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <img src="/Codigo/Frontend/Src/Assets/Icons/delivery_truck.svg" alt="Transporte">
+                        </div>
+                        <h3>Transporte</h3>
+                        <p>Logística completa para el montaje y desmontaje de tu evento</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PRODUCTOS SECTION -->
+        <!-- Nuestros Productos Sectchionn -->
+
         <section class="productos-section">
             <div class="section-header">
                 <h2 class="section-title">Nuestros Productos</h2>
-                <p class="section-description">Descubre nuestra amplia gama de productos y servicios para hacer de tu
+                <p class="section-description--unique">Descubre nuestra amplia gama de productos y servicios para hacer
+                    de tu
                     evento algo extraordinario</p>
             </div>
 
             <div class="productos-grid">
                 <div class="producto-card">
                     <span class="producto-badge">Juegos</span>
-                    <img src="https://mxc.com.mx/wp-content/uploads/2025/04/6a16ad32-1c8a-4fe0-a24f-3182fe3a2f8d_source-aspect-ratio_1600w_0.jpg"
-                        alt="Castillos Inflables" class="producto-imagen">
+                    <img src="/Codigo/Frontend/Src/Assets/Images/Castillo_Inflabe.jpg" alt="Castillos Inflables"
+                        class="producto-imagen">
                     <div class="producto-info">
                         <h3>Castillos Inflables</h3>
                         <p>Castillos inflables seguros y divertidos para todas las edades</p>
@@ -266,8 +307,8 @@
 
                 <div class="producto-card">
                     <span class="producto-badge">Confitería</span>
-                    <img src="https://gourmetdemexico.com.mx/wp-content/uploads/2024/11/algodones-de-azucar-1-1024x678.jpg"
-                        alt="Máquinas de Algodón" class="producto-imagen">
+                    <img src="/Codigo/Frontend/Src/Assets/Images/Maquina_Cotton.jpg" alt="Máquinas de Algodón"
+                        class="producto-imagen">
                     <div class="producto-info">
                         <h3>Máquinas de Algodón</h3>
                         <p>Máquinas profesionales de algodón de azúcar y palomitas</p>
@@ -277,8 +318,8 @@
 
                 <div class="producto-card">
                     <span class="producto-badge">Alimentación</span>
-                    <img src="https://tse4.mm.bing.net/th/id/OIP.2Uc4C0p35Svp71HuBfk3DwHaFL?rs=1&pid=ImgDetMain&o=7&rm=3"
-                        alt="Servicio de Catering" class="producto-imagen">
+                    <img src="/Codigo/Frontend/Src/Assets/Images/Catering.jpg" alt="Servicio de Catering"
+                        class="producto-imagen">
                     <div class="producto-info">
                         <h3>Servicio de Catering</h3>
                         <p>Buffets completos y menús personalizados para tu evento</p>
@@ -288,7 +329,7 @@
 
                 <div class="producto-card">
                     <span class="producto-badge">Audio/Video</span>
-                    <img src="https://35mm.es/wp-content/uploads/2021/06/musica-dubstep.jpg" alt="Equipo de Sonido"
+                    <img src="/Codigo/Frontend/Src/Assets/Images/Equipo_Sonido.jpg" alt="Equipo de Sonido"
                         class="producto-imagen">
                     <div class="producto-info">
                         <h3>Equipo de Sonido</h3>
@@ -299,8 +340,8 @@
 
                 <div class="producto-card">
                     <span class="producto-badge">Ambientación</span>
-                    <img src="https://carpasexpandi.com/wp-content/uploads/2019/06/tipos-carpas-eventos-zaragoza.jpg"
-                        alt="Carpas y Decoración" class="producto-imagen">
+                    <img src="/Codigo/Frontend/Src/Assets/Images/Carpas.jpg" alt="Carpas y Decoración"
+                        class="producto-imagen">
                     <div class="producto-info">
                         <h3>Carpas y Decoración</h3>
                         <p>Carpas elegantes y decoración temática personalizada</p>
@@ -310,8 +351,8 @@
 
                 <div class="producto-card">
                     <span class="producto-badge">Muebles</span>
-                    <img src="https://th.bing.com/th/id/R.b0a7ab0810127b4aaf8d4c97ce181fe1?rik=M71TjUf%2bgIHUdg&pid=ImgRaw&r=0"
-                        alt="Mobiliario" class="producto-imagen">
+                    <img src="/Codigo/Frontend/Src/Assets/Images/Mobiliario.jpg" alt="Mobiliario"
+                        class="producto-imagen">
                     <div class="producto-info">
                         <h3>Mobiliario</h3>
                         <p>Mesas, sillas y mobiliario elegante para cualquier ocasión</p>
@@ -326,12 +367,30 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Sobre EvoEventos</h3>
+                <img src="/Codigo/Frontend/Src/Assets/Images/LogoFondoBl.svg" alt="EvoEventos" class="footer-logo">
                 <p>Somos expertos en crear experiencias inolvidables. Tu evento, nuestra pasión.</p>
+            </div>
+
+            <div id="contacto" class="footer-section">
+                <h3>Contacto</h3>
+                <ul class="contact-info">
+                    <li>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/LocationMain.svg" alt="Ubicación" class="info-logo">
+                        Bogotá, Colombia
+                    </li>
+                    <li>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/PhoneMain.svg" alt="Teléfono"
+                            class="info-logo">3508181891
+                    </li>
+                    <li>
+                        <img src="/Codigo/Frontend/Src/Assets/Icons/MessageMain.svg" alt="Email" class="info-logo">
+                        contacto@evoeventos.com
+                    </li>
+                </ul>
             </div>
 
             <div class="footer-section">
@@ -343,15 +402,6 @@
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </div>
-
-            <div id="contacto" class="footer-section">
-                <h3>Contacto</h3>
-                <ul class="contact-info">
-                    <li>📞 +57 301 123 4567</li>
-                    <li>✉️ contacto@evoeventos.com</li>
-                    <li>📍 Bogotá, Colombia</li>
-                </ul>
-            </div>
         </div>
 
         <div class="footer-bottom">
@@ -359,8 +409,76 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    <!-- Modal Ingreso de la Plebe -->
+
+    <div class="overlay" id="overlay" onclick="cerrarModal()"></div>
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+
+
+        <button class="btn-cerrar" onclick="cerrarModal()" aria-label="Cerrar modal">&#x2715;</button>
+
+        <div class="modal-encabezado">
+
+            <h2 class="titulo" id="titulo-modal">Acceso Personal</h2>
+            <p class="subtitulo" id="subtitulo-modal">EvoEventos</p>
+        </div>
+
+        <!-- Formulario del modal -->
+        <form class="modal-form" onsubmit="return false;">
+
+            <!-- Tipo de Usuario -->
+            <div class="campo">
+                <label for="tipo-usuario">Tipo de Usuario</label>
+                <select id="tipo-usuario" name="tipo-usuario">
+                    <option value="" disabled selected>Selecciona…</option>
+                    <option value="admin">Administrador</option>
+                    <option value="organizador">Asesor</option>
+                </select>
+            </div>
+
+            <!-- Email PEP veneks -->
+            <div class="campo">
+                <label for="email">Email / Identificación</label>
+                <input type="text" id="email" name="email" placeholder="Ingresa tu nombre Usuario"
+                    autocomplete="username" />
+            </div>
+
+            <!-- Contraseña -->
+            <div class="campo">
+                <label for="contrasena">Contraseña</label>
+                <div class="campo-password">
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Ingresa tu Contraseña"
+                        autocomplete="current-password" />
+                    <!-- Botón para mostrar/ocultar contraseña -->
+                    <button type="button" class="btn-ver-password" onclick="togglePassword()"
+                        aria-label="Mostrar u ocultar contraseña" id="btn-ojo">
+                        <!-- Ícono de ojo abierto -->
+                        <svg id="ojo-abierto" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888"
+                            stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                        <!-- Ícono  ojocerrado, oculto por defecto -->
+                        <svg id="ojo-cerrado" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888"
+                            stroke-width="2" style="display:none;">
+                            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94" />
+                            <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19" />
+                            <line x1="1" y1="1" x2="23" y2="23" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-ingresar">Iniciar Sesión</button>
+
+            <a href="#" class="link-olvido">¿Olvidaste tu Contraseña?</a>
+
+        </form>
+
+    </div>
+
 </body>
 <!-- Scripts -->
+<script src="/Codigo/Frontend/Layouts/Modals/Login.js"></script>
+
 </html>
