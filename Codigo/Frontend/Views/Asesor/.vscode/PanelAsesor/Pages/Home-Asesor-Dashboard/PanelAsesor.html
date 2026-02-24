@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvoEventos - Panel de Asesor</title>
+
+
+  <link rel="stylesheet" href="../../modals/ModalButtonNew/ModalButtonNew.css">
+  <link rel="stylesheet" href="../../../../../../Layouts/NavBar/navbar.css">
+  <link rel="stylesheet" href="../../../../../../Layouts/TopBar/Topbar.css">
+  <link rel="stylesheet" href="../Home-Asesor-Dashboard/PanelAsesor.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="header-left">
+      <div class="logo">
+        <img src="../../../../../../Src/Assets/Images/Logo.svg" alt="EvoEventos">
+      </div>
+      <div class="subtitle">Panel de Asesor</div>
+    </div>
+
+    <button class="exit-btn">
+      <span class="icon"><img src="../../../../../../Src/Assets/Icons/exit.svg" alt="Salir"></span> Salir
+    </button>
+  </header>
+
+  <button class="menu-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <nav>
+    <button class="close-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+        <path stroke="none" d="M0 0h24v24H0z" />
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+
+    <section class="nav-links">
+        <a href="#">Dashboard</a>
+        <a href="#">Solicitudes</a>
+        <a href="#">Catálogo</a>
+        <a href="#">Eventos</a>
+        <a href="#">Clientes</a>
+        <a href="#">Cotizaciones</a>
+        <a href="#">Pagos</a>
+        <a href="#">Próximos</a>
+        <a href="#">Mi perfil</a>
+    </section>
+  </nav>
+  </nav>
+
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="dashboard">
+    <h1>Panel de Asesor</h1>
+    <p class="subtitle">Gestiona tus eventos, cotizaciones y pagos de manera eficiente.</p>
+
+    <!-- Tarjetas -->
+    <section class="cards">
+      <div class="card">
+        <p class="card-title">Mis eventos este mes</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>12</h2>
+            <span class="indicator">+3 esta semana</span>
+          </div>
+          <div class="icon-container" style="background-color: #FAF5FF;">
+            <img src="../../../../../../Src/Assets/Icons/Calendar_purple.svg" alt="Calendario"></div> 
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-title">Cotizaciones pendientes</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>6</h2>
+            <span class="indicator-gris">2 vencen hoy</span>
+          </div>
+          <div class="icon-container" style="background-color: #FAF5FF;">
+            <img src="../../../../../../Src/Assets/Icons/Table_purple.svg" alt="Cotizaciones pendientes"></div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <p class="card-title">Ingresos generados</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>$45.200</h2>
+            <span class="indicator">+15% vs mes anterior</span>
+          </div>
+          <div class="icon-container" style="background-color: #FAF5FF;">
+            <img src="../../../../../../Src/Assets/Icons/Money_purple.svg" alt="Inventario"></div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <p class="card-title">Clientes activos</p>
+        <div class="card-content">
+          <div class="numbers">
+            <h2>18</h2>
+            <span class="indicator">+22% vs mes anterior</span>
+          </div>
+          <div class="icon-container" style="background-color: #FAF5FF;">
+            <img src="../../../../../../Src/Assets/Icons/users_purple.svg" alt="Ingresos"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acciones Rápidas -->
+    <h2 class="section-title">Acciones Rápidas</h2>
+    <section class="quick-actions">
+      <button class="content-btn">
+        <span class="icon-container" style="background-color: #711380;">
+          <img src="../../../../../../Src/Assets/Icons/+.svg" alt="Nuevo evento">
+        </span> 
+        <h3>Registrar Evento</h3>
+        <p class="card-title">Crear un nuevo evento para un cliente</p>
+      </button>
+      <button class="content-btn">
+        <span class="icon-container" style="background-color: #155DFC;">
+          <img src="../../../../../../Src/Assets/Icons/+.svg" alt="Nueva cotización">
+        </span> 
+        <h3>Nueva Cotización</h3>
+        <p class="card-title">Generar cotización para cliente</p>
+      </button>
+      <button class="content-btn">
+        <span class="icon-container" style="background-color: #00A63E;">
+          <img src="../../../../../../Src/Assets/Icons/+.svg" alt="Registrar pago">
+        </span> 
+        <h3>Registrar Pago</h3>
+        <p class="card-title">Registrar pago recibido del cliente</p>
+      </button>
+    </section>
+
+    <!-- Actividad / Top asesores -->
+    <section class="bottom">
+      <div class="activity">
+        <h3>Actividad Reciente</h3>
+        <button class="view all">Ver Todo</button>
+
+        <ul>
+          <li>
+            <strong>Nuevo evento registrado</strong><br>
+            <span>Boda de María González - $12.000</span><br>
+            <small>Carlos Ruiz • Hace 15 min</small>
+          </li>
+          <li>
+            <strong>Pago recibido</strong><br>
+            <span>Evento corporativo TechCorp - $8.500</span><br>
+            <small>Ana Martínez • Hace 1 hora</small>
+          </li>
+          <li>
+            <strong>Item agregado al inventario</strong><br>
+            <span>Castillo inflable grande - 2 unidades</span><br>
+            <small>Sistema • Hace 2 horas</small>
+          </li>
+          <li>
+            <strong>Nuevo cliente registrado</strong><br>
+            <span>Empresa Celebrations Inc.</span><br>
+            <small>Luis Fernández • Hace 3 horas</small>
+          </li>
+        </ul>
+      </div>
+
+      <div class="top-asesores">
+        <h3>Top asesores del mes</h3>
+        <ul>
+          <li><span>1. Carlos Ruíz</span> <span>$45.200 ⭐4.9</span></li>
+          <li><span>2. Ana Martínez</span> <span>$38.500 ⭐4.8</span></li>
+          <li><span>3. Luis Fernández</span> <span>$29.300 ⭐4.7</span></li>
+          <li><span>4. María Rodríguez</span> <span>$22.100 ⭐4.6</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.active').classList.remove('active');
+        link.classList.add('active');
+        document.querySelector('nav').classList.remove('menu-open');
+      });
+    });
+
+    const closeMenuButton = document.querySelector('.close-menu');
+    const menuToggleButton = document.querySelector('.menu-toggle');
+
+    menuToggleButton.addEventListener('click', () => {
+      document.querySelector('nav').classList.add('menu-open');
+    });
+    closeMenuButton.addEventListener('click', () => {
+      document.querySelector('nav').classList.remove('menu-open');
+    });
+  </script>
+  <script src="../../Scripts/navbar-active.js"></script>
+
+</body>
+
+</html>
