@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../../../../../../Layouts/TopBar/Topbar.css">
   <link rel="stylesheet" href="../Home-Asesor-Dashboard/PanelAsesor.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="../../../../components/data-card.js" /></script>
 </head>
 
 <body>
@@ -64,7 +65,37 @@
 
     <!-- Tarjetas -->
     <section class="cards">
-      <div class="card">
+      <data-card
+        title="Mis eventos este mes"
+        quantity="12"
+        src="../../../../../../Src/Assets/Icons/Calendar_purple.svg"
+        alt="Calendario"
+        indicator="+3 esta semana"
+      ></data-card>
+      <data-card
+        title="Cotizaciones pendientes"
+        quantity="6"
+        src="../../../../../../Src/Assets/Icons/Table_purple.svg"
+        alt="Cotizaciones pendientes"
+        indicator="2 vencen hoy"
+        indicator_variant="gris"
+      ></data-card>
+      <data-card
+        title="Ingresos generados"
+        quantity="$45.200"
+        src="../../../../../../Src/Assets/Icons/Money_purple.svg"
+        alt="Inventario"
+        indicator="+15% vs mes anterior"
+      ></data-card>
+      <data-card
+        title="Clientes activos"
+        quantity="18"
+        src="../../../../../../Src/Assets/Icons/users_purple.svg"
+        alt="Ingresos"
+        indicator="+22% vs mes anterior"
+      ></data-card>
+
+      <!-- <div class="card">
         <p class="card-title">Mis eventos este mes</p>
         <div class="card-content">
           <div class="numbers">
@@ -88,7 +119,6 @@
         </div>
       </div>
 
-
       <div class="card">
         <p class="card-title">Ingresos generados</p>
         <div class="card-content">
@@ -101,7 +131,6 @@
         </div>
       </div>
 
-
       <div class="card">
         <p class="card-title">Clientes activos</p>
         <div class="card-content">
@@ -112,7 +141,7 @@
           <div class="icon-container" style="background-color: #FAF5FF;">
             <img src="../../../../../../Src/Assets/Icons/users_purple.svg" alt="Ingresos"></div>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- Acciones Rápidas -->
