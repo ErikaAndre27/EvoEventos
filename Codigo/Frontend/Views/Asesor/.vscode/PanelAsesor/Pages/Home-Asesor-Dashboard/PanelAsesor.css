@@ -35,7 +35,6 @@ h2.section-title {
 main.dashboard {
   max-width: 1440px;
   width: 100%;
-  margin: 0 auto;
   padding: 32px 96px 81px;
 }
 
@@ -60,8 +59,8 @@ main.dashboard .subtitle {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 1em;
   margin-bottom: 40px;
   width: 100%;
 }
@@ -149,20 +148,19 @@ main.dashboard .subtitle {
 
 .quick-actions{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-  
-  
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+  margin-bottom: 40px;
 }
+
 .content-btn {
   font-family: inherit;
   display: grid;
   grid-template-columns: 48px 1fr;
   grid-template-rows: auto auto;   
-
+  transition: all 0.2s ease;
   column-gap: 12px;
   row-gap: 4px;
-
   align-items: center;
 
   background-color: #fff;
@@ -173,6 +171,14 @@ main.dashboard .subtitle {
 
   min-height: 100px;
 } 
+.content-btn > p {
+  height: 100%;
+}
+.content-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 
 .content-btn .icon-container {
   grid-row: 1 / 3;
@@ -213,8 +219,8 @@ main.dashboard .subtitle {
 }
 
 
-.activity,
-.top-asesores {
+.events,
+.quotations {
   background: #ffffff;
   border-radius: 14px;
   border: 1px solid var(--color-borde);
@@ -223,11 +229,11 @@ main.dashboard .subtitle {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.activity h3,
-.top-asesores h3 {
+.events h3,
+.quotations h3 {
   font-size: 20px;
   font-weight: 500;
-  color: var(--color-texto);
+  color: #4A5565;
   margin-bottom: 10px;
 }
 
@@ -252,16 +258,16 @@ button.view.all:hover {
 }
 
 /* Listas */
-.activity ul,
-.top-asesores ul {
+.events ul,
+.quotations ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.activity li,
-.top-asesores li {
-  background: #f9fafc;
+.events li,
+.quotations li {
+  display: grid;
   border: 1px solid var(--color-borde);
   border-radius: 8px;
   padding: 16px;
@@ -269,19 +275,19 @@ button.view.all:hover {
   transition: all 0.2s ease;
 }
 
-.activity li:last-child,
-.top-asesores li:last-child {
+.events li:last-child,
+.quotations li:last-child {
   margin-bottom: 0;
 }
 
-.activity li:hover,
-.top-asesores li:hover {
+.events li:hover,
+.quotations li:hover {
   background: #f3f4f6;
   transform: translateX(4px);
 }
 
 
-.activity strong {
+.events strong {
   display: block;
   font-weight: 600;
   color: var(--color-texto);
@@ -289,13 +295,20 @@ button.view.all:hover {
   font-size: 14px;
 }
 
-.activity span {
+.events span {
   color: var(--color-texto-secundario);
   font-size: 14px;
   display: block;
 }
 
-.activity small {
+.events small {
+  display: block;
+  margin-top: 8px;
+  color: #9CA3AF;
+  font-size: 12px;
+}
+
+.quotations small {
   display: block;
   margin-top: 8px;
   color: #9CA3AF;
@@ -329,6 +342,10 @@ button.view.all:hover {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .quick-actions {
+    grid-auto-flow: row;
+  }
 }
 
 @media (max-width: 768px) {
@@ -338,6 +355,10 @@ button.view.all:hover {
 
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .quick-actions {
+    grid-auto-flow: row;
   }
 
   .bottom {

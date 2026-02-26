@@ -16,6 +16,13 @@
 
 <body>
   <header class="main-header">
+    <button class="open-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+        <path stroke="none" d="M0 0h24v24H0z" />
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
     <div class="header-left">
       <div class="logo">
         <img src="../../../../../../Src/Assets/Images/Logo.svg" alt="EvoEventos">
@@ -24,18 +31,9 @@
     </div>
 
     <button class="exit-btn">
-      <span class="icon"><img src="../../../../../../Src/Assets/Icons/exit.svg" alt="Salir"></span> Salir
+      <span class="icon"><img src="../../../../../../Src/Assets/Icons/exit.svg" alt="Salir"></span> <p>Salir</p>
     </button>
   </header>
-
-  <button class="menu-toggle">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
-      <path stroke="none" d="M0 0h24v24H0z" />
-      <path d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </button>
-
   <nav>
     <button class="close-menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
@@ -56,7 +54,6 @@
         <a href="#">Próximos</a>
         <a href="#">Mi perfil</a>
     </section>
-  </nav>
   </nav>
 
 
@@ -130,31 +127,35 @@
       </button>
       <button class="content-btn">
         <span class="icon-container" style="background-color: #155DFC;">
-          <img src="../../../../../../Src/Assets/Icons/+.svg" alt="Nueva cotización">
+          <img src="../../../../../../Src/Assets/Icons/QuotationWhite.svg" alt="Nueva cotización">
         </span> 
         <h3>Nueva Cotización</h3>
         <p class="card-title">Generar cotización para cliente</p>
       </button>
       <button class="content-btn">
         <span class="icon-container" style="background-color: #00A63E;">
-          <img src="../../../../../../Src/Assets/Icons/+.svg" alt="Registrar pago">
+          <img src="../../../../../../Src/Assets/Icons/MoneyWhite.svg" alt="Registrar pago">
         </span> 
         <h3>Registrar Pago</h3>
         <p class="card-title">Registrar pago recibido del cliente</p>
       </button>
     </section>
 
-    <!-- Actividad / Top asesores -->
+    <!-- Próximos eventos / Cotizaciones pendientes -->
     <section class="bottom">
-      <div class="activity">
-        <h3>Actividad Reciente</h3>
+      <div class="events">
+        <h3>Mis Próximos Eventos</h3>
         <button class="view all">Ver Todo</button>
 
         <ul>
           <li>
-            <strong>Nuevo evento registrado</strong><br>
-            <span>Boda de María González - $12.000</span><br>
-            <small>Carlos Ruiz • Hace 15 min</small>
+            <span class="icon">
+              <img src="../../../../../../Src/Assets/Icons/check-green.svg" alt="Evento">
+            </span>
+            <strong>Cumpleaños 15 años</strong><br>
+            <span>María González</span><br>
+            <small>2024-01-15 a las 16:00</small>
+            <small>Salón Las Flores</small>
           </li>
           <li>
             <strong>Pago recibido</strong><br>
@@ -174,8 +175,8 @@
         </ul>
       </div>
 
-      <div class="top-asesores">
-        <h3>Top asesores del mes</h3>
+      <div class="quotations">
+        <h3>Cotizaciones Pendientes</h3>
         <ul>
           <li><span>1. Carlos Ruíz</span> <span>$45.200 ⭐4.9</span></li>
           <li><span>2. Ana Martínez</span> <span>$38.500 ⭐4.8</span></li>
@@ -197,7 +198,7 @@
     });
 
     const closeMenuButton = document.querySelector('.close-menu');
-    const menuToggleButton = document.querySelector('.menu-toggle');
+    const menuToggleButton = document.querySelector('.open-menu');
 
     menuToggleButton.addEventListener('click', () => {
       document.querySelector('nav').classList.add('menu-open');

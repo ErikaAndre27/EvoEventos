@@ -6,6 +6,10 @@
     
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: #f0f0f5;
     color: #333;
@@ -16,6 +20,9 @@ body {
    ============================================ */
 
 header.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background: white;
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
@@ -28,7 +35,7 @@ header.main-header {
 /* Contenedor interno con ancho máximo */
 header.main-header > * {
     max-width: 1440px;
-    width: 100%;
+    /* width: 100%; */
 }
 
 /* Layout interno: logo izquierda, botón derecha */
@@ -39,9 +46,7 @@ header.main-header > * {
 }
 
 /* Aseguramos que header tenga el padding correcto */
-header.main-header {
-    padding: 15px 96px;
-}
+
 
 /* Reorganizamos el flex para que funcione correctamente */
 header.main-header {
@@ -49,7 +54,6 @@ header.main-header {
     justify-content: space-between;
     align-items: center;
     max-width: 1440px;
-    margin: 0 auto;
     width: 100%;
     padding: 15px 96px;
     background: white;
@@ -70,26 +74,6 @@ header.main-header {
     margin: 0;
 }
 
-header.main-header .exit-btn {
-    width: 97px;
-    height: 42px;
-    padding: 0 12px;
-    box-sizing: border-box;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #666;
-    transition: background 0.2s ease;
-}
-
-.exit-btn:hover {
-    background: #fafafa;
-}
 
 header.main-header .exit-btn {
     width: 97px;
@@ -98,7 +82,7 @@ header.main-header .exit-btn {
     box-sizing: border-box;
     background: white;
     border: 1px solid #D1D5DB; /* Color de borde más suave */
-    border-radius: 8px; /* Bordes ligeramente más redondeados */
+    border-radius: 12px; /* Bordes ligeramente más redondeados */
     cursor: pointer;
     font-size: 14px;
     font-weight: 500; /* Texto un poco más grueso */
@@ -109,12 +93,14 @@ header.main-header .exit-btn {
     color: #6B7280; /* Color de texto gris más moderno */
     transition: all 0.2s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra sutil */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; /* Asegura misma fuente */
+    font-family: inherit;
+     /* Asegura misma fuente */
 }
 
-.exit-btn:hover {
-    background: #F9FAFB; /* Fondo más claro al hover */
-    border-color: #9CA3AF; /* Borde un poco más oscuro al hover */
+header.main-header .exit-btn:hover {
+    background: #f3f4f6; /* Fondo más claro al hover */
+    /* border-color: #9CA3AF; */
+     /* Borde un poco más oscuro al hover */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada al hover */
 }
 
@@ -147,5 +133,16 @@ header.main-header .exit-btn {
     
     .header-left .subtitle {
         display: none;
+    }
+
+    .header-left {
+        justify-content: center;
+    }
+    header.main-header .exit-btn {
+        width: fit-content;
+        padding: 0 0.5em;
+        & > p {
+            display: none;
+        }
     }
 }

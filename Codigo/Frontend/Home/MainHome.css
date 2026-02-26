@@ -227,7 +227,7 @@ body {
 }
 
 /* Menú móvil - oculto en desktop */
-.menu-toggle {
+.open-menu {
     display: none;
     background: none;
     border: none;
@@ -869,7 +869,7 @@ body {
         display: none;
     }
 
-    .menu-toggle {
+    .open-menu {
         display: block;
     }
 

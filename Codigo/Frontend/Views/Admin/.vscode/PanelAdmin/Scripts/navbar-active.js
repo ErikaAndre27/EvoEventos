@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Manejo del menú móvil
     const closeMenuButton = document.querySelector('.close-menu');
-    const menuToggleButton = document.querySelector('.menu-toggle');
+    const menuToggleButton = document.querySelector('.open-menu');
     
     menuToggleButton?.addEventListener('click', () => {
         document.querySelector('nav').classList.add('menu-open');
