@@ -308,6 +308,18 @@ button.view.all:hover {
   font-size: 12px;
 }
 
+.status-quotation.status-send {
+    font-weight: 600;
+    color: #333;
+    display: inline-block;
+    background: rgba(208, 252, 231, 1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
 .quotations small {
   display: block;
   margin-top: 8px;
