@@ -1,0 +1,56 @@
+import './NavBar.css'
+import './topbar.css'
+import Logo from './assets/Logo.svg'
+import ExitIcon from './assets/icons/exit.svg'
+import { useState } from 'react'
+
+const NavBar = () => {
+    const [openMenu, setOpenMenu] = useState(false);
+
+    return (
+        <>
+            <header class="main-header">
+                <button class="open-menu" onClick={() => setOpenMenu(true)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <div class="header-left">
+                    <div class="logo">
+                        <img src={Logo} alt="EvoEventos" />
+                    </div>
+                    <div class="subtitle">Panel de Asesor</div>
+                </div>
+
+                <button class="exit-btn">
+                    <span class="icon"><img src={ExitIcon} alt="Salir" /></span> <p>Salir</p>
+                </button>
+            </header>
+            <nav className={openMenu ? "menu-open" : ""}>
+                <button class="close-menu" onClick={() => setOpenMenu(false)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <section class="nav-links">
+                    <a href="#">Dashboard</a>
+                    <a href="#">Solicitudes</a>
+                    <a href="#">Catálogo</a>
+                    <a href="#">Eventos</a>
+                    <a href="#">Clientes</a>
+                    <a href="#">Cotizaciones</a>
+                    <a href="#">Pagos</a>
+                    <a href="#">Próximos</a>
+                    <a href="#">Mi perfil</a>
+                </section>
+            </nav>
+        </>
+    )
+}
+
+export default NavBar

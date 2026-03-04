@@ -1,0 +1,190 @@
+/* ============================================
+   NAVEGACIÓN - UNA SOLA LÍNEA HORIZONTAL
+   ============================================ */
+
+@view-transition {
+    navigation: auto;
+}
+
+:root {
+    --grey-background: #E5E5E5;
+    --grey-hover: #f3f4f6;
+    --black-font: #000000;
+    --active-color: #1A1A1A; /* Color para texto activo */
+    --nav-background: white;
+    --border-button: #D1D5DB;
+}
+
+a, button, .open-menu, .close-menu {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Contenedor principal centrado */
+nav {
+    max-width: 1440px;
+    width: 100%;
+    margin: 40px auto 0 auto;
+    padding: 0 96px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+/* Contenedor de links con fondo gris */
+nav .nav-links {
+    display: flex;
+    gap: 4px;
+    background: var(--grey-background);
+    border-radius: 14px;
+    padding: 0.25em 0.5em;
+    width: fit-content;
+}
+
+nav a {
+    padding: 6px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--black-font);
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-weight: 400; /* Normal por defecto */
+}
+
+nav a:hover {
+    background: var(--grey-hover);
+}
+
+/* ESTILOS MEJORADOS PARA ENLACE ACTIVO */
+nav a.active {
+    background: white;
+    color: var(--active-color);
+    font-weight: 600; /* Más grueso */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra para destacar */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+    transform: translateY(-1px); /* Efecto elevado */
+}
+
+/* Efecto hover para enlace activo */
+nav a.active:hover {
+    background: white; /* Mantener blanco en hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    transform: translateY(-2px);
+}
+
+/* Botones móviles */
+.close-menu,
+.open-menu {
+    width: 2em;
+    height: 2em;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 1px solid var(--border-button);
+    background: var(--nav-background);
+    transition: all 0.3s ease;
+    display: none;
+}
+
+.close-menu {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 4;
+}
+
+
+
+.close-menu:hover,
+.open-menu:hover {
+    background: var(--grey-hover);
+}
+
+.close-menu svg,
+.open-menu svg {
+
+    pointer-events: none;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+    nav {
+        padding: 0 48px;
+    }
+}
+
+@media (max-width: 1000px) {
+    /* Permite wrap si no caben */
+    nav .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 720px) {
+    nav {
+        z-index: 999;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 2em;
+        position: fixed;
+        background: var(--grey-background);
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        left: -105%;
+        top: 0;
+        transition: left 0.3s ease;
+    }
+
+    nav .nav-links {
+        flex-direction: column;
+        width: 80%;
+        background: transparent;
+        gap: 0.5em;
+        align-items: stretch;
+    }
+
+    nav a {
+        padding: 0.75em 2em;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    /* Estilos activos en móvil */
+    nav a.active {
+        background: white;
+        color: var(--active-color);
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .open-menu,
+    .close-menu {
+        display: grid;
+        place-items: center;
+    }
+
+    nav.menu-open {
+        left: 0;
+    }
+}
