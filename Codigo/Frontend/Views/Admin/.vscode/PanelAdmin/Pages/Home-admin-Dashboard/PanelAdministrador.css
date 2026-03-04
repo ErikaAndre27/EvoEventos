@@ -29,7 +29,7 @@ main.dashboard {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 32px 96px 81px;
+  padding: 32px  clamp(16px,5vw,96px) 81px; /* 32px arriba, 16px a 96px a los lados dependiendo del tamaño de la pantalla, y 81px abajo */
 }
 
 main.dashboard h1 {
@@ -55,7 +55,7 @@ main.dashboard .subtitle {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 55px;
   width: 100%;
 }
 
@@ -133,7 +133,7 @@ main.dashboard .subtitle {
 }
 
 
-.activity,
+.activity
 .top-asesores {
   background: #ffffff;
   border-radius: 14px;
@@ -149,10 +149,13 @@ main.dashboard .subtitle {
   font-weight: 500;
   color: var(--color-texto);
   margin-bottom: 10px;
+  padding-bottom: 29px;
 }
 
 /* Botón "Ver Todo" */
 button.view.all {
+  max-width: 120px;
+  max-height: 32px;
   padding: 8px 20px;
   background: white;
   border: 1px solid var(--color-borde);
@@ -161,8 +164,6 @@ button.view.all {
   font-size: 14px;
   color: var(--color-texto-secundario);
   transition: all 0.2s;
-  float: right;
-  margin-top: -44px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -187,6 +188,7 @@ button.view.all:hover {
   padding: 16px;
   margin-bottom: 12px;
   transition: all 0.2s ease;
+  margin-bottom: 25px;
 }
 
 .activity li:last-child,

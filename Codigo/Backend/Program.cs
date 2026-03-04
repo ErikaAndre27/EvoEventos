@@ -1,5 +1,6 @@
 using BackEvoEventos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -42,7 +43,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
+    options.AddPolicy("AllowAll",
         builder => builder
             .AllowAnyOrigin()  // Permitir cualquier origen
             .AllowAnyMethod()  // Permitir cualquier método HTTP
@@ -84,10 +85,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowSpecificOrigin");
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 
 app.Use(async (context, next) =>
