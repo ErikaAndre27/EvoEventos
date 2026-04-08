@@ -1,6 +1,6 @@
 import './NavBar.css'
 import './topbar.css'
-import Logo from './assets/Logo.svg'
+import Logo from './assets/Icons/Logo.svg'
 import ExitIcon from './assets/icons/exit.svg'
 import { useState } from 'react'
 

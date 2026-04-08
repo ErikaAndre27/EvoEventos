@@ -10,12 +10,16 @@
     --grey-background: #E5E5E5;
     --grey-hover: #f3f4f6;
     --black-font: #000000;
-    --active-color: #1A1A1A; /* Color para texto activo */
+    --active-color: #1A1A1A;
+    /* Color para texto activo */
     --nav-background: white;
     --border-button: #D1D5DB;
 }
 
-a, button, .open-menu, .close-menu {
+a,
+button,
+.open-menu,
+.close-menu {
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -56,7 +60,8 @@ nav a {
     font-family: 'Poppins', sans-serif;
     white-space: nowrap;
     transition: all 0.3s ease;
-    font-weight: 400; /* Normal por defecto */
+    font-weight: 400;
+    /* Normal por defecto */
 }
 
 nav a:hover {
@@ -67,16 +72,22 @@ nav a:hover {
 nav a.active {
     background: white;
     color: var(--active-color);
-    font-weight: 600; /* Más grueso */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra para destacar */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
-    transform: translateY(-1px); /* Efecto elevado */
+    font-weight: 600;
+    /* Más grueso */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra para destacar */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Borde sutil */
+    transform: translateY(-1px);
+    /* Efecto elevado */
 }
 
 /* Efecto hover para enlace activo */
 nav a.active:hover {
-    background: white; /* Mantener blanco en hover */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    background: white;
+    /* Mantener blanco en hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* Sombra más intensa */
     transform: translateY(-2px);
 }
 
@@ -125,6 +136,7 @@ nav a.active:hover {
 }
 
 @media (max-width: 1000px) {
+
     /* Permite wrap si no caben */
     nav .nav-links {
         flex-wrap: wrap;
