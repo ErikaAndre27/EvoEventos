@@ -1,4 +1,4 @@
-.hero-section {
+.heroSection {
   background: #711380;
   font-family: poppins, sans-serif;
   color: white;
@@ -10,14 +10,14 @@
   padding: 0;
 }
 
-.hero-content {
+.heroContent {
   width: 100%;
   max-width: 1200px;
   padding: 60px 20px;
   text-align: center;
 }
 
-.hero-title {
+.heroTitle {
   font-size: 50px;
   font-weight: 700;
   line-height: 1.2;
@@ -27,7 +27,7 @@
   max-width: 834px;
 }
 
-.hero-subtitle {
+.heroSubtitle {
   font-size: 28px;
   font-weight: 400;
   line-height: normal;
@@ -38,7 +38,7 @@
   max-width: 973px;
 }
 
-.hero-buttons {
+.heroButtons {
   display: flex;
   gap: 46px;
   justify-content: center;
@@ -46,7 +46,7 @@
   margin-top: 2rem;
 }
 
-.btn-primary {
+.btnPrimary {
   background-color: white;
   color: #711380;
   text-decoration: none;
@@ -56,7 +56,7 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.btn-secondary {
+.btnSecondary {
   background-color: #4FCE5D;
   color: white;
   text-decoration: none;
@@ -74,25 +74,25 @@
   max-width: 193px;
 }
 
-.btn-secondary .btn-whatsapp {
+.btnWhatsapp {
   width: 32px;
   height: 32px;
 }
 
-.btn-secondary:hover {
+.btnSecondary:hover {
   background-color: #4FCE5D;
 }
 
 @media (max-width: 768px) {
-  .hero-title {
+  .heroTitle {
     font-size: 2rem;
   }
 
-  .hero-subtitle {
+  .heroSubtitle {
     font-size: 1rem;
   }
 
-  .hero-buttons {
+  .heroButtons {
     flex-direction: column;
     gap: 0.75rem;
   }

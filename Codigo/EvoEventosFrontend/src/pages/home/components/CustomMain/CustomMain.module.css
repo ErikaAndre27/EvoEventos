@@ -1,4 +1,4 @@
-.cotizacion-section {
+.cotizacionSection {
   background-color: var(--white);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -9,12 +9,12 @@
   width: 100%;
 }
 
-.cotizacion-info {
+.cotizacionInfo {
   padding-right: 2rem;
   margin-top: 147px;
 }
 
-.section-title {
+.sectionTitle {
   color: #711380;
   font-family: Poppins;
   font-size: 48px;
@@ -23,7 +23,7 @@
   line-height: normal;
 }
 
-.section-description {
+.sectionDescription {
   color: #364153;
   font-family: Poppins;
   font-size: 24px;
@@ -35,21 +35,21 @@
   width: 606px;
 }
 
-.beneficios-grid {
+.beneficiosGrid {
   display: flex;
   flex-direction: column;
   grid-template-columns: repeat(2, 1fr);
   margin: 2rem 0;
 }
 
-.beneficio-item {
+.beneficioItem {
   background: var(--white);
   padding-bottom: 34px;
   border: none;
   display: flex;
 }
 
-.beneficio-texto h3 {
+.beneficioTexto h3 {
   color: #364153;
   font-family: Poppins;
   font-size: 20px;
@@ -59,7 +59,7 @@
   margin-left: 21px;
 }
 
-.beneficio-texto p {
+.beneficioTexto p {
   color: #364153;
   font-family: Poppins;
   font-size: 20px;
@@ -76,13 +76,13 @@
   margin-top: 2rem;
 }
 
-.indicador-card {
+.indicadorCard {
   background: var(--white);
   padding-left: 30px;
   text-align: center;
 }
 
-.indicador-valor {
+.indicadorValor {
   color: #711380;
   font-family: Poppins;
   font-size: 48px;
@@ -92,7 +92,7 @@
   margin-bottom: 0.25rem;
 }
 
-.indicador-desc {
+.indicadorDesc {
   color: #364153;
   font-family: Poppins;
   font-size: 16px;
@@ -101,7 +101,7 @@
   line-height: normal;
 }
 
-.servicios-destacados {
+.serviciosDestacados {
   background-color: var(--white);
   display: grid;
   gap: 3rem;
@@ -111,12 +111,12 @@
   padding: 0px 96px 140px 96px;
 }
 
-.servicios-container {
+.serviciosContainer {
   max-width: 1440px;
   margin: 0 auto;
 }
 
-.section-header {
+.sectionHeader {
   display: grid;
   justify-content: center;
   text-align: center;
@@ -124,7 +124,7 @@
   margin: 0 auto 0;
 }
 
-h2.section-title--unique {
+.sectionTitleUnique {
   min-width: 523px;
   height: 72px;
   color: #711380;
@@ -136,7 +136,7 @@ h2.section-title--unique {
   margin-bottom: 27px;
 }
 
-p.section-description--unique {
+.sectionDescriptionUnique {
   width: 100%;
   color: #364153;
   text-align: center;
@@ -149,7 +149,7 @@ p.section-description--unique {
   min-height: 60px;
 }
 
-.servicios-grid {
+.serviciosGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 46px;
@@ -158,7 +158,7 @@ p.section-description--unique {
   padding-top: 129px;
 }
 
-.servicio-card {
+.servicioCard {
   background: var(--white);
   padding: 24px 18.2px 32px 18.2px;
   border-radius: 10px;
@@ -173,18 +173,18 @@ p.section-description--unique {
   justify-content: center;
 }
 
-.servicio-card:hover {
+.servicioCard:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
 
-.servicio-icon {
+.servicioIcon {
   font-size: 40px;
   margin-bottom: 19px;
   line-height: 0;
 }
 
-.servicio-card h3 {
+.servicioCard h3 {
   min-width: 130px;
   height: 24px;
   color: #711380;
@@ -197,7 +197,7 @@ p.section-description--unique {
   margin-bottom: 30px;
 }
 
-.servicio-card p {
+.servicioCard p {
   color: #364153;
   text-align: center;
   font-family: Poppins;
@@ -208,18 +208,18 @@ p.section-description--unique {
 }
 
 @media (max-width: 1024px) {
-  .cotizacion-section {
+  .cotizacionSection {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .cotizacion-info {
+  .cotizacionInfo {
     padding-right: 0;
   }
 }
 
 @media (max-width: 768px) {
-  .beneficios-grid {
+  .beneficiosGrid {
     grid-template-columns: 1fr;
   }
 }

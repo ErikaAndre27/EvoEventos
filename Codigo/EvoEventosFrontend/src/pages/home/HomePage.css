@@ -44,13 +44,6 @@ body {
     background-color: var(--gray-50);
 }
 
-@import './components/CustomHeader.css';
-@import './components/HeroSection.css';
-@import './components/ContactForm.css';
-@import './components/CustomMain.css';
-@import './components/ProductsSection.css';
-@import './components/CustomFooter.css';
-
 .container {
     max-width: 1440px;
     margin: 0 auto;

@@ -1,4 +1,4 @@
-.productos-section {
+.productosSection {
   background-color: #FAF5FE;
   display: grid;
   gap: 40px;
@@ -7,7 +7,37 @@
   padding: 0px 96px 34px 96px;
 }
 
-.productos-grid {
+.sectionHeader {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  color: #711380;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sectionDescriptionUnique {
+  width: 100%;
+  color: #364153;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 606px;
+  min-height: 60px;
+}
+
+.productosGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 68px;
@@ -15,7 +45,7 @@
   padding: 0 55px;
 }
 
-.producto-card {
+.productoCard {
   background: var(--white);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -27,12 +57,12 @@
   height: 380px;
 }
 
-.producto-card:hover {
+.productoCard:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-xl);
 }
 
-.producto-badge {
+.productoBadge {
   position: absolute;
   top: 14px;
   left: 23px;
@@ -45,17 +75,17 @@
   z-index: 1;
 }
 
-.producto-imagen {
+.productoImagen {
   width: 100%;
   height: 190px;
   object-fit: cover;
 }
 
-.producto-info {
+.productoInfo {
   padding: 0px 25px 22px;
 }
 
-.producto-info h3 {
+.productoInfo h3 {
   margin-top: 10px;
   height: 36px;
   color: #711380;
@@ -67,7 +97,7 @@
   line-height: normal;
 }
 
-.producto-info p {
+.productoInfo p {
   color: #364153;
   font-family: Poppins;
   font-size: 16px;
@@ -78,7 +108,7 @@
   margin-bottom: 21px;
 }
 
-.btn-producto {
+.btnProducto {
   width: 280.182px;
   height: 33px;
   background: #711380;
@@ -92,12 +122,12 @@
   transition: all 0.2s;
 }
 
-.btn-producto:hover {
+.btnProducto:hover {
   background: var(--primary);
   color: var(--white);
 }
 
-.ver-inventario {
+.verInventario {
   text-align: center;
   color: #FFF;
   font-family: Poppins;
@@ -107,7 +137,7 @@
   line-height: normal;
 }
 
-.btn-inventario {
+.btnInventario {
   background: var(--primary);
   font-family: poppins, sans-serif;
   color: var(--white);
@@ -120,12 +150,12 @@
   transition: background-color 0.2s;
 }
 
-.btn-inventario:hover {
+.btnInventario:hover {
   background: var(--primary-dark);
 }
 
 @media (max-width: 768px) {
-  .productos-grid {
+  .productosGrid {
     grid-template-columns: 1fr;
   }
 }
