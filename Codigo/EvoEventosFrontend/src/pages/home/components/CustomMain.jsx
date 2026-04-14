@@ -13,6 +13,9 @@ import PersonStar from '@assets/Icons/PersonStar.svg'
 import ContactForm from './ContactForm'
 import ProductsSection from './ProductsSection'
 
+import './CustomMain.css'
+
+
 
 
 const CustomMain = () => {

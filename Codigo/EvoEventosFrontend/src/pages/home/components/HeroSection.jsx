@@ -1,4 +1,5 @@
 import whatsapp from '../../../assets/Icons/whatsapp.svg'
+import './HeroSection.css'
 
 const HeroSection = () => {
     return (

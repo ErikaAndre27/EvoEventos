@@ -1,7 +1,9 @@
 import Logo from '@assets/Icons/Logo.svg'
 import login from '@assets/Icons/login.svg'
+import './CustomHeader.css'
 
-const CustomHeader = () => {
+const CustomHeader = ({ openModal = () => { } }) => {
+
     return (
         <header class="main-header">
             <div>
@@ -22,7 +24,7 @@ const CustomHeader = () => {
 
 
                 <div className="header-right">
-                    <button className="btn-empleados" >
+                    <button className="btn-empleados" onClick={openModal}>
                         <img src={login} className="btn-icon" />
                         <span>Ingreso empleados</span>
                     </button>

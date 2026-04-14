@@ -1,0 +1,131 @@
+.productos-section {
+  background-color: #FAF5FE;
+  display: grid;
+  gap: 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0px 96px 34px 96px;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 68px;
+  max-width: 1440px;
+  padding: 0 55px;
+}
+
+.producto-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  max-width: 336px;
+  height: 380px;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.producto-badge {
+  position: absolute;
+  top: 14px;
+  left: 23px;
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.producto-imagen {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.producto-info {
+  padding: 0px 25px 22px;
+}
+
+.producto-info h3 {
+  margin-top: 10px;
+  height: 36px;
+  color: #711380;
+  text-align: left;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.producto-info p {
+  color: #364153;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 54px;
+  margin-bottom: 21px;
+}
+
+.btn-producto {
+  width: 280.182px;
+  height: 33px;
+  background: #711380;
+  color: var(--white);
+  border: var(--primary);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-family: poppins, sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-producto:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.ver-inventario {
+  text-align: center;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.btn-inventario {
+  background: var(--primary);
+  font-family: poppins, sans-serif;
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 2.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-inventario:hover {
+  background: var(--primary-dark);
+}
+
+@media (max-width: 768px) {
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+}

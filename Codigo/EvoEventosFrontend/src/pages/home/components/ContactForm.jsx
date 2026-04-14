@@ -1,4 +1,5 @@
 import MessageCash from '@assets/Icons/MessageCash.svg'
+import './ContactForm.css'
 
 
 const ContactForm = () => {

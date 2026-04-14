@@ -5,6 +5,8 @@ import EquipoSonido from '@assets/Images/EquipoSonido.jpg'
 import Carpas from '@assets/Images/Carpas.jpg'
 import Mobiliario from '@assets/Images/Mobiliario.jpg'
 
+import './ProductsSection.css'
+
 
 
 

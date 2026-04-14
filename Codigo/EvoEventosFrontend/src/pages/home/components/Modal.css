@@ -1,0 +1,329 @@
+:root {
+    --color-principal: #711380;
+    --color-principal-hover: #5a0f67;
+    --color-texto: #2d2d2d;
+    --color-texto-suave: #666;
+    --color-borde: #e0e0e0;
+    --radio-borde: 14px;
+    --fuente: 'Poppins', sans-serif;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fuente);
+    color: var(--color-texto);
+}
+
+
+.btn-abrir {
+    margin-top: 8px;
+    padding: 12px 32px;
+    background: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--fuente);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-abrir:hover {
+    background: var(--color-principal-hover);
+    transform: translateY(-1px);
+}
+
+
+/* ── Overlay (fondo oscuro + blur) ────────
+   Cubre toda la pantalla.
+   El blur lo aplica al body a través de JS
+   añadiendo la clase "modal-abierto".
+────────────────────────────────────────── */
+.overlay {
+    /* Ocupa toda la pantalla */
+    position: fixed;
+    inset: 0;
+    /* equivale a top:0; right:0; bottom:0; left:0 */
+
+    background: rgba(0, 0, 0, 0.45);
+
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    z-index: 100;
+}
+
+/* Cuando el modal está abierto, el overlay se muestra */
+.overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Blur en la página de fondo cuando el modal está abierto */
+body.modal-abierto .pagina-fondo {
+    filter: blur(4px);
+}
+
+
+/* ── MODAL ─────────────────────────────── */
+.modal {
+    position: fixed;
+
+    /* Centrar en pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    /* -48% para efecto de entrada */
+
+    width: 90%;
+    max-width: 420px;
+
+    background: white;
+    border-radius: var(--radio-borde);
+    padding: 40px 36px 36px;
+
+    /* Sombra para que flote sobre la página */
+    box-shadow: 0 20px 60px rgba(113, 19, 128, 0.18), 0 4px 16px rgba(0, 0, 0, 0.08);
+
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+
+    z-index: 200;
+    /* Encima del overlay */
+}
+
+/* Cuando el modal está abierto */
+.modal.activo {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+    /* Posición final centrada */
+}
+
+/* ── Botón cerrar (X) ──────────────────── */
+.btn-cerrar {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    background: #f5f5f5;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+
+    font-size: 0.9rem;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-cerrar:hover {
+    background: #ffe0ff;
+    color: var(--color-principal);
+}
+
+/* ── Encabezado del modal ──────────────── */
+.modal-encabezado {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.icono-logo {
+    margin-bottom: 10px;
+}
+
+.titulo {
+    color: #711380;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.subtitulo {
+    color: #711380;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+/* ── Formulario ────────────────────────── */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Cada grupo label + input */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    letter-spacing: 0.01em;
+}
+
+/* Estilo compartido para input, select y password-wrapper */
+.campo input,
+.campo select,
+.campo-password {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--color-borde);
+    border-radius: 10px;
+    font-family: var(--fuente);
+    font-size: 0.875rem;
+    color: var(--color-texto);
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Foco en inputs y select */
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 3px rgba(113, 19, 128, 0.1);
+    background: white;
+}
+
+/* Color del placeholder */
+.campo input::placeholder {
+    color: #bbb;
+    font-weight: 300;
+}
+
+/* Estilo del select */
+.campo select {
+    cursor: pointer;
+    appearance: none;
+    /* Quita la flecha nativa del navegador */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+/* ── Campo contraseña (input + botón ojo) */
+.campo-password {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    /* El padding va en el input */
+    gap: 0;
+}
+
+.campo-password input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    /* Ocupa todo el espacio disponible */
+    padding: 11px 14px;
+    outline: none;
+}
+
+/* El focus del wrapper cuando el input está activo */
+.campo-password:focus-within {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 3px rgba(113, 19, 128, 0.1);
+    background: white;
+}
+
+/* Botón del ojo */
+.btn-ver-password {
+    background: none;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+}
+
+.btn-ver-password:hover {
+    opacity: 0.7;
+}
+
+/* ── Botón "Iniciar Sesión" ────────────── */
+.btn-ingresar {
+    margin-top: 4px;
+    padding: 13px;
+    background: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: var(--fuente);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s;
+}
+
+.btn-ingresar:hover {
+    background: var(--color-principal-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(113, 19, 128, 0.3);
+}
+
+.btn-ingresar:active {
+    transform: translateY(0);
+}
+
+/* ── Link "¿Olvidaste tu contraseña?" ──── */
+.link-olvido {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-principal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.link-olvido:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+/* ── Responsive ────────────────────────── */
+@media (max-width: 480px) {
+    .modal {
+        padding: 32px 24px 28px;
+    }
+
+    .titulo {
+        font-size: 1.35rem;
+    }
+}

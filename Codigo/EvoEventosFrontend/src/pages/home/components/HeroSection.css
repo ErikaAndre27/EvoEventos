@@ -1,0 +1,99 @@
+.hero-section {
+  background: #711380;
+  font-family: poppins, sans-serif;
+  color: white;
+  width: 100%;
+  min-height: 367px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: white;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  max-width: 834px;
+}
+
+.hero-subtitle {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: normal;
+  font-style: normal;
+  color: white;
+  text-align: center;
+  margin: 0 auto 2rem auto;
+  max-width: 973px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 46px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  background-color: white;
+  color: #711380;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 29px;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-secondary {
+  background-color: #4FCE5D;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #4FCE5D;
+  transition: background-color 0.2s;
+  font-family: poppins, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 11.99px;
+  height: 42px;
+  white-space: nowrap;
+  max-width: 193px;
+}
+
+.btn-secondary .btn-whatsapp {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-secondary:hover {
+  background-color: #4FCE5D;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
