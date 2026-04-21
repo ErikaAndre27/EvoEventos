@@ -27,7 +27,7 @@ export default function EventDetailsModal({ open, event, onClose }) {
             <p><strong>Fecha:</strong> {event.date}</p>
             <p><strong>Hora:</strong> {event.hour}</p>
             <p><strong>Ubicacion:</strong> {event.place}</p>
-            <p><strong>Invitados:</strong> 120</p>
+            <p><strong>Invitados:</strong> {event.guests ?? '—'}</p>
           </div>
         </div>
         <p className="ad-caption">Informacion Financiera</p>

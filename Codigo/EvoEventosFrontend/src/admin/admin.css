@@ -53,6 +53,45 @@
 .ad-note { background:#f8f8fc; border:1px solid var(--ad-border); border-radius:10px; padding:10px; font-size:.9rem; }
 .ad-form { display:grid; gap:10px; }
 .ad-form label { display:grid; gap:6px; font-size:.85rem; color:#56566e; }
-.ad-form input, .ad-form textarea { border:1px solid var(--ad-border); border-radius:10px; padding:10px; font:inherit; }
+.ad-form input, .ad-form textarea, .ad-form select { border:1px solid var(--ad-border); border-radius:10px; padding:10px; font:inherit; }
 .ad-form textarea { min-height:80px; resize:vertical; }
+
+/* Stat cards */
+.ad-stat-row { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.ad-stat-row div small { color:var(--ad-muted); display:block; font-size:.8rem; margin-bottom:4px; }
+.ad-stat-row div strong { font-size:1.6rem; line-height:1; }
+.ad-stat-icon { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex-shrink:0; }
+.ad-stat-icon--purple { background:#eeddf2; color:#711380; }
+.ad-stat-icon--green  { background:#dbfce5; color:#11733a; }
+.ad-stat-icon--yellow { background:#fff7cc; color:#9f6a00; }
+.ad-stat-icon--gray   { background:#f3f3f7; color:#6b6b80; }
+
+/* Status filter select */
+.ad-filter-select { border:1px solid var(--ad-border); background:#fff; border-radius:10px; padding:0 14px; height:40px; font:inherit; color:#4e4e68; cursor:pointer; min-width:180px; }
+
+/* Badge red for cancelled */
+.ad-badge--red { background:#ffe0e0; color:#b91c1c; }
+
+/* Inventory card styles */
+.ad-inv-title { display:flex; align-items:flex-start; gap:8px; }
+.ad-inv-title h3 { margin:0; font-size:.95rem; }
+.ad-inv-title p { margin:2px 0 0; font-size:.8rem; color:var(--ad-muted); }
+.inv-icon--green { color:#11733a; flex-shrink:0; margin-top:2px; }
+.inv-icon--yellow { color:#9f6a00; flex-shrink:0; margin-top:2px; }
+.inv-icon--red { color:#b91c1c; flex-shrink:0; margin-top:2px; }
+.ad-inv-desc { margin:10px 0 8px; font-size:.83rem; }
+.ad-inv-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0 4px; }
+.ad-inv-row small { color:var(--ad-muted); display:block; font-size:.75rem; }
+.ad-inv-row strong { font-size:.95rem; }
+.ad-inv-avail { color:#e07b00; }
+.ad-inv-meta { border-top:1px solid var(--ad-border); padding-top:8px; margin-top:6px; display:flex; flex-direction:column; gap:4px; }
+.ad-inv-meta div { display:flex; justify-content:space-between; font-size:.82rem; }
+.ad-inv-meta-label { color:var(--ad-muted); }
+.ad-inv-meta strong { font-weight:600; font-size:.82rem; }
+.ad-icon-btn--danger { color:#de1f1f; border-color:#ffd0d0; }
+.ad-icon-btn--danger:hover { background:#fff0f0; }
+
+/* 3-col grid for modal row */
+.ad-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+
 @media (max-width: 960px) { .ad-stats,.ad-grid,.ad-grid--inventory { grid-template-columns:1fr; } .ad-card-money,.ad-finance,.ad-grid-2 { grid-template-columns:1fr; } }
