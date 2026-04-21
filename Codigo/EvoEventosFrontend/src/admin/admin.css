@@ -1,0 +1,58 @@
+.ad-root { min-height: 100vh; background: var(--ad-bg); }
+.ad-header { display:flex; justify-content:space-between; align-items:center; padding:14px 28px; border-bottom:1px solid var(--ad-border); background:#fff; }
+.ad-header__left { display:flex; align-items:center; gap:10px; }
+.ad-header__left img { height:32px; width:auto; }
+.ad-header__left span { color:var(--ad-muted); font-size:.9rem; }
+.ad-tabs { display:flex; flex-wrap:wrap; gap:6px; margin:16px 28px; padding:6px; background:#ececef; border-radius:12px; width:max-content; max-width:calc(100% - 56px); }
+.ad-tabs button { border:0; padding:6px 12px; border-radius:8px; background:transparent; cursor:pointer; font:inherit; }
+.ad-tabs button.is-active { background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.ad-main { padding:0 28px 32px; }
+.ad-head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; flex-wrap:wrap; margin:10px 0 16px; }
+.ad-head h1 { margin:0; font-size:2rem; text-transform:capitalize; }
+.ad-head p { margin:4px 0 0; color:var(--ad-muted); }
+.ad-actions { display:flex; gap:8px; flex-wrap:wrap; }
+.ad-btn { border:1px solid var(--ad-border); border-radius:10px; background:#fff; color:#3c3c56; padding:10px 14px; cursor:pointer; font:inherit; display:inline-flex; gap:6px; align-items:center; }
+.ad-btn img { width:16px; height:16px; }
+.ad-btn--primary { background:var(--ad-primary); color:#fff; border-color:transparent; }
+.ad-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px; }
+.ad-card { background:#fff; border:1px solid var(--ad-border); border-radius:14px; padding:14px; }
+.ad-card small { color:var(--ad-muted); display:block; }
+.ad-card strong { font-size:1.6rem; }
+.ad-toolbar { display:flex; gap:10px; margin-bottom:16px; }
+.ad-input { border:1px solid var(--ad-border); background:#fff; border-radius:10px; padding:8px 10px; display:flex; align-items:center; gap:8px; flex:1; color:var(--ad-muted); }
+.ad-input input { border:0; outline:none; font:inherit; width:100%; background:transparent; }
+.ad-filter { border:1px solid var(--ad-border); background:#fff; border-radius:10px; padding:0 12px; display:inline-flex; align-items:center; gap:8px; color:#4e4e68; }
+.ad-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.ad-grid--inventory { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.ad-card-head { display:flex; justify-content:space-between; gap:8px; }
+.ad-card-head h3 { margin:0; font-size:1rem; }
+.ad-card-head p { margin:2px 0 0; font-size:.85rem; color:var(--ad-muted); }
+.ad-mini-actions { display:flex; gap:6px; }
+.ad-icon-btn { width:28px; height:28px; border:1px solid var(--ad-border); border-radius:8px; background:#fff; display:grid; place-items:center; cursor:pointer; }
+.ad-tags { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+.ad-badge { border-radius:999px; padding:3px 8px; font-size:.72rem; display:inline-flex; gap:4px; align-items:center; }
+.ad-badge--neutral { background:#f3f3f7; color:#4a4a60; }
+.ad-badge--green, .ad-badge--success { background:#dbfce5; color:#11733a; }
+.ad-badge--yellow { background:#fff7cc; color:#9f6a00; }
+.ad-badge--purple { background:#eeddf2; color:#711380; }
+.ad-badge--blue { background:#dde9ff; color:#2857c8; }
+.ad-muted { color:var(--ad-muted); font-size:.85rem; margin:6px 0; }
+.ad-card-money, .ad-stock-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; border-top:1px solid var(--ad-border); padding-top:8px; margin-top:8px; }
+.ad-stock-row { grid-template-columns:repeat(2,1fr); }
+.ad-card-money strong { font-size:.95rem; }
+.ok { color:#00a63e; }
+.bad { color:#de1f1f; }
+.ad-overlay { position:fixed; inset:0; background:rgba(0,0,0,.45); display:grid; place-items:center; padding:16px; z-index:20; }
+.ad-modal { width:min(640px,100%); background:#fff; border:1px solid var(--ad-border); border-radius:14px; padding:16px; max-height:90vh; overflow:auto; }
+.ad-modal__header { display:flex; justify-content:space-between; align-items:center; }
+.ad-modal__header h3 { margin:0; }
+.ad-grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.ad-caption { margin:10px 0 8px; text-transform:capitalize; color:#5a5a72; font-weight:600; font-size:.85rem; }
+.ad-finance { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.ad-finance div { background:#f8f8fc; border:1px solid var(--ad-border); border-radius:10px; padding:8px; display:flex; flex-direction:column; }
+.ad-note { background:#f8f8fc; border:1px solid var(--ad-border); border-radius:10px; padding:10px; font-size:.9rem; }
+.ad-form { display:grid; gap:10px; }
+.ad-form label { display:grid; gap:6px; font-size:.85rem; color:#56566e; }
+.ad-form input, .ad-form textarea { border:1px solid var(--ad-border); border-radius:10px; padding:10px; font:inherit; }
+.ad-form textarea { min-height:80px; resize:vertical; }
+@media (max-width: 960px) { .ad-stats,.ad-grid,.ad-grid--inventory { grid-template-columns:1fr; } .ad-card-money,.ad-finance,.ad-grid-2 { grid-template-columns:1fr; } }

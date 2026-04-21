@@ -1,13 +1,6 @@
-import './App.css'
-import NavBar from './NavBar'
-function App() {
+import AdminPanel from './admin/AdminPanel'
 
-  return (
-    <>
-    <NavBar />
-    <h1>Hola mundo!</h1>
-    </>
-  )
+export default function App() {
+  return <AdminPanel />
 }
 
-export default App
