@@ -46,7 +46,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll",
         builder => builder
             .AllowAnyOrigin()  // Permitir cualquier origen
-            .AllowAnyMethod()  // Permitir cualquier método HTTP
+            .AllowAnyMethod()  // Permitir cualquier mï¿½todo HTTP
             .AllowAnyHeader()); // Permitir cualquier cabecera
 });
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
@@ -76,6 +76,17 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireAdmin", p => p.RequireRole("Admin"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -85,8 +96,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowAll");
 app.UseHttpsRedirection();
+
+app.UseCors(policy => policy
+    .WithOrigins("http://localhost:5173") // tu frontend
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials()
+);
 app.UseAuthentication();
 
 app.Use(async (context, next) =>
@@ -108,12 +125,14 @@ app.Use(async (context, next) =>
         context.Response.ContentType = "application/json";
         var result = System.Text.Json.JsonSerializer.Serialize(new
         {
-            mensaje = "Acceso no autorizado. No posee los permisos para realizar esta acción."
+            mensaje = "Acceso no autorizado. No posee los permisos para realizar esta acciï¿½n."
         });
         await context.Response.WriteAsync(result);
 
     }
 });
+
+
 
 app.UseAuthorization();
 

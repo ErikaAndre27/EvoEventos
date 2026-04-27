@@ -3,9 +3,16 @@ import './topbar.css'
 import Logo from './assets/Icons/Logo.svg'
 import ExitIcon from './assets/icons/exit.svg'
 import { useState } from 'react'
+import { NavLink } from 'react-router'
+import { useAuthStore } from './store/auth'
+import { useNavigate } from 'react-router'
+
 
 const NavBar = () => {
     const [openMenu, setOpenMenu] = useState(false);
+
+    const logout = useAuthStore(state => state.logout)
+    const navigate = useNavigate()
 
     return (
         <>
@@ -24,7 +31,11 @@ const NavBar = () => {
                     <div class="subtitle">Panel de Asesor</div>
                 </div>
 
-                <button class="exit-btn">
+                <button class="exit-btn" onClick={() => {
+                    logout()
+                    navigate('/home')
+
+                }}>
                     <span class="icon"><img src={ExitIcon} alt="Salir" /></span> <p>Salir</p>
                 </button>
             </header>
@@ -37,16 +48,16 @@ const NavBar = () => {
                     </svg>
                 </button>
 
-                <section class="nav-links">
-                    <a href="#">Dashboard</a>
-                    <a href="#">Solicitudes</a>
-                    <a href="#">Catálogo</a>
-                    <a href="#">Eventos</a>
-                    <a href="#">Clientes</a>
-                    <a href="#">Cotizaciones</a>
-                    <a href="#">Pagos</a>
-                    <a href="#">Próximos</a>
-                    <a href="#">Mi perfil</a>
+                <section className="nav-links">
+                    <NavLink to='/dashboard'>Dashboard</NavLink>
+                    <NavLink to="/solicitudes">Solicitudes</NavLink>
+                    <NavLink to="/catalogo">Catálogo</NavLink>
+                    <NavLink to="/eventos">Eventos</NavLink>
+                    <NavLink to="/">Clientes</NavLink>
+                    <NavLink to="/cotizaciones">Cotizaciones</NavLink>
+                    <NavLink to="/">Pagos</NavLink>
+                    <NavLink to="/">Próximos</NavLink>
+                    <NavLink to="/">Mi perfil</NavLink>
                 </section>
             </nav>
         </>

@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import './MainHome.css'
+import './HomePage.css'
 import CustomHeader from './components/CustomHeader/CustomHeader'
 import HeroSection from './components/HeroSection/HeroSection'
 import CustomFooter from './components/CustomFooter/CustomFooter'
 import CustomMain from './components/CustomMain/CustomMain'
 import Modal from './components/Modal/Modal'
+import NavBar from '../../NavBar'
 
 
-const HomePage = () => {
+export const HomePage = () => {
     const [isOpen, setIsOpen] = useState(false)
     const openModal = () => setIsOpen(true)
     const closeModal = () => setIsOpen(false)
@@ -34,4 +35,3 @@ const HomePage = () => {
     )
 }
 
-export default HomePage

@@ -44,7 +44,7 @@ namespace BackEvoEventos.Controllers
             {
                 return BadRequest("Requerimiento inválido");
             }
-            
+
             var Credential = await _CredentialRepository.GetCredentialByIdentifier(Login.Identifier);
 
             if (Credential == null)
@@ -63,6 +63,7 @@ namespace BackEvoEventos.Controllers
                 var SecretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration["Jwt:Key"]));
 
                 var SigningCredentials = new SigningCredentials(SecretKey, SecurityAlgorithms.HmacSha256);
+                var Expiration = DateTime.UtcNow.AddMinutes(30);
 
                 var TokenOptions = new JwtSecurityToken(
                     issuer: _Configuration["Jwt:Issuer"],
@@ -72,14 +73,24 @@ namespace BackEvoEventos.Controllers
                         new Claim(ClaimTypes.Name, Login.Identifier),
                         new Claim(ClaimTypes.Role, Rol.Name)
                     },
-                    expires: DateTime.UtcNow.AddDays(1),
+                    expires: Expiration,
                     signingCredentials: SigningCredentials
-                    ); 
+                    );
 
                 var TokenString = new JwtSecurityTokenHandler().WriteToken(TokenOptions);
-                return Ok(new { Token = TokenString });
 
-                
+                return Ok(new
+                {
+                    User.Names,
+                    User.Surnames,
+                    User.Email,
+                    Role = User.Role.Name,
+                    Token = TokenString,
+                    LastLogin = User.Credentials.FirstOrDefault()?.LastLogin,
+                    Expires = Expiration
+                });
+
+
             }
             else
             {

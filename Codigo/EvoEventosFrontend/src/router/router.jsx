@@ -1,22 +1,41 @@
-import { createBrowserRouter } from "react-router"
-import { Home } from "../pages/home/Home"
+import { HomePage } from "../pages/home/HomePage"
 import Layout from "../layout/Layout"
-import { Dashboard } from "../pages/admin/dashboard"
+import { Dashboard } from "../pages/dashboard/Dashboard"
+import { BrowserRouter, Routes, Route } from 'react-router'
+import { ProtectedRoute } from "./ProtectedRoute"
+import { useAuthStore } from "../store/auth"
 
-export const router = ({ isLogged, login, logout }) => createBrowserRouter([
-    {
-        path: '/',
-        element: <Layout isLogged={isLogged} />,
-        errorElement: <h1>404 Not Found</h1>,
-        children: [
-            {
-                path: '',
-                element: <Dashboard logout={logout} />
-            }
-        ]
-    },
-    {
-        path: '/home',
-        element: <Home login={login} isLogged={isLogged} />
-    }
-])
+export const EvoEventosRouter = () => {
+
+    const isAuth = useAuthStore(state => state.isAuth)
+
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/home' element={<HomePage />} />
+
+                    <Route element={<ProtectedRoute isAllowed={isAuth} />}>
+                        <Route path='/dashboard' element={<Dashboard />} />
+                        <Route path='/solicitudes' element={<p>solicitudes</p>} />
+                        <Route path='/clientes' element={<p>clientes</p>} />
+                        <Route path='/catalogo' element={<p>catalogo</p>} />
+                        <Route path='/cotizaciones' element={<p>cotizaciones</p>} />
+                        <Route path='/asesores' element={<p>asesores</p>} />
+                        <Route path='/eventos' element={<p>eventos</p>} />
+                        <Route path='/inventario' element={<p>inventario</p>} />
+                        <Route path='/reportes' element={<p>reportes</p>} />
+                        <Route path='/perfil' element={<p>mi perfil</p>} />
+                    </Route>
+
+
+                    {
+                        /* Ejemplo de uso:
+    
+                        <Route path="/la ruta que use" element={el componente que use} /> */
+                    }
+                </Routes>
+            </BrowserRouter>
+        </>
+    )
+}
