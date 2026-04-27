@@ -1,7 +1,6 @@
 import { HomePage } from "../pages/home/HomePage"
-import Layout from "../layout/Layout"
 import { Dashboard } from "../pages/dashboard/Dashboard"
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
 import { ProtectedRoute } from "./ProtectedRoute"
 import { useAuthStore } from "../store/auth"
 
@@ -16,6 +15,7 @@ export const EvoEventosRouter = () => {
                     <Route path='/home' element={<HomePage />} />
 
                     <Route element={<ProtectedRoute isAllowed={isAuth} />}>
+                        <Route index element={<Navigate to="/dashboard" replace />} />
                         <Route path='/dashboard' element={<Dashboard />} />
                         <Route path='/solicitudes' element={<p>solicitudes</p>} />
                         <Route path='/clientes' element={<p>clientes</p>} />

@@ -49,15 +49,15 @@ const NavBar = () => {
                 </button>
 
                 <section className="nav-links">
-                    <NavLink to='/dashboard'>Dashboard</NavLink>
-                    <NavLink to="/solicitudes">Solicitudes</NavLink>
-                    <NavLink to="/catalogo">Catálogo</NavLink>
-                    <NavLink to="/eventos">Eventos</NavLink>
-                    <NavLink to="/">Clientes</NavLink>
-                    <NavLink to="/cotizaciones">Cotizaciones</NavLink>
-                    <NavLink to="/">Pagos</NavLink>
-                    <NavLink to="/">Próximos</NavLink>
-                    <NavLink to="/">Mi perfil</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to='/dashboard'>Dashboard</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/solicitudes">Solicitudes</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/catalogo">Catálogo</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/eventos">Eventos</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/">Clientes</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/cotizaciones">Cotizaciones</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/">Pagos</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/">Próximos</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/">Mi perfil</NavLink>
                 </section>
             </nav>
         </>

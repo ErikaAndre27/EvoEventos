@@ -73,13 +73,6 @@ nav a.active {
     background: white;
     color: var(--active-color);
     font-weight: 600;
-    /* Más grueso */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    /* Sombra para destacar */
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    /* Borde sutil */
-    transform: translateY(-1px);
-    /* Efecto elevado */
 }
 
 /* Efecto hover para enlace activo */
@@ -87,8 +80,7 @@ nav a.active:hover {
     background: white;
     /* Mantener blanco en hover */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    /* Sombra más intensa */
-    transform: translateY(-2px);
+
 }
 
 /* Botones móviles */
