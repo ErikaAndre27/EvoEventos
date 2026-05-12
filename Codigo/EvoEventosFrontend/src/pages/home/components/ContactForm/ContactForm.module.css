@@ -13,7 +13,7 @@
 }
 
 .formHeader {
-  background-color: #711380;
+  background-color: var(--primary);
   position: relative;
   padding: 0;
   height: 157px;
@@ -33,9 +33,9 @@
 .formHeading {
   width: 302px;
   height: 36px;
-  color: #FFF;
+  color: var(--white);
   text-align: center;
-  font-family: Poppins;
+  font-family: var(--font-secondary);
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -174,7 +174,7 @@
   border-color: #9B59B6;
 }
 
-.checkboxCard input[type="checkbox"]:checked + span {
+.checkboxCard input[type="checkbox"]:checked+span {
   font-weight: 500;
 }
 

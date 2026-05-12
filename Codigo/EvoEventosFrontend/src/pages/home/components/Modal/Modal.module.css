@@ -24,11 +24,11 @@ body {
 .btnAbrir {
     margin-top: 8px;
     padding: 12px 32px;
-    background: var(--color-principal);
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     border: none;
     border-radius: 50px;
-    font-family: var(--fuente);
+    font-family: var(--font-secondary);
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
@@ -36,7 +36,7 @@ body {
 }
 
 .btnAbrir:hover {
-    background: var(--color-principal-hover);
+    background: var(--primary-dark);
     transform: translateY(-1px);
 }
 
@@ -67,8 +67,8 @@ body {
     transform: translate(-50%, -48%);
     width: 90%;
     max-width: 420px;
-    background: white;
-    border-radius: var(--radio-borde);
+    background: var(--white);
+    border-radius: var(--radius-lg);
     padding: 40px 36px 36px;
     box-shadow: 0 20px 60px rgba(113, 19, 128, 0.18), 0 4px 16px rgba(0, 0, 0, 0.08);
     opacity: 0;
@@ -87,13 +87,13 @@ body {
     position: absolute;
     top: 16px;
     right: 16px;
-    background: #f5f5f5;
+    background: var(--gray-100);
     border: none;
     border-radius: 50%;
     width: 32px;
     height: 32px;
     font-size: 0.9rem;
-    color: #888;
+    color: var(--gray-500);
     cursor: pointer;
     line-height: 1;
     display: flex;

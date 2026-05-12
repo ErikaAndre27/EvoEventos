@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { useAuthStore } from '../store/auth'
 
-const authApi = axios.create({
+const EvoEventosApi = axios.create({
   baseURL: "http://localhost:5031/api",
   withCredentials: true
 })
 
-authApi.interceptors.request.use(config => {
+EvoEventosApi.interceptors.request.use(config => {
   const token = useAuthStore.getState().token
   config.headers = {
     Authorization: `Bearer ${token}`
@@ -14,4 +14,4 @@ authApi.interceptors.request.use(config => {
   return config
 })
 
-export default authApi
+export default EvoEventosApi

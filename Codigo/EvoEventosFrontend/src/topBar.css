@@ -1,41 +1,33 @@
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-    
-
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #f0f0f5;
-    color: #333;
+    font-family: var(--font-primary);
+    background-color: var(--gray-50);
+    color: var(--gray-800);
 }
 
 /* ============================================
    HEADER - BARRA SUPERIOR
    ============================================ */
 
+/* Reorganizamos el flex para que funcione correctamente */
 header.main-header {
     position: sticky;
     top: 0;
     z-index: 1;
-    background: white;
-    border-bottom: 1px solid #e0e0e0;
-    width: 100%;
     display: flex;
-    justify-content: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Contenedor interno con ancho máximo */
-header.main-header > * {
+    justify-content: space-between;
+    align-items: center;
     max-width: 1440px;
-    /* width: 100%; */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 96px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+    height: 70px;
 }
 
 /* Layout interno: logo izquierda, botón derecha */
@@ -45,31 +37,16 @@ header.main-header > * {
     gap: 15px;
 }
 
-/* Aseguramos que header tenga el padding correcto */
-
-
-/* Reorganizamos el flex para que funcione correctamente */
-header.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1440px;
-    width: 100%;
-    padding: 15px 96px;
-    background: white;
-    border-bottom: 1px solid #e0e0e0;
-}
-
 .logo img {
-  width: 202px;
-  height: auto;
-  display: block;
+    width: 202px;
+    height: auto;
+    display: block;
 
 }
 
 /* Subtítulo del header */
 .header-left .subtitle {
-    color: #888;
+    color: var(--gray-500);
     font-size: 15px;
     margin: 0;
 }
@@ -80,39 +57,37 @@ header.main-header .exit-btn {
     height: 42px;
     padding: 0 12px;
     box-sizing: border-box;
-    background: white;
-    border: 1px solid #D1D5DB; /* Color de borde más suave */
-    border-radius: 12px; /* Bordes ligeramente más redondeados */
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 12px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 500; /* Texto un poco más grueso */
+    font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centra mejor el contenido */
+    justify-content: center;
     gap: 8px;
-    color: #6B7280; /* Color de texto gris más moderno */
+    color: var(--gray-500);
     transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    box-shadow: var(--shadow-sm);
     font-family: inherit;
-     /* Asegura misma fuente */
 }
 
 header.main-header .exit-btn:hover {
-    background: #f3f4f6; /* Fondo más claro al hover */
-    /* border-color: #9CA3AF; */
-     /* Borde un poco más oscuro al hover */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada al hover */
+    background: var(--gray-100);
+    box-shadow: var(--shadow-md);
 }
 
 .exit-btn:active {
-    background: #F3F4F6; /* Fondo cuando se presiona */
-    transform: translateY(0.5px); /* Efecto de presión */
+    background: var(--gray-100);
+    transform: translateY(0.5px);
 }
 
 .exit-btn .icon {
     font-size: 0px;
     font-weight: 500;
-    margin-top: -1px; /* Ajuste fino para alinear la flecha */
+    margin-top: -1px;
+    /* Ajuste fino para alinear la flecha */
 }
 
 /* Responsive */
@@ -126,14 +101,15 @@ header.main-header .exit-btn:hover {
     body {
         align-items: normal;
     }
+
     header.main-header {
         padding: 15px 24px;
     }
-    
+
     .logo {
         font-size: 22px;
     }
-    
+
     .header-left .subtitle {
         display: none;
     }
@@ -141,10 +117,12 @@ header.main-header .exit-btn:hover {
     .header-left {
         justify-content: center;
     }
+
     header.main-header .exit-btn {
         width: fit-content;
         padding: 0 0.5em;
-        & > p {
+
+        &>p {
             display: none;
         }
     }

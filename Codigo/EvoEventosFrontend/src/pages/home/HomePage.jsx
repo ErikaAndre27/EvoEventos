@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import './HomePage.css'
 import CustomHeader from './components/CustomHeader/CustomHeader'
 import HeroSection from './components/HeroSection/HeroSection'
 import CustomFooter from './components/CustomFooter/CustomFooter'
 import CustomMain from './components/CustomMain/CustomMain'
 import Modal from './components/Modal/Modal'
-import NavBar from '../../NavBar'
 
 
 export const HomePage = () => {
