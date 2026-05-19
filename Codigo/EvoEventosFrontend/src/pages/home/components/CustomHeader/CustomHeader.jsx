@@ -18,7 +18,7 @@ const CustomHeader = ({ openModal = () => { } }) => {
                         <a href="#hero-section" className={styles.active}>Inicio</a>
                         <a href="#quotation-section" className={styles.active}>Cotiza</a>
                         <a href="#servicios-destacados">Servicios</a>
-                        <a href="#products-section">Sobre nosotros</a>
+                        <a href="#products-section">Productos</a>
                         <a href="#contacto">Contacto</a>
                     </nav>
                 </div>
