@@ -20,7 +20,7 @@ const CustomMain = () => {
     return (
         <main>
             {/* <!-- COTIZACIÓN SECTION --> */}
-            <section id="Cotizacion" className={styles.cotizacionSection}>
+            <section id="quotation-section" className={styles.cotizacionSection}>
                 <div className={styles.cotizacionInfo}>
                     <h2 className={styles.sectionTitle}>Cotiza tu evento</h2>
                     <p className={styles.sectionDescription}>Completa el formulario y recibe una cotización personalizada para tu

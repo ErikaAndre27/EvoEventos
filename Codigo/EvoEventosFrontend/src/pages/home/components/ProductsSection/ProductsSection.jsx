@@ -11,7 +11,7 @@ import styles from './ProductsSection.module.css'
 
 const ProductsSection = () => {
   return (
-    <section className={styles.productosSection}>
+    <section id="products-section" className={styles.productosSection}>
       <div className={styles.sectionHeader}>
         <h2 className={styles.sectionTitle}>Nuestros Productos</h2>
         <p className={styles.sectionDescriptionUnique}>Descubre nuestra amplia gama de productos y servicios para hacer

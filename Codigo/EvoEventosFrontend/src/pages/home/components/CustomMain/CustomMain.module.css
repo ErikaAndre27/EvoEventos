@@ -109,6 +109,7 @@
   height: 589px;
   margin: 0 auto;
   padding: 0px 96px 140px 96px;
+  scroll-margin-top: 70px;
 }
 
 .serviciosContainer {

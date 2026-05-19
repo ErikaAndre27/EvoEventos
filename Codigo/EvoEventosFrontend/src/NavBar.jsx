@@ -39,7 +39,7 @@ const NavBar = () => {
                     <span class="icon"><img src={ExitIcon} alt="Salir" /></span> <p>Salir</p>
                 </button>
             </header>
-            <nav className={openMenu ? "menu-open" : ""}>
+            <nav id="header_principal" className={openMenu ? "menu-open" : ""}>
                 <button class="close-menu" onClick={() => setOpenMenu(false)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">

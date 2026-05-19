@@ -21,6 +21,7 @@
   padding: 0 10px;
   max-width: 1440px;
   margin: 0 auto;
+  gap: 1em;
 }
 
 .logoImg {
@@ -39,6 +40,7 @@
   height: auto;
   gap: 20px;
   flex-shrink: 0;
+  flex-grow: 1;
 }
 
 .logo a {
@@ -49,17 +51,19 @@
 }
 
 .mainNav {
+  justify-content: center;
   display: flex;
   align-items: center;
   height: auto;
   gap: 40px;
+  flex-grow: 1;
 }
 
 .mainNav a {
   color: #364153;
   text-decoration: none;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.25em;
   font-family: 'Inter', sans-serif;
   display: flex;
   align-items: center;

@@ -3,7 +3,7 @@ import styles from './HeroSection.module.css'
 
 const HeroSection = () => {
     return (
-        <section className={styles.heroSection}>
+        <section id="hero-section" className={styles.heroSection}>
             <div className={styles.heroContent}>
                 <h1 className={styles.heroTitle}>Todo Lo que Tu Evento Necesita, En Un Solo Lugar</h1>
                 <p className={styles.heroSubtitle}>Cotiza en minutos equipos, comidas y juegos inflables para tu evento</p>

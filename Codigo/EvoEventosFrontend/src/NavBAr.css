@@ -31,7 +31,7 @@ button:focus-visible {
 }
 
 /* Contenedor principal centrado */
-nav {
+nav#header_principal {
     max-width: 1440px;
     width: 100%;
     margin: 40px auto 0 auto;
@@ -42,7 +42,7 @@ nav {
 }
 
 /* Contenedor de links con fondo gris */
-nav .nav-links {
+nav#header_principal .nav-links {
     display: flex;
     gap: 4px;
     background: var(--grey-background);
@@ -51,7 +51,7 @@ nav .nav-links {
     width: fit-content;
 }
 
-nav a {
+nav#header_principal a {
     padding: 6px 16px;
     border-radius: 10px;
     font-size: 14px;
@@ -64,19 +64,19 @@ nav a {
     /* Normal por defecto */
 }
 
-nav a:hover {
+nav#header_principal a:hover {
     background: var(--grey-hover);
 }
 
 /* ESTILOS MEJORADOS PARA ENLACE ACTIVO */
-nav a.active {
+nav#header_principal a.active {
     background: white;
     color: var(--active-color);
     font-weight: 600;
 }
 
 /* Efecto hover para enlace activo */
-nav a.active:hover {
+nav#header_principal a.active:hover {
     background: white;
     /* Mantener blanco en hover */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -122,7 +122,7 @@ nav a.active:hover {
    ============================================ */
 
 @media (max-width: 1200px) {
-    nav {
+    nav#header_principal {
         padding: 0 48px;
     }
 }
@@ -130,20 +130,20 @@ nav a.active:hover {
 @media (max-width: 1000px) {
 
     /* Permite wrap si no caben */
-    nav .nav-links {
+    nav#header_principal .nav-links {
         flex-wrap: wrap;
         justify-content: center;
     }
 }
 
 @media (max-width: 768px) {
-    nav {
+    nav#header_principal {
         padding: 0 24px;
     }
 }
 
 @media (max-width: 720px) {
-    nav {
+    nav#header_principal {
         z-index: 999;
         width: 100vw;
         height: 100vh;
@@ -159,7 +159,7 @@ nav a.active:hover {
         transition: left 0.3s ease;
     }
 
-    nav .nav-links {
+    nav#header_principal .nav-links {
         flex-direction: column;
         width: 80%;
         background: transparent;
@@ -167,14 +167,14 @@ nav a.active:hover {
         align-items: stretch;
     }
 
-    nav a {
+    nav#header_principal a {
         padding: 0.75em 2em;
         font-size: 18px;
         text-align: center;
     }
 
     /* Estilos activos en móvil */
-    nav a.active {
+    nav#header_principal a.active {
         background: white;
         color: var(--active-color);
         font-weight: 600;
