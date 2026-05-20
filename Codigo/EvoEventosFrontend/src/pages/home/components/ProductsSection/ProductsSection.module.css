@@ -128,15 +128,6 @@
   color: var(--white);
 }
 
-.verInventario {
-  text-align: center;
-  color: #FFF;
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
 
 .btnInventario {
   background: var(--primary);

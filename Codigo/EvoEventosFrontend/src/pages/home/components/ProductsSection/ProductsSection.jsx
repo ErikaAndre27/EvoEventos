@@ -27,7 +27,6 @@ const ProductsSection = () => {
           <div className={styles.productoInfo}>
             <h3>Castillos Inflables</h3>
             <p>Castillos inflables seguros y divertidos para todas las edades</p>
-            <button className={styles.btnProducto}>Ver Detalles</button>
           </div>
         </div>
 
@@ -38,7 +37,6 @@ const ProductsSection = () => {
           <div className={styles.productoInfo}>
             <h3>Máquinas de Algodón</h3>
             <p>Máquinas profesionales de algodón de azúcar y palomitas</p>
-            <button className={styles.btnProducto}>Ver Detalles</button>
           </div>
         </div>
 
@@ -49,7 +47,6 @@ const ProductsSection = () => {
           <div className={styles.productoInfo}>
             <h3>Servicio de Catering</h3>
             <p>Buffets completos y menús personalizados para tu evento</p>
-            <button className={styles.btnProducto}>Ver Detalles</button>
           </div>
         </div>
 
@@ -60,7 +57,6 @@ const ProductsSection = () => {
           <div className={styles.productoInfo}>
             <h3>Equipo de Sonido</h3>
             <p>Sistemas de sonido profesional y equipo de DJ</p>
-            <button className={styles.btnProducto}>Ver Detalles</button>
           </div>
         </div>
 
@@ -71,7 +67,6 @@ const ProductsSection = () => {
           <div className={styles.productoInfo}>
             <h3>Carpas y Decoración</h3>
             <p>Carpas elegantes y decoración temática personalizada</p>
-            <button className={styles.btnProducto}>Ver Detalles</button>
           </div>
         </div>
 
@@ -82,14 +77,11 @@ const ProductsSection = () => {
           <div className={styles.productoInfo}>
             <h3>Mobiliario</h3>
             <p>Mesas, sillas y mobiliario elegante para cualquier ocasión</p>
-            <button className={styles.btnProducto}>Ver Detalles</button>
           </div>
         </div>
       </div>
 
-      <div className={styles.verInventario}>
-        <button className={styles.btnInventario}>Ver Todo el Inventario</button>
-      </div>
+
     </section>
   )
 }
