@@ -1,13 +1,11 @@
-import './App.css'
-import NavBar from './NavBar'
-function App() {
+import { EvoEventosRouter } from './router/router'
 
-  return (
-    <>
-    <NavBar />
-    <h1>Hola mundo!</h1>
-    </>
-  )
+
+
+function App() {
+  return <>
+    <EvoEventosRouter />
+  </>
 }
 
 export default App

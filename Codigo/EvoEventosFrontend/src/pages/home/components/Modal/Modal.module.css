@@ -1,0 +1,258 @@
+:root {
+    --color-principal: #711380;
+    --color-principal-hover: #5a0f67;
+    --color-texto: #2d2d2d;
+    --color-texto-suave: #666;
+    --color-borde: #e0e0e0;
+    --radio-borde: 14px;
+    --fuente: 'Poppins', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fuente);
+    color: var(--color-texto);
+}
+
+.btnAbrir {
+    margin-top: 8px;
+    padding: 12px 32px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btnAbrir:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100;
+}
+
+.overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+:global(body.modal-abierto) :global(.pagina-fondo) {
+    filter: blur(4px);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    width: 90%;
+    max-width: 420px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 40px 36px 36px;
+    box-shadow: 0 20px 60px rgba(113, 19, 128, 0.18), 0 4px 16px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 200;
+}
+
+.modal.activo {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+}
+
+.btnCerrar {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--gray-100);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btnCerrar:hover {
+    background: #ffe0ff;
+    color: var(--color-principal);
+}
+
+.modalEncabezado {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.iconoLogo {
+    margin-bottom: 10px;
+}
+
+.titulo {
+    color: #711380;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.subtitulo {
+    color: #711380;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    letter-spacing: 0.01em;
+}
+
+.campo input,
+.campo select,
+.campoPassword {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--color-borde);
+    border-radius: 10px;
+    font-family: var(--fuente);
+    font-size: 0.875rem;
+    color: var(--color-texto);
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--color-principal);
+    background: white;
+}
+
+
+.campo input::placeholder {
+    color: #bbb;
+    font-weight: 300;
+}
+
+.campo select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+
+
+.campoPassword {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+
+}
+
+
+.campoPassword input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    padding: 11px 14px;
+    box-shadow: none;
+    outline: none;
+}
+
+.campoEmail:focus-within,
+.campoPassword:focus-within {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 3px rgba(113, 19, 128, 0.1);
+    border-radius: 10px;
+    background: white;
+}
+
+.btnVerPassword {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 14px 11px 0;
+}
+
+.btnIngresar {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.95rem 1rem;
+    background: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btnIngresar:hover {
+    background: var(--color-principal-hover);
+}
+
+.linkOlvido {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-principal);
+    text-decoration: none;
+}
+
+.linkOlvido:hover {
+    text-decoration: underline;
+}

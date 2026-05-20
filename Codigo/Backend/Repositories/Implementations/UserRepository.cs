@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BackEvoEventos.Repositories.Implementations
 {
-    public class UserRepository: IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly EvoeventosContext _context;
         private readonly IRoleRepository _roleRepository;
@@ -22,17 +22,19 @@ namespace BackEvoEventos.Repositories.Implementations
         }
         public async Task<User> GetUserById(Guid Id)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.Id == Id);
+            return await _context.Users.Include(u => u.Role).Include(c => c.Credentials).FirstOrDefaultAsync(x => x.Id == Id);
         }
 
         public async Task<User> GetUserByEmail(string Email)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.Email == Email);
+            return await _context.Users.Include(u => u.Role).Include(c => c.Credentials)
+        .FirstOrDefaultAsync(x => x.Email == Email);
         }
 
         public async Task<User> GetUserByDocumentNumber(string DocumentNumber)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.DocumentNumber == DocumentNumber);
+            return await _context.Users.Include(u => u.Role).Include(c => c.Credentials)
+        .FirstOrDefaultAsync(x => x.DocumentNumber == DocumentNumber);
         }
         public async Task<List<User>> GetAllUsers()
         {
@@ -164,7 +166,7 @@ namespace BackEvoEventos.Repositories.Implementations
                 }
 
                 ExistingUser.UpdatedAt = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(-5)).DateTime;
-                
+
                 _context.Users.Update(ExistingUser);
                 if (credential != null)
                     _context.Credentials.Update(credential);

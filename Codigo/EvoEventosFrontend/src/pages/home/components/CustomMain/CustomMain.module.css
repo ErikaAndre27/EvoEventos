@@ -1,0 +1,226 @@
+.cotizacionSection {
+  background-color: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 73px 96px 138px 96px;
+  width: 100%;
+}
+
+.cotizacionInfo {
+  padding-right: 2rem;
+  margin-top: 147px;
+}
+
+.sectionTitle {
+  color: #711380;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sectionDescription {
+  color: #364153;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 18px;
+  margin-bottom: 51px;
+  width: 606px;
+}
+
+.beneficiosGrid {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem 0;
+}
+
+.beneficioItem {
+  background: var(--white);
+  padding-bottom: 34px;
+  border: none;
+  display: flex;
+}
+
+.beneficioTexto h3 {
+  color: #364153;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: 21px;
+}
+
+.beneficioTexto p {
+  color: #364153;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 21px;
+}
+
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+  margin-top: 2rem;
+}
+
+.indicadorCard {
+  background: var(--white);
+  padding-left: 30px;
+  text-align: center;
+}
+
+.indicadorValor {
+  color: #711380;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0.25rem;
+}
+
+.indicadorDesc {
+  color: #364153;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.serviciosDestacados {
+  background-color: var(--white);
+  display: grid;
+  gap: 3rem;
+  max-width: 1440px;
+  height: 589px;
+  margin: 0 auto;
+  padding: 0px 96px 140px 96px;
+  scroll-margin-top: 70px;
+}
+
+.serviciosContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 0;
+}
+
+.sectionTitleUnique {
+  min-width: 523px;
+  height: 72px;
+  color: #711380;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 27px;
+}
+
+.sectionDescriptionUnique {
+  width: 100%;
+  color: #364153;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 606px;
+  min-height: 60px;
+}
+
+.serviciosGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 46px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 129px;
+}
+
+.servicioCard {
+  background: var(--white);
+  padding: 24px 18.2px 32px 18.2px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 271px;
+  min-height: 241px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.servicioCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.servicioIcon {
+  font-size: 40px;
+  margin-bottom: 19px;
+  line-height: 0;
+}
+
+.servicioCard h3 {
+  min-width: 130px;
+  height: 24px;
+  color: #711380;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 30px;
+}
+
+.servicioCard p {
+  color: #364153;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 1024px) {
+  .cotizacionSection {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .cotizacionInfo {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .beneficiosGrid {
+    grid-template-columns: 1fr;
+  }
+}
