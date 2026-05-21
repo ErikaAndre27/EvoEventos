@@ -55,7 +55,7 @@
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
   max-width: 336px;
-  height: 380px;
+  height: 340px;
 }
 
 .productoCard:hover {

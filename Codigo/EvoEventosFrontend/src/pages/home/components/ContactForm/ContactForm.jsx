@@ -42,12 +42,12 @@ const ContactForm = () => {
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Fecha del evento</label>
-            <input type="date" />
+            <input type="date" min={new Date().toISOString().split('T')[0]} />
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Asistentes</label>
-            <input type="number" placeholder="# personas" />
+            <input min="1" type="number" placeholder="# personas" />
           </div>
 
           <div className={`${styles.formGroup} ${styles.full}`}>

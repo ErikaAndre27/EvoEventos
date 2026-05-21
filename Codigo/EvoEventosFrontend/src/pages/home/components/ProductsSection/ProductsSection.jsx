@@ -6,8 +6,46 @@ import Carpas from '@assets/Images/Carpas.jpg'
 import Mobiliario from '@assets/Images/Mobiliario.jpg'
 
 import styles from './ProductsSection.module.css'
+import ProductCard from './components/ProductCard'
 
-
+const PRODUCTS = [
+  {
+    title: 'Castillos Inflables',
+    description: 'Castillos inflables seguros y divertidos para todas las edades',
+    image: CastilloInflable,
+    category: 'Juegos'
+  },
+  {
+    title: 'Máquinas de Algodón',
+    description: 'Máquinas profesionales de algodón de azúcar y palomitas',
+    image: MaquinaCotton,
+    category: 'Confitería'
+  },
+  {
+    title: 'Servicio de Catering',
+    description: 'Buffets completos y menús personalizados para tu evento',
+    image: Catering,
+    category: 'Alimentación'
+  },
+  {
+    title: 'Equipo de Sonido',
+    description: 'Sistemas de sonido profesional y equipo de DJ',
+    image: EquipoSonido,
+    category: 'Audio/Video'
+  },
+  {
+    title: 'Carpas y Decoración',
+    description: 'Carpas elegantes y decoración temática personalizada',
+    image: Carpas,
+    category: 'Ambientación'
+  },
+  {
+    title: 'Mobiliario',
+    description: 'Mesas, sillas y mobiliario elegante para cualquier ocasión',
+    image: Mobiliario,
+    category: 'Muebles'
+  }
+]
 
 const ProductsSection = () => {
   return (
@@ -20,65 +58,15 @@ const ProductsSection = () => {
       </div>
 
       <div className={styles.productosGrid}>
-        <div className={styles.productoCard}>
-          <span className={styles.productoBadge}>Juegos</span>
-          <img src={CastilloInflable} alt="Castillos Inflables"
-            className={styles.productoImagen} />
-          <div className={styles.productoInfo}>
-            <h3>Castillos Inflables</h3>
-            <p>Castillos inflables seguros y divertidos para todas las edades</p>
-          </div>
-        </div>
-
-        <div className={styles.productoCard}>
-          <span className={styles.productoBadge}>Confitería</span>
-          <img src={MaquinaCotton} alt="Máquinas de Algodón"
-            className={styles.productoImagen} />
-          <div className={styles.productoInfo}>
-            <h3>Máquinas de Algodón</h3>
-            <p>Máquinas profesionales de algodón de azúcar y palomitas</p>
-          </div>
-        </div>
-
-        <div className={styles.productoCard}>
-          <span className={styles.productoBadge}>Alimentación</span>
-          <img src={Catering} alt="Servicio de Catering"
-            className={styles.productoImagen} />
-          <div className={styles.productoInfo}>
-            <h3>Servicio de Catering</h3>
-            <p>Buffets completos y menús personalizados para tu evento</p>
-          </div>
-        </div>
-
-        <div className={styles.productoCard}>
-          <span className={styles.productoBadge}>Audio/Video</span>
-          <img src={EquipoSonido} alt="Equipo de Sonido"
-            className={styles.productoImagen} />
-          <div className={styles.productoInfo}>
-            <h3>Equipo de Sonido</h3>
-            <p>Sistemas de sonido profesional y equipo de DJ</p>
-          </div>
-        </div>
-
-        <div className={styles.productoCard}>
-          <span className={styles.productoBadge}>Ambientación</span>
-          <img src={Carpas} alt="Carpas y Decoración"
-            className={styles.productoImagen} />
-          <div className={styles.productoInfo}>
-            <h3>Carpas y Decoración</h3>
-            <p>Carpas elegantes y decoración temática personalizada</p>
-          </div>
-        </div>
-
-        <div className={styles.productoCard}>
-          <span className={styles.productoBadge}>Muebles</span>
-          <img src={Mobiliario} alt="Mobiliario"
-            className={styles.productoImagen} />
-          <div className={styles.productoInfo}>
-            <h3>Mobiliario</h3>
-            <p>Mesas, sillas y mobiliario elegante para cualquier ocasión</p>
-          </div>
-        </div>
+        {PRODUCTS.map((product, index) => (
+          <ProductCard
+            key={index}
+            title={product.title}
+            description={product.description}
+            category={product.category}
+            image={product.image}
+          />
+        ))}
       </div>
 
 
