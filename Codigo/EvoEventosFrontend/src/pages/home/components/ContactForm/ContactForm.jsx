@@ -27,27 +27,27 @@ const ContactForm = () => {
 
           <div className={`${styles.formGroup} ${styles.full}`}>
             <label className={styles.formLabel}>Nombre completo</label>
-            <input type="text" placeholder="Tu nombre completo" />
+            <input type="text" placeholder="Tu nombre completo" required />
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Correo electrónico</label>
-            <input type="email" placeholder="tu@email.com" />
+            <input type="email" placeholder="tu@email.com" required />
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Número de contacto</label>
-            <input type="tel" placeholder="3011234567" />
+            <input type="tel" placeholder="3011234567" required />
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Fecha del evento</label>
-            <input type="date" />
+            <input type="date" min={new Date().toISOString().split('T')[0]} required />
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Asistentes</label>
-            <input type="number" placeholder="# personas" />
+            <input min="1" type="number" placeholder="# personas" required />
           </div>
 
           <div className={`${styles.formGroup} ${styles.full}`}>
