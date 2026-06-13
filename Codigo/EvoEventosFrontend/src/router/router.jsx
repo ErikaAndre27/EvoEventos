@@ -15,13 +15,13 @@ export const EvoEventosRouter = () => {
                 <Routes>
                     <Route path='/home' element={<HomePage />} />
 
-                    <Route element={<ProtectedRoute isAllowed={true} />}> //isAuth
+                    <Route element={<ProtectedRoute isAllowed={isAuth} />}> //isAuth
                         <Route index element={<Navigate to="/dashboard" replace />} />
                         <Route path='/dashboard' element={<Dashboard />} />
                         <Route path='/solicitudes' element={<p>solicitudes</p>} />
                         <Route path='/clientes' element={<p>clientes</p>} />
                         <Route path='/catalogo' element={<p>catalogo</p>} />
-                        <Route path='/cotizaciones' element={<Cotizaciones/>} />
+                        <Route path='/cotizaciones' element={<Cotizaciones />} />
                         <Route path='/asesores' element={<p>asesores</p>} />
                         <Route path='/eventos' element={<p>eventos</p>} />
                         <Route path='/inventario' element={<p>inventario</p>} />

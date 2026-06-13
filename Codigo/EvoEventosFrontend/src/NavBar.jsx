@@ -7,6 +7,10 @@ import { NavLink } from 'react-router'
 import { useAuthStore } from './store/auth'
 import { useNavigate } from 'react-router'
 
+const roleLabels = {
+    Admin: 'Administración',
+    Asesor: 'Asesor'
+}
 
 const NavBar = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -14,35 +18,37 @@ const NavBar = () => {
     const logout = useAuthStore(state => state.logout)
     const navigate = useNavigate()
 
+    const role = useAuthStore((state) => state.profile?.role)
+
     return (
         <>
-            <header class="main-header">
-                <button class="open-menu" onClick={() => setOpenMenu(true)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+            <header className="main-header">
+                <button className="open-menu" onClick={() => setOpenMenu(true)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"
+                        strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <path d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                <div class="header-left">
-                    <div class="logo">
+                <div className="header-left">
+                    <div className="logo">
                         <img src={Logo} alt="EvoEventos" />
                     </div>
-                    <div class="subtitle">Panel de Asesor</div>
+                    <div className="subtitle">Panel de {roleLabels[role] ?? role}</div>
                 </div>
 
-                <button class="exit-btn" onClick={() => {
+                <button className="exit-btn" onClick={() => {
                     logout()
                     navigate('/home')
 
                 }}>
-                    <span class="icon"><img src={ExitIcon} alt="Salir" /></span> <p>Salir</p>
+                    <span className="icon"><img src={ExitIcon} alt="Salir" /></span> <p>Salir</p>
                 </button>
             </header>
             <nav id="header_principal" className={openMenu ? "menu-open" : ""}>
-                <button class="close-menu" onClick={() => setOpenMenu(false)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                <button className="close-menu" onClick={() => setOpenMenu(false)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"
+                        strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-x">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
