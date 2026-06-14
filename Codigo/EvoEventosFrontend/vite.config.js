@@ -13,5 +13,10 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
       '@': path.resolve(__dirname, './src')
     }
+  },
+  server: {
+    watch: {
+      usePolling: true
+    }
   }
 })
