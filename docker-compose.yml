@@ -1,0 +1,177 @@
+version: "3.8"
+
+# Docker Compose: Orquesta 3 servicios (Base de Datos, Backend, Frontend)
+# Comando: docker-compose up
+# Los tres servicios se comunican en una red virtual interna: evoeventos-network
+
+services:
+  # ====================================================================
+  # SERVICIO 1: BASE DE DATOS SQL SERVER 2022
+  # ====================================================================
+  database:
+    # Imagen oficial de Microsoft SQL Server 2022 Developer Edition
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: evoeventos-database
+
+    # Variables de entorno para SQL Server
+    environment:
+      # ACCEPT_EULA: Acepta los términos de licencia de Microsoft (requerido)
+      ACCEPT_EULA: "Y"
+      # MSSQL_PID: Edición de SQL Server (Developer es gratis para desarrollo)
+      MSSQL_PID: "Developer"
+      # MSSQL_SA_PASSWORD: Contraseña del usuario administrador (sa)
+      MSSQL_SA_PASSWORD: "EvoEventos2024!"
+
+    # Mapeo de puertos: <puerto_en_tu_PC>:<puerto_en_contenedor>
+    # Acceso desde afuera: localhost:1433
+    # Acceso desde Backend (otro contenedor): database:1433 (por DNS de Docker)
+    ports:
+      - "1433:1433"
+
+    # Volumen: Persistencia de datos
+    # sqlserver_data: nombre del volumen Docker (gestiona Docker automáticamente)
+    # /var/opt/mssql: carpeta dentro del contenedor donde SQL Server guarda datos
+    # Los datos persisten aunque reinicies Docker (son guardados en tu máquina)
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+    # user: "0:0" ejecuta como root para evitar problemas de permisos en Windows
+    # Necesario porque Docker Desktop en Windows tiene limitaciones con volúmenes
+    user: "0:0"
+
+    # Healthcheck: Verifica que SQL Server esté listo antes que otros servicios lo usen
+    # test: Comando a ejecutar (sqlcmd intenta conectarse y ejecutar SELECT 1)
+    # interval: Revisa cada 15 segundos
+    # timeout: Espera máximo 10 segundos por respuesta
+    # retries: Reintentar 10 veces antes de marcar como "unhealthy"
+    # start_period: Espera 60 segundos antes de empezar a revisar (SQL Server tarda en iniciar)
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'EvoEventos2024!' -C -Q 'SELECT 1' || exit 1"
+        ]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+    # Red virtual: permite comunicación entre contenedores por nombre
+    networks:
+      - evoeventos-network
+
+    # Reinicia automáticamente si falla (unless-stopped = a menos que lo pares)
+    restart: unless-stopped
+
+  # ====================================================================
+  # SERVICIO 2: BACKEND API (.NET)
+  # ====================================================================
+  backend:
+    # Build: Construye la imagen desde un Dockerfile local
+    # context: carpeta donde está el Dockerfile
+    # dockerfile: nombre del archivo (por defecto busca "Dockerfile")
+    build:
+      context: ./Codigo/Backend
+      dockerfile: Dockerfile
+
+    container_name: evoeventos-backend
+
+    # Puertos expuestos
+    # 8080: HTTP (desarrollo)
+    # 8081: HTTPS (desarrollo)
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+    # Variables de entorno: sobrescriben lo que está en appsettings.json
+    environment:
+      # ASPNETCORE_ENVIRONMENT: Indica que corre en modo Development
+      - ASPNETCORE_ENVIRONMENT=Development
+      
+      # ConnectionStrings__EvoeventosConnection: Cadena de conexión a SQL Server
+      # Server=database: Usa el nombre de servicio (Docker resuelve "database" a su IP)
+      # Database=EvoEventos: Nombre de la BD
+      # User Id=sa: Usuario administrador de SQL Server
+      # Password=EvoEventos2024!: Contraseña (coincide con MSSQL_SA_PASSWORD arriba)
+      # TrustServerCertificate=True: Acepta certificados sin validación (desarrollo)
+      - ConnectionStrings__EvoeventosConnection=Server=database;Database=EvoEventos;User Id=sa;Password=EvoEventos2024!;TrustServerCertificate=True;
+      
+      # JWT: Claves para autenticación con tokens JWT
+      - Jwt__Key=your_jwt_secret_key_32_bytes_or_more_here_for_development
+      - Jwt__Issuer=http://backend:8080
+      - Jwt__Audience=http://backend:8080
+
+    # depends_on: Especifica dependencias entre servicios
+    # El Backend NO inicia hasta que:
+    # 1. El servicio "database" exista
+    # 2. Su healthcheck reporte service_healthy
+    # Evita que Backend falle al intentar conectarse a una BD no lista
+    depends_on:
+      database:
+        condition: service_healthy
+
+    networks:
+      - evoeventos-network
+
+    restart: unless-stopped
+
+  # ====================================================================
+  # SERVICIO 3: FRONTEND (REACT + VITE)
+  # ====================================================================
+  frontend:
+    # Construye desde dockerfile.dev (imagen optimizada para desarrollo)
+    build:
+      context: ./Codigo/EvoEventosFrontend
+      dockerfile: dockerfile.dev
+
+    container_name: evoeventos-frontend
+
+    # Puerto: 5173 (por defecto de Vite en desarrollo)
+    ports:
+      - "5173:5173"
+
+    # Variable de entorno para la URL del Backend
+    # Cuando el Frontend hace llamadas HTTP, usa esta URL
+    # http://backend:8080/api: Usa el nombre de servicio Docker
+    # El archivo axiosInstance.js lee esta variable: import.meta.env.VITE_API_URL
+    environment:
+      - VITE_API_URL=http://backend:8080/api
+
+    # Frontend espera a que Backend esté listo
+    depends_on:
+      - backend
+
+    # Volúmenes para desarrollo en caliente (hot-reload)
+    # Cambios en estos archivos se reflejan inmediatamente en el navegador
+    # Sin necesidad de reconstruir la imagen Docker
+    volumes:
+      - ./Codigo/EvoEventosFrontend/src:/app/src
+      - ./Codigo/EvoEventosFrontend/public:/app/public
+
+    networks:
+      - evoeventos-network
+
+    restart: unless-stopped
+
+# ====================================================================
+# VOLÚMENES (Persistencia de datos)
+# ====================================================================
+volumes:
+  # sqlserver_data: Volumen que guarda la BD de SQL Server
+  # Docker gestiona dónde se almacena en tu sistema operativo
+  # Los datos persisten aunque hagas docker-compose down
+  # Para eliminar: docker volume rm sqlserver_data (ELIMINA LOS DATOS)
+  sqlserver_data:
+
+# ====================================================================
+# REDES (Comunicación entre contenedores)
+# ====================================================================
+networks:
+  # evoeventos-network: Red virtual interna
+  # Los 3 contenedores se conectan aquí
+  # Pueden verse entre ellos usando sus nombres de servicio:
+  # - Desde Backend: "database:1433" o "frontend:5173"
+  # - Desde Frontend: "backend:8080/api"
+  # - Desde Database: "backend:1433" (aunque no lo necesita)
+  evoeventos-network:
+    driver: bridge
