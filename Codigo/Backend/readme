@@ -1,0 +1,49 @@
+# EvoEventos - Backend (Docker)
+
+Instrucciones para construir y ejecutar el backend con Docker.
+
+## Construir la imagen
+
+Desde la carpeta `Backend` (donde está el `Dockerfile`):
+
+```bash
+docker build -t evoeventos:test .
+```
+
+Verifica que la imagen se creó:
+
+```bash
+docker images
+```
+
+## Ejecutar la imagen
+
+```bash
+docker run -d -p 8080:8080 -p 8081:8081 -e ASPNETCORE_ENVIRONMENT=Development --name evoeventos-test evoeventos:test
+```
+
+Verifica que está corriendo:
+
+```bash
+docker ps
+```
+
+Revisar logs (útil si el contenedor se cae):
+
+```bash
+docker logs evoeventos-test
+```
+
+## Reconstruir tras hacer cambios en el código
+
+```bash
+docker rm -f evoeventos-test
+docker build -t evoeventos:test .
+docker run -d -p 8080:8080 -p 8081:8081 -e ASPNETCORE_ENVIRONMENT=Development --name evoeventos-test evoeventos:test
+```
+
+## Probar la API
+
+```
+http://localhost:8080/swagger
+```
