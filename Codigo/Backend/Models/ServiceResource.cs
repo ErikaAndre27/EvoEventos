@@ -10,10 +10,10 @@ namespace BackEvoEventos.Models
         public Guid IdResource { get; set; }
         public int QuantityRequired { get; set; }
         public bool IsMandatory { get; set; }
-        public string UsageNotes { get; set; }
+        public string UsageNotes { get; set; } = string.Empty;
         public bool ExternalProvider { get; set; }
 
-        public Service Service { get; set; }
-        public Resource Resource { get; set; }
+        public Service Service { get; set; } = null!;
+        public Resource Resource { get; set; } = null!;
     }
 }

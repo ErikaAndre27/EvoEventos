@@ -10,13 +10,13 @@ namespace BackEvoEventos
     {
         public static IServiceCollection AddExternal(this IServiceCollection services, IConfiguration _configuration)
         {
-            string connectionString = _configuration.GetConnectionString("EvoeventosConnection");
-            connectionString = _configuration["ConnectionStrings:EvoeventosConnection"];
+            string connectionString = _configuration.GetConnectionString("EvoeventosConnection")
+            ?? throw new InvalidOperationException("Connection string 'EvoeventosConnection' no encontrada.");
 
             services.AddDbContext<Context.EvoeventosContext>(options =>
                 options.UseSqlServer(connectionString)); // Usar UseSqlServer para SQL Server
             services.AddScoped<IRoleRepository, RoleRepository>(); // Inyección de dependencia para RoleRepository
-            services.AddScoped<ICustomerTypeRepository,CustomerTypeRepository>();
+            services.AddScoped<ICustomerTypeRepository, CustomerTypeRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICredentialRepository, CredentialRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

@@ -10,7 +10,7 @@ namespace BackEvoEventos.Models
         public Guid IdRequest { get; set; }
         public Guid IdService { get; set; }
 
-        public Request Request { get; set; }
-        public Service Service { get; set; }
+        public Request Request { get; set; } = null!;
+        public Service Service { get; set; } = null!;
     }
 }

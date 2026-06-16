@@ -6,10 +6,10 @@ namespace BackEvoEventos.Dtos
     {
         [Required(ErrorMessage = "El nombre es obligatorio.")]
         [StringLength(150, ErrorMessage = "El nombre no puede superar los 150 caracteres.")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [StringLength(500, ErrorMessage = "La descripción no puede superar los 500 caracteres.")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Debe seleccionar una categoría.")]
         public Guid? IdCategory { get; set; }
@@ -39,6 +39,6 @@ namespace BackEvoEventos.Dtos
         public bool IsMandatory { get; set; }
 
         [StringLength(300, ErrorMessage = "Las notas de uso no pueden superar los 300 caracteres.")]
-        public string UsageNotes { get; set; }
+        public string UsageNotes { get; set; } = string.Empty;
     }
 }

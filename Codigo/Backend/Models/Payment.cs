@@ -16,10 +16,10 @@ namespace BackEvoEventos.Models
         public string? Notes { get; set; }
 
 
-        public Reservation Reservation { get; set; }
-        public PaymentMethod PaymentMethod { get; set; }
-        public StatusTransaction StatusTransaction { get; set; }
-        public User User { get; set; }
+        public Reservation Reservation { get; set; } = null!;
+        public PaymentMethod PaymentMethod { get; set; } = null!;
+        public StatusTransaction StatusTransaction { get; set; } = null!;
+        public User User { get; set; } = null!;
         public Guid ReservationId { get; internal set; }
     }
 }

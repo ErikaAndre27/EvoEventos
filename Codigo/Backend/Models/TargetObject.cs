@@ -6,8 +6,8 @@ namespace BackEvoEventos.Models
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string TableName { get; set; }           // ej. "Customer", "Service"
-        public string Detail {  get; set; }
+        public string TableName { get; set; } = string.Empty;           // ej. "Customer", "Service"
+        public string Detail { get; set; } = string.Empty;
         public ICollection<Log>? Logs { get; set; } = new List<Log>();
     }
 }
