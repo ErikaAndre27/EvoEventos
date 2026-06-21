@@ -34,6 +34,7 @@ services:
     # Los datos persisten aunque reinicies Docker (son guardados en tu máquina)
     volumes:
       - sqlserver_data:/var/opt/mssql
+      
 
     # user: "0:0" ejecuta como root para evitar problemas de permisos en Windows
     # Necesario porque Docker Desktop en Windows tiene limitaciones con volúmenes

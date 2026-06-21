@@ -15,7 +15,7 @@ export const EvoEventosRouter = () => {
                 <Routes>
                     <Route path='/home' element={<HomePage />} />
 
-                    <Route element={<ProtectedRoute isAllowed={isAuth} />}> //isAuth
+                    <Route element={<ProtectedRoute isAllowed={true} />}> //isAuth
                         <Route index element={<Navigate to="/dashboard" replace />} />
                         <Route path='/dashboard' element={<Dashboard />} />
                         <Route path='/solicitudes' element={<p>solicitudes</p>} />

@@ -1,0 +1,85 @@
+.actionsCell {
+  display: flex;
+  gap: 10px;
+}
+
+.actionBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.actionBtn:hover {
+  background: #f8f9fa;
+}
+
+.numbQuot {
+  font-weight: 600;
+  color: #333;
+}
+
+.clientCell {
+  font-weight: 600;
+  color: #333;
+}
+
+.emailCell {
+  color: #666;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.eventCell {
+  font-weight: 600;
+  color: #333;
+}
+
+.dateCell {
+  color: #666;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.totalCell {
+  font-weight: 600;
+  color: #333;
+}
+
+.deadlineCell {
+  font-weight: 600;
+  color: #333;
+}
+
+.statusQuotation {
+  font-weight: 600;
+  color: #333;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.statusSend {
+  background: rgba(208, 252, 231, 1);
+}
+
+.statusPending {
+  background: rgba(245, 241, 11, 0.2);
+}
+
+.statusApproved {
+  background: rgba(72, 96, 232, 0.38);
+}
+
+.statusRejected {
+  background: rgba(193, 5, 50, 0.6);
+}

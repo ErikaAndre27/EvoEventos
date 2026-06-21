@@ -1,34 +1,60 @@
-import React from 'react'
+import React from "react";
+import styles from "./CotizacionRow.module.css";
 
-export const CotizacionRow = ({number, createdAt, clientName, clientEmail, eventName, eventDate, totalPrice, status, validUntil}) => {
+export const CotizacionRow = ({
+  number,
+  createdAt,
+  clientName,
+  clientEmail,
+  eventName,
+  eventDate,
+  totalPrice,
+  status,
+  validUntil,
+}) => {
   return (
     <tr>
-            <td>
-              <div className="numb-quot">{number}</div>
-              <div className="date-cell">{createdAt}</div>
-            </td>
-            <td>
-              <div className="client-cell">{clientName}</div>
-              <div className="email-cell">{clientEmail}</div>
-            </td>
-            <td>
-              <div className="event-cell">{eventName}</div>
-              <div className="date-cell">{eventDate}</div>
-            </td>
-            <td>
-              <div className="total-cell">{totalPrice}</div>
-            </td>
-            <td>
-              <span className ={`status-quotation ${status === "Enviada" ? "status-send" : status === "Pendiente" ? "status-pending" : status === "Aprobada" ? "status-approved" : "status-rejected"}`}>{status}</span>
-            </td>
-            <td>
-              <span className status ="deadline-cell">{validUntil}</span>
-
-            </td>
-            <td className="actions-cell">
-              <button className="action-btn"><img src="/src/assets/Icons/docs.svg"/></button>
-              <button className="action-btn"><img src="/src/assets/Icons/delete.svg"/></button>
-            </td>
-          </tr>
-  )
-}
+      <td>
+        <div className={styles.numbQuot}>{number}</div>
+        <div className={styles.dateCell}>{createdAt}</div>
+      </td>
+      <td>
+        <div className={styles.clientCell}>{clientName}</div>
+        <div className={styles.emailCell}>{clientEmail}</div>
+      </td>
+      <td>
+        <div className={styles.eventCell}>{eventName}</div>
+        <div className={styles.dateCell}>{eventDate}</div>
+      </td>
+      <td>
+        <div className={styles.totalCell}>{totalPrice}</div>
+      </td>
+      <td>
+        <span
+          className={`${styles.statusQuotation} ${
+            status === "Enviada"
+              ? styles.statusSend
+              : status === "Pendiente"
+                ? styles.statusPending
+                : status === "Aprobada"
+                  ? styles.statusApproved
+                  : styles.statusRejected
+          }`}
+        >
+          {status}
+        </span>
+      </td>
+      <td>
+        <span className={styles.deadlineCell}>{validUntil}</span>
+      </td>
+      <td className={styles.actionsCell}>
+        <button className={styles.actionBtn}>
+          <img src="/src/assets/Icons/docs.svg" />
+        </button>
+        <button className={styles.actionBtn}>
+          <img src="/src/assets/Icons/delete.svg" />
+        </button>
+      </td>
+    </tr>
+  );
+};

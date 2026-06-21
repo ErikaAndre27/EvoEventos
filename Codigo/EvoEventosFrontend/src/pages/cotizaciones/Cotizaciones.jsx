@@ -2,6 +2,7 @@ import { CotizacionRow } from "./components/CotizacionRow";
 import { StatCard } from "./components/StatCard";
 import { useState } from "react";
 import { SearchFilter } from "./components/SearchFilter";
+import styles from "./Cotizaciones.module.css"
 import "./Cotizaciones.css";
 
 const cotizaciones = [
@@ -91,30 +92,30 @@ export const Cotizaciones = () => {
   const cotizacionesFiltradas = cotizaciones.filter((cotizacion) => {
     return (
       (selectedStatus === "Todos" || cotizacion.status === selectedStatus) &&
-      (cotizacion.clientName.toLowerCase().includes(searchText) ||
-        cotizacion.clientEmail.toLowerCase().includes(searchText) ||
-        cotizacion.number.toLowerCase().includes(searchText))
+      (cotizacion.clientName.toLowerCase().includes(searchText.toLowerCase()) ||
+        cotizacion.clientEmail.toLowerCase().includes(searchText.toLowerCase()) ||
+        cotizacion.number.toLowerCase().includes(searchText.toLowerCase()))
     );
   });
 
   return (
     <main className="dashboard">
-      <div className="page-header">
-        <div className="title-section">
-          <h1>Gestión de Cotizaciones</h1>
-          <p className="subtitle">
+      <div className={styles.pageHeader}>
+        <div className={styles.titleSection}>
+          <h1 className={styles.titleHeading}>Gestión de Cotizaciones</h1>
+          <p className={styles.subtitle}>
             Crea y administra cotizaciones para Clientes
           </p>
         </div>
         <button
-          className="btn-nueva-cotizacion"
+          className={styles.btnNuevaCotizacion}
           data-modal-target="modal-cotizacion"
         >
           <span>+</span> Nueva Cotización
         </button>
       </div>
 
-      <section className="cards">
+      <section className={styles.cards}>
         {statsCards.map((card) => (
           <StatCard
             key={card.title}
@@ -134,9 +135,9 @@ export const Cotizaciones = () => {
         setSearchText={setSearchText}
       />
 
-      <div className="requests-container">
-        <h3 className="requests-title">Cotizaciones Creadas</h3>
-        <table className="requests-table">
+      <div className={styles.requestsContainer}>
+        <h3 className={styles.requestsTitle}>Cotizaciones Creadas</h3>
+        <table className={styles.requestsTable}>
           <thead>
             <tr>
               <th>Número</th>

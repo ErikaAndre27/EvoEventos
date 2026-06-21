@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import arrowIcon from "../../../assets/Icons/arrow_drop_down.svg"
+import styles from "./SearchFilter.module.css";
+import arrowIcon from "../../../assets/Icons/arrow_drop_down.svg";
 
 export const SearchFilter = ({
   selectedStatus,
@@ -11,9 +12,9 @@ export const SearchFilter = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="search-filter-bar">
-      <div className="search-wrapper">
-        <div className="search-icon">
+    <div className={styles.searchFilterBar}>
+      <div className={styles.searchWrapper}>
+        <div className={styles.searchIcon}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -31,70 +32,103 @@ export const SearchFilter = ({
         </div>
         <input
           type="text"
-          className="search-input"
+          className={styles.searchInput}
           placeholder="Buscar por cliente, número de cotización o email..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
 
-      <div className="dropdown-container">
-        <button className={`dropdown-button ${isOpen ? "active" : ""}`} onClick={() => setIsOpen(!isOpen)}>
+      <div className={styles.dropdownContainer}>
+        <button
+          className={`${styles.dropdownButton} ${
+            isOpen ? styles.buttonActive : ""
+          }`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
           <span>{selectedStatus}</span>
-          <span className="dropdown-icon">
-            <img src={arrowIcon} />
+          <span
+            className={`${styles.dropdownIcon} ${
+              isOpen ? styles.iconRotated : ""
+            }`}
+          >
+            <img src={arrowIcon} alt="Abrir menú" />
           </span>
         </button>
 
-        <div className={`dropdown-menu ${isOpen ? "active" : ""}`}>
+        <div
+          className={`${styles.dropdownMenu} ${
+            isOpen ? styles.menuActive : ""
+          }`}
+        >
           <div
-            className="dropdown-item selected"
+            className={`${styles.dropdownItem} ${
+              selectedStatus === "Todos" ? styles.selected : ""
+            }`}
             onClick={() => {
               setSelectedStatus("Todos");
               setIsOpen(false);
             }}
           >
-            <span className="status-indicator todos"></span>
+            <span
+              className={`${styles.statusIndicator} ${styles.todos}`}
+            ></span>
             Todos los estados
           </div>
           <div
-            className="dropdown-item"
+            className={`${styles.dropdownItem} ${
+              selectedStatus === "Pendiente" ? styles.selected : ""
+            }`}
             onClick={() => {
               setSelectedStatus("Pendiente");
               setIsOpen(false);
             }}
           >
-            <span className="status-indicator pendientes"></span>
+            <span
+              className={`${styles.statusIndicator} ${styles.pendientes}`}
+            ></span>
             Pendientes
           </div>
           <div
-            className="dropdown-item"
+            className={`${styles.dropdownItem} ${
+              selectedStatus === "Enviada" ? styles.selected : ""
+            }`}
             onClick={() => {
               setSelectedStatus("Enviada");
               setIsOpen(false);
             }}
           >
-            <span className="status-indicator proceso"></span>
+            <span
+              className={`${styles.statusIndicator} ${styles.proceso}`}
+            ></span>
             En Proceso
           </div>
           <div
-            className="dropdown-item"
+            className={`${styles.dropdownItem} ${
+              selectedStatus === "Aprobada" ? styles.selected : ""
+            }`}
             onClick={() => {
               setSelectedStatus("Aprobada");
               setIsOpen(false);
             }}
           >
-            <span className="status-indicator cotizadas"></span>
-            Cotizadas
+            <span
+              className={`${styles.statusIndicator} ${styles.cotizadas}`}
+            ></span>
+            Aprobadas
           </div>
           <div
-            className="dropdown-item"
+            className={`${styles.dropdownItem} ${
+              selectedStatus === "Rechazada" ? styles.selected : ""
+            }`}
             onClick={() => {
               setSelectedStatus("Rechazada");
               setIsOpen(false);
             }}
           >
-            <span className="status-indicator rechazadas"></span>
+            <span
+              className={`${styles.statusIndicator} ${styles.rechazadas}`}
+            ></span>
             Rechazadas
           </div>
         </div>
