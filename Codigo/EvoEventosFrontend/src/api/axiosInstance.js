@@ -1,8 +1,10 @@
 import axios from 'axios'
 import { useAuthStore } from '../store/auth'
 
+const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5031/api'
+
 const EvoEventosApi = axios.create({
-  baseURL: "http://localhost:5031/api",
+  baseURL,
   withCredentials: true
 })
 

@@ -1,6 +1,6 @@
 
 import LogoFondoBl from '@assets/Icons/LogoFondoBl.svg'
-import LocationMain from '@assets/Icons/LocationMain.svg'
+import LocationMain from '@assets/Icons/locationMain.svg'
 import PhoneMain from '@assets/Icons/PhoneMain.svg'
 import MessageMain from '@assets/Icons/MessageMain.svg'
 import styles from './CustomFooter.module.css'

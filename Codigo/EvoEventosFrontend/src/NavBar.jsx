@@ -1,7 +1,6 @@
 import './NavBar.css'
-import './topbar.css'
 import Logo from './assets/Icons/Logo.svg'
-import ExitIcon from './assets/icons/exit.svg'
+import ExitIcon from './assets/Icons/exit.svg'
 import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { useAuthStore } from './store/auth'

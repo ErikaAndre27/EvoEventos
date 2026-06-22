@@ -192,3 +192,136 @@ nav#header_principal a.active:hover {
         left: 0;
     }
 }
+
+
+/* styles topbar
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    font-family: var(--font-primary);
+    background-color: var(--gray-50);
+    color: var(--gray-800);
+}
+
+/* ============================================
+   HEADER - BARRA SUPERIOR
+   ============================================ */
+
+/* Reorganizamos el flex para que funcione correctamente */
+header.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 96px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+    height: 70px;
+}
+
+/* Layout interno: logo izquierda, botón derecha */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    width: 202px;
+    height: auto;
+    display: block;
+
+}
+
+/* Subtítulo del header */
+.header-left .subtitle {
+    color: var(--gray-500);
+    font-size: 15px;
+    margin: 0;
+}
+
+
+header.main-header .exit-btn {
+    width: 97px;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gray-500);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    font-family: inherit;
+}
+
+header.main-header .exit-btn:hover {
+    background: var(--gray-100);
+    box-shadow: var(--shadow-md);
+}
+
+.exit-btn:active {
+    background: var(--gray-100);
+    transform: translateY(0.5px);
+}
+
+.exit-btn .icon {
+    font-size: 0px;
+    font-weight: 500;
+    margin-top: -1px;
+    /* Ajuste fino para alinear la flecha */
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    header.main-header {
+        padding: 15px 48px;
+    }
+}
+
+@media (max-width: 720px) {
+    body {
+        align-items: normal;
+    }
+
+    header.main-header {
+        padding: 15px 24px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .header-left .subtitle {
+        display: none;
+    }
+
+    .header-left {
+        justify-content: center;
+    }
+
+    header.main-header .exit-btn {
+        width: fit-content;
+        padding: 0 0.5em;
+
+        &>p {
+            display: none;
+        }
+    }
+}
