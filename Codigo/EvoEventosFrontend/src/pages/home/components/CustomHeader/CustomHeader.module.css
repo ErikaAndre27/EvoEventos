@@ -76,18 +76,28 @@
   color: var(--primary);
 }
 
+.mainNav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.mainNav a:hover::after {
+  transform: scaleX(1);
+}
+
 .active {
   color: var(--primary);
 }
 
 .mainNav a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--primary);
+  transform: scaleX(1);
 }
 
 .headerRight {
